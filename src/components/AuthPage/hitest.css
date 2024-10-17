@@ -1,0 +1,8 @@
+.hitest {
+  /* border: 1px solid red; */
+  border-radius: 20px;
+  line-height: 16px;
+}
+fieldset {
+  display: none;
+}
