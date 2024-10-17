@@ -8,10 +8,9 @@ const TeacherDesc = ({ text }) => {
           readOnly
           disabled
           maxLength={50}
+          defaultValue={text}
           className="text-fontGray bg-primaryWhite text-ellipsis overflow-hidden resize-none w-full text-center dark:bg-primaryBlack dark:text-primaryWhite sm:text-sm"
-        >
-          {text}
-        </textarea>
+        />
       </div>
     </>
   );
