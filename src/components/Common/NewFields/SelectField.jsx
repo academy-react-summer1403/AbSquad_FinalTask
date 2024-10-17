@@ -76,6 +76,21 @@ const SelectField = ({ type = "", options, filterTitle, Icon, style = "" }) => {
             setDeleteOption("delete");
             setSelectValue("");
           }}
+          onChangeCapture={(e) => {
+            const optionIndex = e.target.selectedIndex;
+            const optionId = e.target.options[optionIndex].dataset.id;
+            if (filterTitle == "دسته بندی" && type == "course") {
+              handleTech(optionId, type);
+            } else if (filterTitle == "دسته بندی" && type == "news") {
+              handleTech(optionId, type);
+            }
+            if (filterTitle == "سطح آموزشی") {
+              handleLevel(optionId);
+            }
+            if (filterTitle == "اساتید") {
+              handleTeacher(optionId);
+            }
+          }}
           className="filterStyle dark:bg-primaryBlack dark:border"
         >
           {deleteOption == "keep" && (
@@ -85,23 +100,7 @@ const SelectField = ({ type = "", options, filterTitle, Icon, style = "" }) => {
           )}
           {options.map((it, index) => {
             return (
-              <option
-                key={index}
-                value={it.name}
-                onClick={() => {
-                  if (filterTitle == "دسته بندی" && type == "course") {
-                    handleTech(it.id, type);
-                  } else if (filterTitle == "دسته بندی" && type == "news") {
-                    handleTech(it.id, type);
-                  }
-                  if (filterTitle == "سطح آموزشی") {
-                    handleLevel(it.id);
-                  }
-                  if (filterTitle == "اساتید") {
-                    handleTeacher(it.id);
-                  }
-                }}
-              >
+              <option key={index} value={it.name} data-id={it.id}>
                 {it.name}
               </option>
             );
