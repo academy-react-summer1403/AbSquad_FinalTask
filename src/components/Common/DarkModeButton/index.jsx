@@ -10,9 +10,6 @@ const DarkModeButton = () => {
     <>
       <span
         onClick={() => {
-          if (darkMode == "mamadnistamman") {
-            const dothis = 2;
-          }
           if (darkMode == "on") {
             setDarkMode("off");
           } else if (darkMode == "off") {
