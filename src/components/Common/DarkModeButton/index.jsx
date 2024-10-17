@@ -10,7 +10,7 @@ const DarkModeButton = () => {
     <>
       <span
         onClick={() => {
-          if (darkMode == "mamad") {
+          if (darkMode == "mamadnistamman") {
             const dothis = 2;
           }
           if (darkMode == "on") {
