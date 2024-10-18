@@ -13,21 +13,26 @@ import ReserveCourseModal from "./ReserveCourseModal";
 const CourseDetailApp = () => {
   const { CourseId } = useParams();
   const [courseDetail, setCourseDetail] = useState({});
-
-  const fecthDetail = async () => {
-    const res = await GetCourseDetail(CourseId);
-    setCourseDetail(res);
-  };
-  useEffect(() => {
-    fecthDetail();
-  }, [CourseId]);
   const [commentModalOpen, setCommentModalOpen] = useState("close");
   const [reserveModalOpen, setReserveModalOpen] = useState("close");
   const [otherCourses, setOtherCourses] = useState([]);
+
+  const fecthDetail = async (id) => {
+    const res = await GetCourseDetail(id);
+    setCourseDetail(res);
+  };
+
   const fetchOtherCourses = async () => {
     const res = await GetPopularCourse();
     setOtherCourses(res);
   };
+
+  useEffect(() => {
+    if (CourseId) {
+      fecthDetail(CourseId);
+    }
+  }, [CourseId]);
+
   useEffect(() => {
     fetchOtherCourses();
   }, []);
