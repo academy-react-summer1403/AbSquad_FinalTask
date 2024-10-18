@@ -2,7 +2,25 @@
 import Button from "../../../Common/Button/Button";
 import { BsChatLeftText } from "react-icons/bs";
 import CommentBox from "../../../Common/CommentBox";
-const CommentSection = ({ setCommentModalOpen }) => {
+import { GetNewsComments } from "../../../../core/Services/Api/DetailComments/detail.comments.api";
+const CommentSection = ({ setCommentModalOpen, newsDetail }) => {
+  const [comments, setComments] = useState([]);
+  const handleComments = async (id) => {
+    const res = await GetNewsComments(id);
+    setComments(res);
+  };
+  //fetching All Comments
+  useEffect(() => {
+    if (newsDetail) {
+      handleComments(newsDetail.courseId);
+    }
+  }, [newsDetail]);
+
+  // Getting Replies
+  useEffect(() => {
+    if (comments) {
+    }
+  }, [comments]);
   return (
     <>
       <div className="flex flex-col my-20 w-full">

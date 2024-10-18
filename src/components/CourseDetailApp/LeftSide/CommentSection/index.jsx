@@ -2,27 +2,26 @@
 import Button from "../../../Common/Button/Button";
 import { BsChatLeftText } from "react-icons/bs";
 import CommentBox from "../../../Common/CommentBox";
-import { GetCourseComments } from "../../../../core/Services/Api/CourseComments/course.comments.api";
-import { GetCourseCommentsReply } from "../../../../core/Services/Api/CourseCommentsReply/course.reply.api";
+import { GetNewsComments } from "../../../../core/Services/Api/DetailComments/detail.comments.api";
 
-const CommentSection = ({ setCommentModalOpen, courseDetail }) => {
+const CommentSection = ({ setCommentModalOpen, newsDetail }) => {
   const [comments, setComments] = useState([]);
   const handleComments = async (id) => {
-    const res = await GetCourseComments(id);
+    const res = await GetNewsComments(id);
     setComments(res);
   };
-  //fetching All Comments
   useEffect(() => {
-    if (courseDetail) {
-      handleComments(courseDetail.courseId);
+    if (newsDetail) {
+      handleComments(newsDetail.id);
     }
-  }, [courseDetail]);
+  }, [newsDetail]);
 
-  // Getting Replies
-  useEffect(() => {
-    if (comments) {
-    }
-  }, [comments]);
+  //fetching All Comments
+  // useEffect(() => {
+  //   if (courseDetail) {
+  //     handleComments(courseDetail.courseId);
+  //   }
+  // }, [courseDetail]);
 
   return (
     <>
@@ -42,7 +41,7 @@ const CommentSection = ({ setCommentModalOpen, courseDetail }) => {
               return (
                 <CommentBox
                   key={index}
-                  name={it.author}
+                  name={it.author || it.autor}
                   title={it.title}
                   subTitle={it.describe}
                   pic={it.pictureAddress}
@@ -50,7 +49,7 @@ const CommentSection = ({ setCommentModalOpen, courseDetail }) => {
                   disLikeCount={it.disslikeCount}
                   skill={"هیچی"}
                   style={" absolute -right-[30px]"}
-                  reply={it.acceptReplysCount}
+                  reply={it.acceptReplysCount || it.replyCount}
                   repliedTo="yes"
                 />
               );
