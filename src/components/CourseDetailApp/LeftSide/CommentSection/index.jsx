@@ -1,8 +1,29 @@
-﻿import React, { useState } from "react";
+﻿import React, { useEffect, useState } from "react";
 import Button from "../../../Common/Button/Button";
 import { BsChatLeftText } from "react-icons/bs";
 import CommentBox from "../../../Common/CommentBox";
-const CommentSection = ({ setCommentModalOpen }) => {
+import { GetCourseComments } from "../../../../core/Services/Api/CourseComments/course.comments.api";
+import { GetCourseCommentsReply } from "../../../../core/Services/Api/CourseCommentsReply/course.reply.api";
+
+const CommentSection = ({ setCommentModalOpen, courseDetail }) => {
+  const [comments, setComments] = useState([]);
+  const handleComments = async (id) => {
+    const res = await GetCourseComments(id);
+    setComments(res);
+  };
+  //fetching All Comments
+  useEffect(() => {
+    if (courseDetail) {
+      handleComments(courseDetail.courseId);
+    }
+  }, [courseDetail]);
+
+  // Getting Replies
+  useEffect(() => {
+    if (comments) {
+    }
+  }, [comments]);
+
   return (
     <>
       <div className="flex flex-col my-20 w-full">
@@ -16,27 +37,24 @@ const CommentSection = ({ setCommentModalOpen }) => {
             iconSize={"20px"}
             onClick={() => setCommentModalOpen("open")}
           />
-          <CommentBox
-            name={"ممدعلی"}
-            skill={"هیچی"}
-            style={" absolute -right-[30px]"}
-            reply="no"
-            repliedTo="yes"
-          />
-          <CommentBox
-            name={"Asghar"}
-            skill={"Mamdialiam"}
-            style={" absolute -right-[30px]"}
-            reply="yes"
-            repliedTo="no"
-          />
-          <CommentBox
-            name={"ممدعلی"}
-            skill={"هیچی"}
-            style={" absolute -right-[30px]"}
-            reply="no"
-            repliedTo="no"
-          />
+          {comments &&
+            comments.map((it, index) => {
+              return (
+                <CommentBox
+                  key={index}
+                  name={it.author}
+                  title={it.title}
+                  subTitle={it.describe}
+                  pic={it.pictureAddress}
+                  likeCount={it.likeCount}
+                  disLikeCount={it.disslikeCount}
+                  skill={"هیچی"}
+                  style={" absolute -right-[30px]"}
+                  reply={it.acceptReplysCount}
+                  repliedTo="yes"
+                />
+              );
+            })}
         </div>
       </div>
     </>
