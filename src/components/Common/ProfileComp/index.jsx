@@ -6,12 +6,12 @@ const ProfileComp = ({ name, skill, style, reply, pic = "" }) => {
     <>
       <div
         className={`flex flex-row justify-start items-center gap-3 h-14 ${style} ${
-          reply == "yes" ? "max-sm:right-[1%]" : ""
+          reply !== 0 ? "max-sm:right-[1%]" : ""
         }`}
       >
         {/* Profile Container*/}
         <div className="h-14 w-14">
-          <div className="border rounded-full bg-primaryGray w-full h-full">
+          <div className="border rounded-full bg-primaryGray w-full h-full overflow-hidden">
             <img src={pic} alt="" />
           </div>
         </div>
