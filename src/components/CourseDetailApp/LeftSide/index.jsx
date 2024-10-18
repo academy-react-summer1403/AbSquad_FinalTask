@@ -24,7 +24,10 @@ const LeftSide = ({ courseDetail, setCommentModalOpen }) => {
         </div>
         <RateSection />
 
-        <CommentSection setCommentModalOpen={setCommentModalOpen} />
+        <CommentSection
+          setCommentModalOpen={setCommentModalOpen}
+          courseDetail={courseDetail}
+        />
       </div>
     </>
   );
