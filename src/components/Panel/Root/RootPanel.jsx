@@ -1,6 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import RightSection from "../RIghtSection/RightSection";
+import RightSection from "../RightSection/RightSection";
 import LeftSection from "../LeftSection/LeftSection";
 const RootPanel = () => {
   return (
