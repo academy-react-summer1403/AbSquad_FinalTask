@@ -2,7 +2,7 @@
 export const GetCourseCommentsReply = async (commentId = "", courseId = "") => {
   try {
     const res = await http.get(
-      `/Course/GetCourseCommnets/${courseId}/${commentId}`
+      `/Course/GetCourseReplyCommnets/${courseId}/${commentId}`
     );
     return res;
   } catch (error) {}
