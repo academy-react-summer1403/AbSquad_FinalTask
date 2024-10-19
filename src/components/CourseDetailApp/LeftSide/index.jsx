@@ -10,7 +10,13 @@ const LeftSide = ({ courseDetail, setCommentModalOpen }) => {
   return (
     <>
       <div className="basis-3/5 flex flex-col items-start justify-start gap-5">
-        <ImageContainer image={courseDetail.imageAddress} />
+        <ImageContainer
+          image={
+            courseDetail.imageAddress
+              ? courseDetail.imageAddress
+              : "./ErrImg.jpg"
+          }
+        />
         <div className="flex flex-col gap-3 w-full ">
           <FontGraySmallText text="مدرس" />
           <TeacherProfSection courseDetail={courseDetail} />
