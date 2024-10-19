@@ -1,4 +1,4 @@
-﻿import React from "react";
+﻿import React, { useEffect } from "react";
 import ImageContainer from "./ImageContainer";
 import NewsDetailDesc from "./NewsDetailDesc";
 import RateSection from "../../CourseDetailApp/LeftSide/RateSection";
@@ -18,7 +18,10 @@ const LeftSection = ({ newsDetail, setCommentModalOpen }) => {
         </div>
         <RateSection />
 
-        <CommentSection setCommentModalOpen={setCommentModalOpen} />
+        <CommentSection
+          setCommentModalOpen={setCommentModalOpen}
+          newsDetail={newsDetail}
+        />
       </div>
     </>
   );
