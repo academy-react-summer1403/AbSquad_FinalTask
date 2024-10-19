@@ -14,18 +14,18 @@ const CommentBox = ({
   pic = "",
   likeCount = 432,
   disLikeCount = 432,
-  reply = 0,
-  repliedTo = "no",
+  reply = "",
+  repliedTo = 0,
   comments = "",
 }) => {
   return (
     <div
       className={` border-2  bg-primaryWhite dark:bg-primaryBlack dark:text-primaryWhite border-l-0 border-t-0  w-11/12 h-[276px] relative ${
-        reply == 0 && repliedTo == "yes"
+        reply == "no" && repliedTo !== 0
           ? "border-fontGray rounded-br-3xl"
-          : reply !== 0 && repliedTo == "no"
+          : reply == "yes" && repliedTo == 0
           ? "-top-[30px] w-5/6 right-[5%] border-r-0 border-b-0 after:content-[' '] after:absolute after:-right-[8%] after:bottom-0 after:border after:border-solid after:border-primaryGray after:w-full  "
-          : reply == 0 && repliedTo == "no"
+          : reply == "no" && repliedTo == 0
           ? "border-none"
           : ""
       }`}
