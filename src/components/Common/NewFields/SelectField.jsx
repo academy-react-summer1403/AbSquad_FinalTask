@@ -70,15 +70,20 @@ const SelectField = ({ type = "", options, filterTitle, Icon, style = "" }) => {
   return (
     <>
       <div className={`flex flex-col justify-start items-center ${style}`}>
-        <TitleSpan title={filterTitle} Icon={Icon} />
+        <TitleSpan
+          title={filterTitle}
+          Icon={Icon}
+          selectValue={selectValue}
+          setSelectValue={setSelectValue}
+        />
         <select
           onInput={(e) => {
             setDeleteOption("delete");
-            setSelectValue("");
           }}
-          onChangeCapture={(e) => {
+          onChange={(e) => {
             const optionIndex = e.target.selectedIndex;
             const optionId = e.target.options[optionIndex].dataset.id;
+            setSelectValue(e.target.value);
             if (filterTitle == "دسته بندی" && type == "course") {
               handleTech(optionId, type);
             } else if (filterTitle == "دسته بندی" && type == "news") {

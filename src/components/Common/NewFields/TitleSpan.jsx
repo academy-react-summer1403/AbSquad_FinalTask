@@ -1,5 +1,13 @@
 ﻿import React from "react";
-const TitleSpan = ({ title = "titleeee", Icon, style = "" }) => {
+import FilterDeleteButton from "../FilterDeleteButton";
+
+const TitleSpan = ({
+  title = "",
+  Icon,
+  style = "",
+  selectValue = "",
+  setSelectValue = "",
+}) => {
   return (
     <>
       <div
@@ -7,6 +15,11 @@ const TitleSpan = ({ title = "titleeee", Icon, style = "" }) => {
       >
         <Icon className="w-8 h-8" />
         <span className="block grow">{title}</span>
+        {selectValue != "انتخاب کنید..." &&
+          title != "قیمت" &&
+          title != "جست‌جو دوره" && (
+            <FilterDeleteButton setSelectValue={setSelectValue} />
+          )}
       </div>
     </>
   );
