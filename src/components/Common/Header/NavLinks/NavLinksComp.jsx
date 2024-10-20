@@ -1,15 +1,25 @@
-﻿import React, { useState } from "react";
+﻿import React, { useEffect, useState } from "react";
 import NavLinks from "../../../../core/utilities/HeaderLinks/header.links.utils.js";
 import BahrLogo from "../../../../assets/Svgs//Header/bahrLogo/Logo.png";
 import BahrLogoText from "../../../../assets/Svgs//Header/bahrLogo/LogoText.png";
 import InstaIcon from "../../../../assets/Svgs/Footer/instagram.svg";
 import TelegramIcon from "../../../../assets/Svgs/Footer/telegram.svg";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import BahrLogoComp from "../../BahrLogoComp/index.jsx";
+import { handleActivePages } from "../../../../core/utilities/ActiveHeader/active.header.utils.js";
 
 const NavLinkComp = ({ mainStyle, phoneStyle, navOpen }) => {
   const [isActive, setIsActive] = useState(0);
+  const location = useLocation();
   const navigate = useNavigate();
+
+  // Active Header
+  useEffect(() => {
+    if (location) {
+      handleActivePages(setIsActive, location.pathname);
+    }
+  }, [location]);
+
   return (
     <>
       <ul
@@ -20,7 +30,6 @@ const NavLinkComp = ({ mainStyle, phoneStyle, navOpen }) => {
             <li
               onClick={() => {
                 navigate(items.navRoute);
-                setIsActive(index);
               }}
               key={index}
               className={`hover:text-primaryBlue cursor-pointer transition-colors duration-200 active:text-primaryBlue max-lg:flex max-lg:flex-row max-lg:justify-start max-lg:items-center max-lg:w-full ${
