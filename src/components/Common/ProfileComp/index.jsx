@@ -1,7 +1,7 @@
 ﻿import React from "react";
 import FontGraySmallText from "../FontGraySmallText";
 
-const ProfileComp = ({ name, skill, style, reply }) => {
+const ProfileComp = ({ name, skill, style, reply, pic = "" }) => {
   return (
     <>
       <div
@@ -11,8 +11,8 @@ const ProfileComp = ({ name, skill, style, reply }) => {
       >
         {/* Profile Container*/}
         <div className="h-14 w-14">
-          <div className="border rounded-full bg-primaryGray w-full h-full">
-            <img src="" alt="" />
+          <div className="border rounded-full bg-primaryGray w-full h-full overflow-hidden">
+            <img src={pic} alt="" />
           </div>
         </div>
         {/* Names Container */}

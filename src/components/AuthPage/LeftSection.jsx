@@ -26,31 +26,9 @@ const LeftSection = ({
   titleF,
   stepForgot,
 }) => {
-  // const [loginData, setLoginData] = useState({
-  //   PhoneOrGmail: "",
-  //   Password: "",
-  // });
-
-  // const handleFormData = (PhoneOrGmail, Password) => {
-  //   setLoginData({ PhoneOrGmail, Password });
-  //   console.log("Received from child:", PhoneOrGmail, Password);
-  // };
-  // const OnClick = async (event) => {
-  //   event.preventDefault();
-  //   const user = { PhoneOrGmail, Password, rememberMe: true };
-
-  //   const res = await axios.post(
-  //     "https://classapi.sepehracademy.ir/api/Sign/Login",
-  //     user
-  //   );
-
-  //   const token = res.data.token;
-  //   console.log(token);
-  //   localStorage.setItem("token", token);
-  //   dispatch(handleToken(token));
-  // };
+  const [TwoStepCheck, setTwoStepCheck] = useState("false");
   return (
-    <div className="flex md:justify-start flex-col items-center md:basis-2/3 md:mt-20 max-md:items-center max-md:p-6 max-md:w-full">
+    <div className="flex md:justify-start flex-col items-center md:basis-2/3 md:mt-20 max-md:items-center max-md:p-6 max-md:w-full dark:!text-primaryWhite">
       <div className="flex flex-row justify-start items-start self-start md:hidden mb-16 ">
         <BahrLogoComp />
       </div>
@@ -59,9 +37,16 @@ const LeftSection = ({
       </h2>
       <p className="text-xs md:text-xl md:w-[538px] mb-8 w-[270px] ">{descL}</p>
       <div className="mb-6 max-md:w-full">
-        {Main && <Main titleF={titleF} />}
+        {Main && (
+          <Main
+            titleF={titleF}
+            stepLogin={stepLogin}
+            step={step}
+            handleNext={handleNext}
+          />
+        )}
       </div>
-      {stepLogin === 0 && (
+      {/* {stepLogin === 0 && (
         <div className=" md:w-[540px] mb-6 max-md:flex-row-reverse max-md:flex max-md:gap-8">
           <NavLink to="/ForgotPass">
             <Button
@@ -83,13 +68,23 @@ const LeftSection = ({
             <span className=" float-start indent-1.5">مرا به خاطر بسپار </span>
           </div>
         </div>
+      )} */}
+      {TwoStepCheck == true && (
+        <Button
+          phoneStyle="h-[56px] w-[538px] max-md:w-[345px] "
+          text={textN}
+          onClick={handleNext}
+          disabled={disableNext}
+        />
       )}
-      <Button
-        phoneStyle="h-[56px] w-[538px] max-md:w-[345px] "
-        text={textN}
-        onClick={handleNext}
-        disabled={disableNext}
-      />
+      {!(step === 2 || stepLogin === 0) && (
+        <Button
+          phoneStyle="h-[56px] w-[538px] max-md:w-[345px] mx-auto"
+          text={textN}
+          onClick={handleNext}
+          disabled={disableBack}
+        />
+      )}
 
       {(step === 0 || stepLogin === 0 || stepForgot === 0) && (
         <div className="mt-6">
@@ -101,6 +96,7 @@ const LeftSection = ({
           </NavLink>
         </div>
       )}
+
       {(step || stepLogin) === 1 && (
         <div className="flex flex-row-reverse md:gap-24 mt-6 gap-4 max-md:w-full  ">
           {step === 1 && (

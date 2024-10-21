@@ -7,29 +7,36 @@ const ImageContainer = ({ course, type, tableImgConStyle }) => {
       className={`flex flex-col justify-between basis-2/5 bg-[#FF9090] rounded-3xl relative overflow-hidden ${tableImgConStyle}`}
     >
       {/* Top Container */}
-      <div className="flex flex-row gap-2 px-2 pt-2 z-10">
-        <RoundedDiv
-          text={
-            type == "LandingNews"
-              ? course.newsCatregoryName
-              : type == "courseList" && course.typeName !== undefined
-              ? course.typeName
-              : course.technologyList
-          }
-        />
-        <RoundedDiv
-          text={
-            type == "LandingNews" ? course.newsCatregoryName : course.levelName
+      <div className="flex flex-row gap-2 px-2  z-10">
+        <div className="flex flex-row gap-2 px-2 pt-2  z-10">
+          <RoundedDiv
+            text={
+              type == "LandingNews"
+                ? course.newsCatregoryName
+                : type == "courseList" && course.typeName !== undefined
+                ? course.typeName
+                : course.technologyList
+            }
+          />
+          <RoundedDiv
+            text={
+              type == "LandingNews"
+                ? course.newsCatregoryName
+                : course.levelName
+            }
+          />
+        </div>
+        <img
+          className="absolute right-0 -z-10 h-full w-full "
+          src={
+            course.tumbImageAddress && course.tumbImageAddress != "null"
+              ? course.tumbImageAddress
+              : "./ErrImg.jpg"
           }
         />
       </div>
       {/* Bottom Container */}
       {type !== "LandingNews" && <CourseStatus course={course} />}
-      <img
-        className="absolute -top-2  left-9 w-full object-fill "
-        src={course.tumbImageAddress}
-        alt="course Image"
-      />
     </div>
   );
 };
