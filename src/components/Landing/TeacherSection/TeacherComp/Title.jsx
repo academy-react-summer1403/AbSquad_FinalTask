@@ -1,12 +1,19 @@
 ﻿import React from "react";
+import { AiFillLinkedin } from "react-icons/ai";
+import { delay, motion } from "framer-motion";
 const Title = ({ name, linkDein }) => {
   return (
     <>
-      <div className="flex flex-col justify-end items-center basis-24">
+      <div className="flex flex-col justify-end items-center basis-28">
         <h1 className="text-xl dark:text-primaryWhite sm:text-2xl text-nowrap">
           {name}
         </h1>
-        <h3 className="h-5 text-sm text-fontGray sm:text-base">{linkDein}</h3>
+        <a
+          className="relative cursor-pointer  w-[30px] h-[30px]"
+          href={linkDein}
+        >
+          <AiFillLinkedin className="text-[#0077b5]" size="30px" />
+        </a>
       </div>
     </>
   );

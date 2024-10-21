@@ -6,7 +6,7 @@ const ProfileComp = ({ name, skill, style, reply, pic = "" }) => {
     <>
       <div
         className={`flex flex-row justify-start items-center gap-3 h-14 ${style} ${
-          reply !== 0 ? "max-sm:right-[1%]" : ""
+          reply == "yes" ? "max-sm:right-[1%]" : ""
         }`}
       >
         {/* Profile Container*/}
