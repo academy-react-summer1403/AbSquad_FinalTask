@@ -10,5 +10,9 @@ const onSuccess = (response) => {
 };
 const onError = (error) => {};
 instance.interceptors.response.use(onSuccess, onError);
-
+instance.interceptors.request.use((opt) => {
+  const token = localStorage.getItem("token");
+  opt.headers.Authorization = "Bearer " + token;
+  return opt;
+});
 export default instance;
