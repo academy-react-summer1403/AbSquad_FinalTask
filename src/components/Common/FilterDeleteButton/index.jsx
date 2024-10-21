@@ -1,7 +1,6 @@
 ﻿import React from "react";
 import { RxCross1 } from "react-icons/rx";
 import { motion } from "framer-motion";
-import { useSearchParams } from "react-router-dom";
 const FilterDeleteButton = ({ setSelectValue, setSearchParams, title }) => {
   console.log(title);
   return (
@@ -32,6 +31,12 @@ const FilterDeleteButton = ({ setSelectValue, setSearchParams, title }) => {
           if (title == "اساتید") {
             setSearchParams((op) => {
               op.delete("TeacherId");
+              return op;
+            });
+          }
+          if (title == "دسته بندی") {
+            setSearchParams((op) => {
+              op.delete("NewsCategoryId");
               return op;
             });
           }

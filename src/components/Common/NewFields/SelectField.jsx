@@ -31,11 +31,6 @@ const SelectField = ({ type = "", options, filterTitle, Icon, style = "" }) => {
         op.set("NewsCategoryId", val);
         return op;
       });
-    } else {
-      setSearchParams((op) => {
-        op.delete("NewsCategoryId");
-        return op;
-      });
     }
   };
 
