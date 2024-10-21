@@ -1,15 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { DatePicker } from "zaman";
 import TitleSpan from "../NewFields/TitleSpan";
 import { LuCalendarRange } from "react-icons/lu";
-const CalField = () => {
+
+const CalField = ({}) => {
+  const [selectValue, setSelectValue] = useState("");
   return (
     <>
       <div className="flex flex-col w-full text-align">
-        <TitleSpan title="تاریخ برگذاری" Icon={LuCalendarRange} />
+        <TitleSpan
+          title="تاریخ برگذاری"
+          Icon={LuCalendarRange}
+          setSelectValue={setSelectValue}
+          selectValue={selectValue}
+        />
         <DatePicker
-          className="relative z-[60]"
-          inputClass="filterStyle text-left dark:bg-primaryBlack dark:border relative z-[60]"
+          className="relative text-right z-[60]"
+          onChange={(e) => {
+            setSelectValue(e.from);
+          }}
+          inputClass="filterStyle  dark:bg-primaryBlack dark:border relative z-[60]"
           round="x4"
           range
         />

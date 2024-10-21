@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { PostLoginAPI } from "../../core/Services/Api/AuthPage/Login/Login";
 import TextField from "../Common/Fields/TextField";
 import { FaHouse } from "react-icons/fa6";
 import { MdLockOutline, MdVisibility, MdVisibilityOff } from "react-icons/md";
@@ -8,7 +9,12 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { handleToken } from "../../redux/userSlice";
-
+import CustomField from "../Common/Fields/Second Approach/CustomFIeld";
+import { Field } from "formik";
+import Button from "../Common/Button/Button";
+import { NavLink } from "react-router-dom";
+import { PiShieldStarBold } from "react-icons/pi";
+import { GetProfileInfo } from "../../core/Services/Api/Panel/GetProfileInfo";
 const RegisterInfoForm = ({}) => {
   const [showPassword, setShowPassword] = useState(false);
   const togglePasswordVisibility = () => {
@@ -25,23 +31,19 @@ const RegisterInfoForm = ({}) => {
     event.preventDefault();
     const user = { PhoneOrGmail, Password, rememberMe: true };
 
-    const res = await axios.post(
-      "https://classapi.sepehracademy.ir/api/Sign/Login",
-      user
-    );
+    const res = await PostLoginAPI(user);
 
     const token = res.data.token;
+    const result = await GetProfileInfo(token);
+    console.log(result);
 
-    console.log(token);
     localStorage.setItem("token", token);
     dispatch(handleToken(token));
 
-    // navigate("/profile");
-
-    // console.log("title", title);
+    // if (res.data.success == true) {
+    //   navigate("/panel");
+    // }
   };
-
-  // console.log("111");
   return (
     <div className="flex flex-col gap-6" onSubmit={onSubmit}>
       <div className="flex flex-col gap-2">
@@ -54,7 +56,6 @@ const RegisterInfoForm = ({}) => {
           value={PhoneOrGmail}
         />
       </div>
-
       <div className="flex flex-col gap-2 relative">
         <span className="text-xl">رمزعبور</span>
         <TextField
@@ -77,7 +78,30 @@ const RegisterInfoForm = ({}) => {
           )}
         </button>
       </div>
-      <button onClick={onSubmit}>Save</button>
+      <Button
+        phoneStyle="h-[56px] w-[538px] max-md:w-[345px] mx-auto"
+        text="ورود به حساب کاربری"
+        onClick={onSubmit}
+      />
+      {/* <div className=" md:w-[540px] mb-6 max-md:flex-row-reverse max-md:flex max-md:gap-8">
+        <NavLink to="/ForgotPass">
+          <Button
+            phoneStyle="mx-auto !text-primaryBlue h-[40px] w-[220px] !bg-LightBlueCustom gap-4 float-left max-md:w-[160px] max-md:text-xs "
+            text="فراموشی رمزعبور"
+            Icon={PiShieldStarBold}
+          />
+        </NavLink>
+        <div>
+          <input
+            className="justify-self-start float-start rounded-lg 
+          appearance-none w-[24px] h-[24px] bg-primaryGray checked:bg-primaryBlue checked:border-transparent focus:outline-none
+          
+            "
+            type="checkbox"
+          />
+          <span className=" float-start indent-1.5">مرا به خاطر بسپار </span>
+        </div>
+      </div> */}
     </div>
   );
 };

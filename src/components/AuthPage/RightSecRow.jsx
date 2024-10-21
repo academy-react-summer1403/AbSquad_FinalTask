@@ -5,7 +5,7 @@ const RightSecRow = ({ desc, Icon, classNameDesc, classNameButton }) => {
     <>
       <div className={`flex mb-3 md:mb-14 max-md:w-[300px]`}>
         <div
-          className={`bg-primaryBlue rounded-full min-w-[72px] max-w-[72px] h-[72px] flex justify-center  items-center relative md:w-[72px] ${classNameButton}`}
+          className={`bg-primaryBlue rounded-full min-w-[72px] max-w-[72px] h-[72px] flex justify-center  items-center relative md:w-[72px] dark:!text-primaryWhite ${classNameButton}`}
         >
           {Icon && <Icon size="2em" />}
         </div>

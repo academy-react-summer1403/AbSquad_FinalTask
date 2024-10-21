@@ -29,7 +29,9 @@ const ImageContainer = ({ course, type, tableImgConStyle }) => {
         <img
           className="absolute right-0 -z-10 h-full w-full "
           src={
-            course.tumbImageAddress ? course.tumbImageAddress : "./ErrImg.jpg"
+            course.tumbImageAddress && course.tumbImageAddress != "null"
+              ? course.tumbImageAddress
+              : "./ErrImg.jpg"
           }
         />
       </div>
