@@ -1,5 +1,4 @@
 ﻿export const handleActivePages = (setIsActive, loc) => {
-  console.log(loc);
   let index = 0;
   switch (loc) {
     case "/":

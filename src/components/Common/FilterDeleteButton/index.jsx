@@ -2,7 +2,6 @@
 import { RxCross1 } from "react-icons/rx";
 import { motion } from "framer-motion";
 const FilterDeleteButton = ({ setSelectValue, setSearchParams, title }) => {
-  console.log(title);
   return (
     <>
       <motion.button

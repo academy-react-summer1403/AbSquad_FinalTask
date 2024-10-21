@@ -6,6 +6,7 @@ const SelectField = ({ type = "", options, filterTitle, Icon, style = "" }) => {
   const [deleteOption, setDeleteOption] = useState("keep");
   const [selectValue, setSelectValue] = useState("انتخاب کنید...");
   const [searchParams, setSearchParams] = useSearchParams(); // Use search Params
+
   const handleTech = (val, type) => {
     if (type == "course") {
       setSearchParams((op) => {
@@ -59,6 +60,7 @@ const SelectField = ({ type = "", options, filterTitle, Icon, style = "" }) => {
           setSearchParams={setSearchParams}
         />
         <select
+          defaultValue={"asdasdas"}
           onChange={(e) => {
             const optionIndex = e.target.selectedIndex;
             const optionId = e.target.options[optionIndex].dataset.id;
