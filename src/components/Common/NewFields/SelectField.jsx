@@ -7,7 +7,7 @@ const SelectField = ({ type = "", options, filterTitle, Icon, style = "" }) => {
   const [selectValue, setSelectValue] = useState("انتخاب کنید...");
   const [searchParams, setSearchParams] = useSearchParams(); // Use search Params
   const handleTech = (val, type) => {
-    if (selectValue != "انتخاب کنید..." && type == "course") {
+    if (type == "course") {
       setSearchParams((op) => {
         op.set("ListTech", val);
         return op;
@@ -26,7 +26,7 @@ const SelectField = ({ type = "", options, filterTitle, Icon, style = "" }) => {
         return op;
       });
     }
-    if (selectValue != "انتخاب کنید..." && type == "news") {
+    if (type == "news") {
       setSearchParams((op) => {
         op.set("NewsCategoryId", val);
         return op;
@@ -41,30 +41,16 @@ const SelectField = ({ type = "", options, filterTitle, Icon, style = "" }) => {
 
   // Handle Level
   const handleLevel = (val) => {
-    if (selectValue != "انتخاب کنید...") {
-      setSearchParams((op) => {
-        op.set("courseLevelId", val);
-        return op;
-      });
-    } else {
-      setSearchParams((op) => {
-        op.delete("courseLevelId");
-        return op;
-      });
-    }
+    setSearchParams((op) => {
+      op.set("courseLevelId", val);
+      return op;
+    });
   };
   const handleTeacher = (val) => {
-    if (selectValue != "انتخاب کنید...") {
-      setSearchParams((op) => {
-        op.set("TeacherId", val);
-        return op;
-      });
-    } else {
-      setSearchParams((op) => {
-        op.delete("TeacherId");
-        return op;
-      });
-    }
+    setSearchParams((op) => {
+      op.set("TeacherId", val);
+      return op;
+    });
   };
 
   return (
@@ -75,11 +61,9 @@ const SelectField = ({ type = "", options, filterTitle, Icon, style = "" }) => {
           Icon={Icon}
           selectValue={selectValue}
           setSelectValue={setSelectValue}
+          setSearchParams={setSearchParams}
         />
         <select
-          onInput={(e) => {
-            setDeleteOption("delete");
-          }}
           onChange={(e) => {
             const optionIndex = e.target.selectedIndex;
             const optionId = e.target.options[optionIndex].dataset.id;

@@ -7,6 +7,7 @@ const TitleSpan = ({
   style = "",
   selectValue = "",
   setSelectValue = "",
+  setSearchParams = "",
 }) => {
   return (
     <>
@@ -18,7 +19,11 @@ const TitleSpan = ({
         {selectValue != "انتخاب کنید..." &&
           title != "قیمت" &&
           title != "جست‌جو دوره" && (
-            <FilterDeleteButton setSelectValue={setSelectValue} />
+            <FilterDeleteButton
+              setSelectValue={setSelectValue}
+              setSearchParams={setSearchParams}
+              title={title}
+            />
           )}
       </div>
     </>
