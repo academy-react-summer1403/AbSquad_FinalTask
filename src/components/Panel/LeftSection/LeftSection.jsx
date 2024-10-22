@@ -9,22 +9,17 @@ import Button from "../../Common/Button/Button";
 import { RxDashboard } from "react-icons/rx";
 import { PiClockCountdownLight } from "react-icons/pi";
 import { VscBook } from "react-icons/vsc";
-import HamburgerMenu from "./dependencies/HamburgerMenu";
-import { SlOptions } from "react-icons/sl";
-import MenuOptions from "./dependencies/MenuOptions";
-import PanelTopBar from "./dependencies/PanelTopBar";
-import PanelMiddleInfo from "./dependencies/PanelMiddleInfo";
-const LeftSection = () => {
-  const [RenderHamMenu, setRenderHamMenu] = useState("");
-  const [activeButton, setActiveButton] = useState("");
 
+import { SlOptions } from "react-icons/sl";
+
+import PanelTopBar from "./dependencies/PanelTopBar";
+
+const LeftSection = () => {
   // Function to handle click and set the active button
 
   return (
     <div className="w-full">
       <PanelTopBar />
-      <PanelMiddleInfo />
-      <HamburgerMenu />
     </div>
   );
 };

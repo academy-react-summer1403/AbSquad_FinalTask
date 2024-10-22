@@ -10,6 +10,7 @@ import NewsDetail from "../../../Screens/NewsDetail";
 import ForgotPass from "../../../Screens/ForgotPass/ForgotPass";
 import ContactUs from "../../../Screens/ContactUs";
 import RootPanel from "../../../components/Panel/Root/RootPanel";
+import ProfileMain from "../../../components/Panel/Profile/ProfileMain";
 export {
   Root,
   LandingPage,
@@ -23,4 +24,5 @@ export {
   ForgotPass,
   RootPanel,
   ContactUs,
+  ProfileMain,
 };

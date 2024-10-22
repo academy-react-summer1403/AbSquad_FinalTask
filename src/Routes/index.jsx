@@ -12,7 +12,9 @@ import {
   ForgotPass,
   RootPanel,
   ContactUs,
+  ProfileMain,
 } from "../core/utilities/Routes/routes.utils.js";
+import { Children } from "react";
 export const PageRoutes = [
   {
     path: "/",
@@ -47,6 +49,12 @@ export const PageRoutes = [
   {
     path: "/Panel",
     element: <RootPanel />,
+    children: [
+      {
+        path: "/Panel/Profile",
+        element: <ProfileMain />,
+      },
+    ],
   },
   { path: "/Register", element: <Register /> },
   { path: "/Login", element: <Login /> },
