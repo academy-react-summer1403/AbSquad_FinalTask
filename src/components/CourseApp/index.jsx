@@ -4,6 +4,7 @@ import ShowCourseSection from "./ShowCourseSection";
 const CourseApp = () => {
   return (
     <div className="h-full">
+      
       <PageMainTitleSection />
       <ShowCourseSection />
     </div>
