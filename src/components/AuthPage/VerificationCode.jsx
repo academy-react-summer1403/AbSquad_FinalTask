@@ -10,8 +10,8 @@ const VerificationCode = ({ handleNext }) => {
   const onSubmit = async () => {
     const sentData = { phoneNumber: phoneNumber, verifyCode: value };
     try {
-      // const res = await VerificationCodeSent(sentData);
-      // console.log("Response:", res);
+      const res = await VerificationCodeSent(sentData);
+      console.log("Response:", res);
       handleNext();
       console.log("Phone Number:", sentData);
     } catch (error) {
@@ -20,7 +20,7 @@ const VerificationCode = ({ handleNext }) => {
         error.response.data &&
         error.response.data.ErrorMessage
       ) {
-        console.log("Error Message:", error.response.data.ErrorMessage[0]);
+        console.log("Error Message:", error.response.data);
       } else {
         console.error("Unknown Error:", error);
       }

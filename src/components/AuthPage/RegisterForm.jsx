@@ -52,8 +52,8 @@ const RegisterForm = ({ step, stepLogin, handleNext }) => {
   };
   const RegisterLast = async (event) => {
     event.preventDefault();
-
-    const RegisterData = { PhoneOrGmail, Password, phoneNumber };
+    const gmail = PhoneOrGmail;
+    const RegisterData = { gmail, Password, phoneNumber };
     const RegisterFinalStep = await FinalStepRegister(RegisterData);
     console.log(RegisterData, RegisterFinalStep);
   };
@@ -126,7 +126,7 @@ const RegisterForm = ({ step, stepLogin, handleNext }) => {
               <Button
                 phoneStyle="h-[56px] w-[538px] max-md:w-[345px] mx-auto"
                 text="وLoginرود به حساب کاربری"
-                onClick={handleSubmitAndNext}
+                onClick={onSubmitLogin}
                 type="button"
               />
             )}
