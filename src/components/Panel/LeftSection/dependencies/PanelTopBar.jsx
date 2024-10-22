@@ -2,6 +2,7 @@ import React from "react";
 import ProfileComp from "../../../Common/ProfileComp";
 import DarkModeButton from "../../../Common/DarkModeButton";
 import { PiBell } from "react-icons/pi";
+
 const PanelTopBar = () => {
   return (
     <div className="bg-primaryWhite flex flex-row gap-2 w-[1096px] h-[80px] py-3 rounded-2xl justify-normal mt-3 p-4 max-md:w-screen dark:bg-primaryBlack dark:text-primaryWhite ">
