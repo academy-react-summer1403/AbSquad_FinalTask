@@ -9,9 +9,9 @@ import Button from "../../../Common/Button/Button";
 import { RxDashboard } from "react-icons/rx";
 import { PiClockCountdownLight } from "react-icons/pi";
 import { VscBook } from "react-icons/vsc";
-import PanelTopBar from "./PanelTopBar";
+import PanelTopBar from "../../LeftSection/dependencies/PanelTopBar";
 import { SlOptions } from "react-icons/sl";
-
+import PersonalInfo from "./PanelMiddleDependencies/PersonalInfo/PersonalInfo";
 const PanelMiddleInfo = () => {
   const [value, setValue] = useState(0);
   const handleClick = (buttonName) => {
@@ -80,7 +80,7 @@ const PanelMiddleInfo = () => {
           <Tab label="آدرس سکونت" className=" dark:text-primaryWhite " />
           <Tab label="لینک ها" className=" dark:text-primaryWhite " />
         </Tabs>
-        {value === 0 && <PanelTopBar />}
+        {value === 0 && <PersonalInfo />}
         {value === 1 && <PanelTopBar />}
         {value === 2 && <PanelTopBar />}
         {value === 3 && <PanelTopBar />}
