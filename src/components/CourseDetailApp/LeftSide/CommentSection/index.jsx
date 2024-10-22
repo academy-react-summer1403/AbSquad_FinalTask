@@ -12,6 +12,8 @@ const CommentSection = ({
   newsDetail = "",
 }) => {
   const [comments, setComments] = useState([]);
+  const [replyComments, setReplyComments] = useState([]);
+  const [replyArray, setReplyArray] = useState([]);
   const handleComments = async (id, type) => {
     if (type == "news") {
       const res = await GetNewsComments(id);
@@ -36,7 +38,7 @@ const CommentSection = ({
   }, [courseDetail]);
 
   // Fetch Replies FOR COURSES
-  const [replyComments, setReplyComments] = useState([]);
+
   const handleReplyComments = async (id, courseId, type) => {
     // if (type == "news") {
     //   const res = await GetNewsReplyComments(id);
@@ -62,13 +64,15 @@ const CommentSection = ({
           array.push(
             ...(await handleReplyComments(it.id, it.courseId, "course"))
           );
+          setReplyArray(array);
         }
       });
     }
   }, [comments]);
+
   useEffect(() => {
-    if (replyComments) console.log(replyComments);
-  }, [replyComments]);
+    setReplyComments(replyArray);
+  }, [replyArray]);
 
   return (
     <>
@@ -103,26 +107,25 @@ const CommentSection = ({
                     reply={"no"}
                     repliedTo={it.acceptReplysCount || it.replyCount}
                   />
-                  {replyComments &&
-                    replyComments.map((it2, index2) => {
-                      return (
-                        it.id == it2.parentId && (
-                          <CommentBox
-                            key={index2}
-                            name={it2.author || it2.autor}
-                            title={it2.title}
-                            subTitle={it2.describe}
-                            pic={it2.pictureAddress}
-                            likeCount={it2.likeCount}
-                            disLikeCount={it2.disslikeCount}
-                            skill={"هیچی"}
-                            style={" absolute -right-[30px]"}
-                            reply={"yes"}
-                            repliedTo={it2.acceptReplysCount || it2.replyCount}
-                          />
-                        )
-                      );
-                    })}
+                  {replyComments.map((it2, index2) => {
+                    return (
+                      it.id == it2.parentId && (
+                        <CommentBox
+                          key={index2}
+                          name={it2.author || it2.autor}
+                          title={it2.title}
+                          subTitle={it2.describe}
+                          pic={it2.pictureAddress}
+                          likeCount={it2.likeCount}
+                          disLikeCount={it2.disslikeCount}
+                          skill={"هیچی"}
+                          style={" absolute -right-[30px]"}
+                          reply={"yes"}
+                          repliedTo={it2.acceptReplysCount || it2.replyCount}
+                        />
+                      )
+                    );
+                  })}
                 </>
               );
               // End Of Reply Section
