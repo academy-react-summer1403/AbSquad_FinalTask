@@ -9,7 +9,7 @@ import Button from "../../../Common/Button/Button";
 import { RxDashboard } from "react-icons/rx";
 import { PiClockCountdownLight } from "react-icons/pi";
 import { VscBook } from "react-icons/vsc";
-
+import PanelTopBar from "./PanelTopBar";
 import { SlOptions } from "react-icons/sl";
 
 const PanelMiddleInfo = () => {
@@ -21,6 +21,7 @@ const PanelMiddleInfo = () => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
   return (
     <div className="mx-auto">
       <div className="flex flex-col bg-primaryWhite rounded-t-2xl mt-3 max-md:w-screen dark:bg-primaryBlack  ">
@@ -75,10 +76,14 @@ const PanelMiddleInfo = () => {
       <div className="bg-primaryWhite max-md:w-screen dark:bg-primaryBlack dark:!text-primaryWhite ">
         <Tabs value={value} onChange={handleChange}>
           <Tab label="اطلاعات شخصی" className=" dark:text-primaryWhite " />
-          <Tab label="عکس پروفایل" />
-          <Tab label="آدرس سکونت" />
-          <Tab label="لینک ها" />
+          <Tab label="عکس پروفایل" className=" dark:text-primaryWhite " />
+          <Tab label="آدرس سکونت" className=" dark:text-primaryWhite " />
+          <Tab label="لینک ها" className=" dark:text-primaryWhite " />
         </Tabs>
+        {value === 0 && <PanelTopBar />}
+        {value === 1 && <PanelTopBar />}
+        {value === 2 && <PanelTopBar />}
+        {value === 3 && <PanelTopBar />}
       </div>
     </div>
   );
