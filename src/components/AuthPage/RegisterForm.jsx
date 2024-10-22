@@ -16,7 +16,11 @@ import { NavLink } from "react-router-dom";
 import { PiShieldStarBold } from "react-icons/pi";
 import { PostLoginAPI } from "../../core/Services/Api/AuthPage/Login/Login";
 import { toast } from "react-hot-toast";
+import "react-toastify/dist/ReactToastify.css";
+import { FinalStepRegister } from "../../core/Services/Api/AuthPage/register/registerLevel3";
+import { useSelector } from "react-redux";
 const RegisterForm = ({ step, stepLogin, handleNext }) => {
+  const phoneNumber = useSelector((state) => state.phone.phoneNumber);
   const [showPassword, setShowPassword] = useState(false);
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
   const [Password, setPassword] = useState("");
@@ -37,25 +41,21 @@ const RegisterForm = ({ step, stepLogin, handleNext }) => {
   const onSubmitLogin = async (event) => {
     event.preventDefault();
     const user = { PhoneOrGmail, Password, rememberMe: true };
-
     const res = await PostLoginAPI(user);
-
     const token = res.token;
     localStorage.setItem("token", token);
     dispatch(handleToken(token));
-    if (res.success == false) {
-      toast.success("Yayyyyyyyyyy 🎉");
-    }
-    toast.error(res.errors);
-
     console.log(res);
     // if (res.success == true) {
     //   navigate("/panel");
     // }
   };
-  const handleSubmitAndNext = async (event) => {
-    // handleNext();
-    onSubmitLogin(event);
+  const RegisterLast = async (event) => {
+    event.preventDefault();
+    const gmail = PhoneOrGmail;
+    const RegisterData = { gmail, Password, phoneNumber };
+    const RegisterFinalStep = await FinalStepRegister(RegisterData);
+    console.log(RegisterData, RegisterFinalStep);
   };
 
   return (
@@ -125,16 +125,16 @@ const RegisterForm = ({ step, stepLogin, handleNext }) => {
             {stepLogin == 0 && (
               <Button
                 phoneStyle="h-[56px] w-[538px] max-md:w-[345px] mx-auto"
-                text="ورود به حساب کاربری"
-                onClick={handleSubmitAndNext}
+                text="وLoginرود به حساب کاربری"
+                onClick={onSubmitLogin}
                 type="button"
               />
             )}
             {step == 2 && (
               <Button
                 phoneStyle="h-[56px] w-[538px] max-md:w-[345px] mx-auto"
-                text="ورود به حساب کاربری"
-                onClick={onSubmitLogin}
+                text="ورregistetrود به حساب کاربری"
+                onClick={RegisterLast}
                 type="button"
               />
             )}
