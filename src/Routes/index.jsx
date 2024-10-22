@@ -11,6 +11,7 @@ import {
   NewsDetail,
   ForgotPass,
   RootPanel,
+  ContactUs,
 } from "../core/utilities/Routes/routes.utils.js";
 export const PageRoutes = [
   {
@@ -36,6 +37,10 @@ export const PageRoutes = [
       {
         path: "/NewsPageDetail/:Id?",
         element: <NewsDetail />,
+      },
+      {
+        path: "/ContactUs",
+        element: <ContactUs />,
       },
     ],
   },

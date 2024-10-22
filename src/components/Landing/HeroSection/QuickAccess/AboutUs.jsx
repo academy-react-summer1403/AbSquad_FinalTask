@@ -1,10 +1,16 @@
 ﻿import React from "react";
 import { CountUp } from "use-count-up";
 import ArrowIcon from "./ArrowIcon";
+import { motion } from "framer-motion";
 const AboutUs = () => {
   return (
     <>
-      <div className="  flex-col justify-start items-start gap-10 grayBox py-4 pr-6 relative grow dark:text-primaryWhite cursor-pointer sm:grow lg:basis-4/12 lg:flex sm:hidden">
+      <motion.div
+        initial={{ scale: 0 }}
+        whileInView={{ scale: 1 }}
+        transition={{ delay: 0.6, duration: 0.1, ease: "backInOut" }}
+        className="  flex-col justify-start items-start gap-10 grayBox py-4 pr-6 relative grow dark:text-primaryWhite cursor-pointer sm:grow lg:basis-4/12 lg:flex sm:hidden"
+      >
         <h1 className="text-2xl sm:text-3xl">
           درباره ما
           <br />
@@ -21,7 +27,7 @@ const AboutUs = () => {
           <span className="block text-base">سال سابقه آموزش تخصصی</span>
         </span>
         <ArrowIcon style="bg-primaryBlue " arrowColor="#FEFDFF" />
-      </div>
+      </motion.div>
     </>
   );
 };

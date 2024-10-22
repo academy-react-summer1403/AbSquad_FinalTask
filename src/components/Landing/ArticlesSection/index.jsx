@@ -4,7 +4,7 @@ import MainBox from "../../Common/MainCourseBox";
 import CourseImgCon from "../../../components/Common/MainCourseBox/ImageContainer.jsx";
 import CourseInfo from "../../../components/Common/MainCourseBox/Info";
 import { GetNewsPagination } from "../../../core/Services/Api/News/news.pagination.api.js";
-
+import { motion } from "framer-motion";
 const ArticlesSection = () => {
   const [popularArticles, setPopularArticles] = useState([]);
   const GetTeacher = async () => {
@@ -19,14 +19,25 @@ const ArticlesSection = () => {
   return (
     <>
       {/* New And Articles Title */}
-      <div className="flex flex-col gap-5 justify-center items-center mt-40 mb-10">
+      <motion.div
+        initial={{ scale: 0 }}
+        whileInView={{ scale: 1 }}
+        transition={{ duration: 0.1 }}
+        viewport={{ amount: 0.5 }}
+        className="flex flex-col gap-5 justify-center items-center mt-40 mb-10"
+      >
         <LandingMainTitle
           title="اخبار و مقالات هفته"
           desc="خبر ها و مقاله هایی که در این هفته منتشر شدند"
         />
-      </div>
+      </motion.div>
       {/* News Components */}
-      <div className="grid grid-cols-1 gap-8   xl:grid-cols-4 sm:grid-cols-2">
+      <motion.div
+        initial={{ x: "-100%" }}
+        whileInView={{ x: "0%" }}
+        transition={{ duration: 0.1 }}
+        className="grid grid-cols-1 gap-8   xl:grid-cols-4 sm:grid-cols-2"
+      >
         {popularArticles.map((it, index) => {
           return (
             index < 4 && (
@@ -41,7 +52,7 @@ const ArticlesSection = () => {
             )
           );
         })}
-      </div>
+      </motion.div>
     </>
   );
 };
