@@ -8,7 +8,7 @@ import CourseDetail from "../../../Screens/CourseDetail";
 import NewsPage from "../../../Screens/NewsPage";
 import NewsDetail from "../../../Screens/NewsDetail";
 import ForgotPass from "../../../Screens/ForgotPass/ForgotPass";
-
+import ContactUs from "../../../Screens/ContactUs";
 import RootPanel from "../../../components/Panel/Root/RootPanel";
 export {
   Root,
@@ -22,4 +22,5 @@ export {
   Login,
   ForgotPass,
   RootPanel,
+  ContactUs,
 };
