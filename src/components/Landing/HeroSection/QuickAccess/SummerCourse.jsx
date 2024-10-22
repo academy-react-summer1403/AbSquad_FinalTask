@@ -5,10 +5,16 @@ import UxIcon from "../../../../assets/Svgs/Landing/Ux.png";
 import FigmaIcon from "../../../../assets/Svgs/Landing/Figma.png";
 import ReactIcon from "../../../../assets/Svgs/Landing/react.png";
 import ArrowIcon from "./ArrowIcon";
+import { motion } from "framer-motion";
 const SummerCourse = () => {
   return (
     <>
-      <div className=" flex flex-col gap-3 pt-4 pr-6 h-[332px] rounded-main bg-primaryBlue text-primaryWhite relative  cursor-pointer lg:basis-4/12 sm:basis-1/2">
+      <motion.div
+        initial={{ scale: 0 }}
+        whileInView={{ scale: 1 }}
+        transition={{ delay: 0.3, duration: 0.1, ease: "backInOut" }}
+        className=" flex flex-col gap-3 pt-4 pr-6 h-[332px] rounded-main bg-primaryBlue text-primaryWhite relative  cursor-pointer lg:basis-4/12 sm:basis-1/2"
+      >
         <h1 className="text-xl font-extrabold sm:text-3xl">
           دوره‌های جدید تابستانه!
         </h1>
@@ -49,7 +55,7 @@ const SummerCourse = () => {
             alt=""
           />
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };
