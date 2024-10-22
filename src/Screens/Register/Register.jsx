@@ -9,7 +9,7 @@ import { TbPasswordMobilePhone } from "react-icons/tb";
 import { ImProfile } from "react-icons/im";
 import VerificationCode from "../../components/AuthPage/VerificationCode";
 import RegisterInfoForm from "../../components/AuthPage/RegisterInfoForm";
-
+import RegisterForm from "../../components/AuthPage/RegisterForm";
 const stepperData = [
   {
     left: {
@@ -81,7 +81,7 @@ const stepperData = [
       textN: "ثبت اطلاعات",
       RightData: "حساب کاربری دارید؟",
       LeftData: "ورود به حساب کاربری",
-      Main: RegisterInfoForm,
+      Main: RegisterForm,
       destination: "/login",
     },
     right: [

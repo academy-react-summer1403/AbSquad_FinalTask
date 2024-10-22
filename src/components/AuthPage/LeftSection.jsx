@@ -69,7 +69,7 @@ const LeftSection = ({
           </div>
         </div>
       )} */}
-      {TwoStepCheck == true && (
+      {TwoStepCheck == false && (
         <Button
           phoneStyle="h-[56px] w-[538px] max-md:w-[345px] "
           text={textN}
@@ -77,7 +77,7 @@ const LeftSection = ({
           disabled={disableNext}
         />
       )}
-      {!(step === 2 || stepLogin === 0) && (
+      {!(step === 0, 2 || stepLogin === 0) && (
         <Button
           phoneStyle="h-[56px] w-[538px] max-md:w-[345px] mx-auto"
           text={textN}
