@@ -5,7 +5,7 @@ const ProfileMain = () => {
   const [RenderHamMenu, setRenderHamMenu] = useState("");
   const [activeButton, setActiveButton] = useState("");
   return (
-    <div>
+    <div className="w-full">
       <PanelMiddleInfo />
       <HamburgerMenu />
     </div>
