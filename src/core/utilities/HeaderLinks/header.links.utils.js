@@ -21,6 +21,6 @@ const NavLinks = [
     desc: "خبر های پژوهشگاه و مقالاتی مرتبط با برنامه نویسی و ...",
     navRoute: "/NewsPage",
   },
-  { img: NewsIcon, title: "ارتباط با ما", desc: "", navRoute: "/" },
+  { img: NewsIcon, title: "ارتباط با ما", desc: "", navRoute: "/ContactUs" },
 ];
 export default NavLinks;
