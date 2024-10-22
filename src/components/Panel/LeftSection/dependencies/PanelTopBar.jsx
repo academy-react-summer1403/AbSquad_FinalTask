@@ -5,7 +5,7 @@ import { PiBell } from "react-icons/pi";
 
 const PanelTopBar = () => {
   return (
-    <div className="bg-primaryWhite flex flex-row gap-2 w-[1096px] h-[80px] py-3 rounded-2xl justify-normal mt-3 p-4 max-md:w-screen dark:bg-primaryBlack dark:text-primaryWhite ">
+    <div className="bg-primaryWhite flex flex-row gap-2 w-full h-[80px] py-3 rounded-2xl justify-normal mt-3 p-4 max-md:w-screen dark:bg-primaryBlack dark:text-primaryWhite ">
       <ProfileComp name="پارسا آقایی " reply="hel" skill="ادمین ، دانشجو" />
       <div className="md:hidden">LOGOBAHR</div>
       <div className="flex gap-2 mr-auto ml-4">

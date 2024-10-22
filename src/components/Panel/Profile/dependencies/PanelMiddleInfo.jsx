@@ -9,9 +9,9 @@ import Button from "../../../Common/Button/Button";
 import { RxDashboard } from "react-icons/rx";
 import { PiClockCountdownLight } from "react-icons/pi";
 import { VscBook } from "react-icons/vsc";
-import PanelTopBar from "./PanelTopBar";
+import PanelTopBar from "../../LeftSection/dependencies/PanelTopBar";
 import { SlOptions } from "react-icons/sl";
-
+import PersonalInfo from "./PanelMiddleDependencies/PersonalInfo/PersonalInfo";
 const PanelMiddleInfo = () => {
   const [value, setValue] = useState(0);
   const handleClick = (buttonName) => {
@@ -25,7 +25,7 @@ const PanelMiddleInfo = () => {
   return (
     <div className="mx-auto">
       <div className="flex flex-col bg-primaryWhite rounded-t-2xl mt-3 max-md:w-screen dark:bg-primaryBlack  ">
-        <div className="bg-primaryBlue w-[1096px] h-[113px] rounded-t-2xl max-md:w-screen">
+        <div className="bg-primaryBlue w-full h-[113px] rounded-t-2xl max-md:w-screen">
           <div className="bg-primaryWhite w-[136px] h-[136px] rounded-full relative top-16 right-10">
             <div className="bg-red-500 w-32 h-32 rounded-full absolute top-1 left-1">
               <div className="bg-primaryBlue h-6 w-6 rounded-full bottom-0 absolute right-3 text-primaryWhite flex items-center justify-center">
@@ -80,7 +80,7 @@ const PanelMiddleInfo = () => {
           <Tab label="آدرس سکونت" className=" dark:text-primaryWhite " />
           <Tab label="لینک ها" className=" dark:text-primaryWhite " />
         </Tabs>
-        {value === 0 && <PanelTopBar />}
+        {value === 0 && <PersonalInfo />}
         {value === 1 && <PanelTopBar />}
         {value === 2 && <PanelTopBar />}
         {value === 3 && <PanelTopBar />}
