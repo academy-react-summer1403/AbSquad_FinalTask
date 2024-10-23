@@ -1,16 +1,25 @@
-﻿import React from "react";
+﻿import React, { useState } from "react";
 import PageTitle from "./PageTitle";
 import { FilterSection } from "./CourseSection/FilterSection";
 import { CourseSection } from "./CourseSection";
+import { Modal } from "./Modal";
+import { CourseDetail } from "../MyCourseDetail";
 
 const MyCourse = () => {
+  const [openAll, setOpenAll] = useState("close");
+  const handleOpenAll = () => {
+    setOpenAll("open");
+  };
   return (
     <>
       <div className="flex flex-col my-10 gap-5">
         <PageTitle />
         <FilterSection />
-        <CourseSection />
+        <CourseSection func={handleOpenAll} />
       </div>
+      {openAll == "open" && (
+        <Modal Component={CourseDetail} func={setOpenAll} />
+      )}
     </>
   );
 };
