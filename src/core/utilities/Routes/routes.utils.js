@@ -11,6 +11,7 @@ import ForgotPass from "../../../Screens/ForgotPass/ForgotPass";
 import ContactUs from "../../../Screens/ContactUs";
 import RootPanel from "../../../components/Panel/Root/RootPanel";
 import ProfileMain from "../../../components/Panel/Profile/ProfileMain";
+import Dashboard from "../../../components/Panel/Dashboard";
 export {
   Root,
   LandingPage,
@@ -25,4 +26,5 @@ export {
   RootPanel,
   ContactUs,
   ProfileMain,
+  Dashboard,
 };

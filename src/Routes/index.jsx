@@ -13,6 +13,7 @@ import {
   RootPanel,
   ContactUs,
   ProfileMain,
+  Dashboard,
 } from "../core/utilities/Routes/routes.utils.js";
 import { Children } from "react";
 export const PageRoutes = [
@@ -53,6 +54,10 @@ export const PageRoutes = [
       {
         path: "/Panel/Profile",
         element: <ProfileMain />,
+      },
+      {
+        path: "/Panel/Dashboard",
+        element: <Dashboard />,
       },
     ],
   },

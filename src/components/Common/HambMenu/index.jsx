@@ -9,6 +9,7 @@ const HambMenu = ({
   title = "",
   closeExist = "yes",
   hambMenuStyle = "",
+  TitleDivStyle = "",
 }) => {
   return (
     <>
@@ -22,7 +23,11 @@ const HambMenu = ({
             className={`justify-center dark:bg-primaryBlack rounded-2xl overflow-hidden ${compWrapperStyle}`}
           >
             {closeExist == "yes" && (
-              <TitleAndClose title={title} setNavOpen={setNavOpen} />
+              <TitleAndClose
+                title={title}
+                setNavOpen={setNavOpen}
+                TitleDivStyle={TitleDivStyle}
+              />
             )}
             <Component navOpen={navOpen} compWrapperStyle={compWrapperStyle} />
           </div>
