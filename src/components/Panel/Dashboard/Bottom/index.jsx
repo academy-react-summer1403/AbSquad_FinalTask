@@ -16,10 +16,12 @@ const Bottom = () => {
       <div className="w-full h-full bg-primaryWhite py-5 rounded-2xl flex flex-col  gap-y-10">
         {/* Intro Top Part */}
         <ShowAllHeader title={"جدیدترین دوره ها"} funcs={handleOpenAll} />
+        {/* List */}
         <ListSection />
-        {openAll == "open" && <AllNewCourses func={handleCloseAll} />}
       </div>
-      {/* {openAll && <Modal />} */}
+      {openAll == "open" && (
+        <Modal Component={AllNewCourses} func={setOpenAll} />
+      )}
     </>
   );
 };

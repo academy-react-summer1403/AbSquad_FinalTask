@@ -1,10 +1,10 @@
 ﻿import React from "react";
 
-const Modal = ({ Component }) => {
+const Modal = ({ Component, func }) => {
   return (
     <>
-      <div className=" hidden absolute top-0 right-0 bg-primaryBlack bg-opacity-50 w-full h-full">
-        {Component && <Component />}
+      <div className="absolute top-0 right-0 bg-primaryBlack bg-opacity-50 w-full h-full ">
+        {Component && <Component func={func} />}
       </div>
     </>
   );
