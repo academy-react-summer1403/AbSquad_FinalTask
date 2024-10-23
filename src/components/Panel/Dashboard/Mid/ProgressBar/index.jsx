@@ -1,7 +1,18 @@
-﻿import React from "react";
-import { CircularProgress } from "@nextui-org/progress";
+﻿import React, { useState } from "react";
 import { RiEdit2Line } from "react-icons/ri";
+import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 const ProgressBar = () => {
+  const [percentage, setPercentage] = useState("70");
+
+  let color;
+  if (percentage < 40) {
+    color = "red";
+  } else if (percentage < 70) {
+    color = "#FFC619";
+  } else {
+    color = "#3772FF";
+  }
   return (
     <>
       {/* Top Info */}
@@ -17,19 +28,16 @@ const ProgressBar = () => {
 
       {/* The Circle */}
       <div className="basis-2/4">
-        <CircularProgress
-          classNames={{
-            svg: "w-52 h-52",
-            indicator: "text-[#3772FF]",
-            track: "text-[#3772FF]",
-            value: "text-[36px] text-primaryBlue",
-          }}
-          strokeWidth={3}
-          aria-label="Loading..."
-          value={100}
-          size="136px"
-          color="warning"
-          showValueLabel={true}
+        <CircularProgressbar
+          value={percentage}
+          text={`${percentage}%`}
+          className="w-[200px] h-[200px]"
+          styles={buildStyles({
+            strokeLinecap: "butt",
+            pathTransitionDuration: 0.5,
+            pathColor: color,
+            textColor: color,
+          })}
         />
       </div>
       {/* A Label For It */}

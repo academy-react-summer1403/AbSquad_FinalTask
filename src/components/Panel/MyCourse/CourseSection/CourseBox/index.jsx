@@ -1,9 +1,19 @@
-﻿import React from "react";
+﻿import React, { useState } from "react";
 import { IoEyeOutline } from "react-icons/io5";
 import { motion } from "framer-motion";
-import { CircularProgress } from "@nextui-org/progress";
 import { LiaMoneyBillWaveAltSolid } from "react-icons/lia";
-const CourseBox = () => {
+import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
+const CourseBox = ({ func }) => {
+  const [percentage, setPercentage] = useState("10");
+  let color;
+  if (percentage < 40) {
+    color = "red";
+  } else if (percentage < 70) {
+    color = "#FFC619";
+  } else {
+    color = "#3772FF";
+  }
   return (
     <>
       {/* Items   */}
@@ -46,21 +56,20 @@ const CourseBox = () => {
             <span className="text-xl">1,800,000</span> تومان
           </div>
           {/* Pay Progress Circle */}
-          <div className="hidden monitor:flex monitor:text-base monitor:basis-[16.66666%]">
-            <CircularProgress
-              classNames={{
-                svg: "w-16 h-16",
-                indicator: "text-[#3772FF]",
-                track: "text-[#3772FF]",
-                value: "text-base text-primaryBlue",
-              }}
-              strokeWidth={3}
-              aria-label="Loading..."
-              value={70}
-              size="136px"
-              color="warning"
-              showValueLabel={true}
-            />
+          <div className="hidden monitor:flex justify-start  items-center monitor:text-base monitor:basis-[16.66666%]">
+            <div className="w-16 h-16">
+              {" "}
+              <CircularProgressbar
+                value={percentage}
+                text={`${percentage}%`}
+                styles={buildStyles({
+                  strokeLinecap: "butt",
+                  pathTransitionDuration: 0.5,
+                  pathColor: color,
+                  textColor: color,
+                })}
+              />
+            </div>
             <span className="flex justify-center items-center mr-2">
               پرداخت شده
             </span>
@@ -69,6 +78,7 @@ const CourseBox = () => {
           <div className="left-0 absolute flex justify-end monitor:grow">
             <div className="flex justify-center items-center gap-3 h-full rounded-full p-2">
               <IoEyeOutline
+                onClick={func}
                 size="24px"
                 className="text-fontGray hover:text-primaryBlue cursor-pointer"
               />
