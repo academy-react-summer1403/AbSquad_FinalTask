@@ -12,6 +12,7 @@ import ContactUs from "../../../Screens/ContactUs";
 import RootPanel from "../../../components/Panel/Root/RootPanel";
 import ProfileMain from "../../../components/Panel/Profile/ProfileMain";
 import Dashboard from "../../../components/Panel/Dashboard";
+import MyCourse from "../../../components/Panel/MyCourse";
 export {
   Root,
   LandingPage,
@@ -27,4 +28,5 @@ export {
   ContactUs,
   ProfileMain,
   Dashboard,
+  MyCourse,
 };

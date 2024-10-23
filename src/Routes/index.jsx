@@ -14,6 +14,7 @@ import {
   ContactUs,
   ProfileMain,
   Dashboard,
+  MyCourse,
 } from "../core/utilities/Routes/routes.utils.js";
 import { Children } from "react";
 export const PageRoutes = [
@@ -58,6 +59,10 @@ export const PageRoutes = [
       {
         path: "/Panel/Dashboard",
         element: <Dashboard />,
+      },
+      {
+        path: "/Panel/MyCourse",
+        element: <MyCourse />,
       },
     ],
   },

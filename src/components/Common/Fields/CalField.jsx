@@ -3,7 +3,7 @@ import { DatePicker } from "zaman";
 import TitleSpan from "../NewFields/TitleSpan";
 import { LuCalendarRange } from "react-icons/lu";
 
-const CalField = ({}) => {
+const CalField = ({ bgStyle = "" }) => {
   const [selectValue, setSelectValue] = useState("");
   return (
     <>
@@ -19,7 +19,7 @@ const CalField = ({}) => {
           onChange={(e) => {
             setSelectValue(e.from);
           }}
-          inputClass="filterStyle  dark:bg-primaryBlack dark:border relative z-[60]"
+          inputClass={`filterStyle  dark:bg-primaryBlack dark:border relative z-[60] ${bgStyle}`}
           round="x4"
           range
         />

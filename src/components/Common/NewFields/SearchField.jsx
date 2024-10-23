@@ -2,7 +2,7 @@
 import { CiSearch } from "react-icons/ci";
 import TitleSpan from "./TitleSpan";
 import { useSearchParams } from "react-router-dom";
-const SearchField = () => {
+const SearchField = ({ bgStyle = "" }) => {
   const [searchValue, setSearchValue] = useState("");
   const [searchParams, setSearchParams] = useSearchParams(); // Use search Params
   const handleSearch = (val) => {
@@ -24,7 +24,7 @@ const SearchField = () => {
       <TitleSpan title="جست‌جو دوره" Icon={CiSearch} />
       <div className="w-full relative">
         <input
-          className="filterStyle outline-none dark:bg-primaryBlack dark:border relative"
+          className={`filterStyle outline-none dark:bg-primaryBlack dark:border relative ${bgStyle}`}
           placeholder="جست و جو کنید..."
           type="search"
           onChange={(e) => setSearchValue(e.target.value)}
