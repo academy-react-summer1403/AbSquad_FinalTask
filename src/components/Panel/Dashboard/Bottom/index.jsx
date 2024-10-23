@@ -17,7 +17,7 @@ const Bottom = () => {
         {/* Intro Top Part */}
         <ShowAllHeader title={"جدیدترین دوره ها"} funcs={handleOpenAll} />
         <ListSection />
-        {openAll == "open" && <AllNewCourses />}
+        {openAll == "open" && <AllNewCourses func={handleCloseAll} />}
       </div>
       {/* {openAll && <Modal />} */}
     </>
