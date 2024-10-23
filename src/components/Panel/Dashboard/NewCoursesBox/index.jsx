@@ -1,10 +1,16 @@
 ﻿import React from "react";
 import { IoEyeOutline } from "react-icons/io5";
+import { motion } from "framer-motion";
 const NewCoursesBox = () => {
   return (
     <>
       {/* Items   */}
-      <div className="w-full flex flex-row justify-start items-start flex-nowrap border-b py-3 monitor:border-none monitor:grid monitor:grid-cols-7 ">
+      <motion.div
+        initial={{ scale: 1 }}
+        whileHover={{ scale: 1.01 }}
+        transition={{ duration: 0.1, ease: "linear" }}
+        className="w-full flex flex-row justify-start items-start flex-nowrap border-b py-3 monitor:border-none monitor:grid monitor:grid-cols-7 rounded-2xl hover:bg-primaryGray "
+      >
         {/* EveryTHing But the Eye Button */}
         <div className="basis-10/12 flex flex-col gap-y-1 monitor:grid monitor:grid-cols-6  monitor:col-span-6 monitor:items-center monitor:gap-10">
           {/* Name Of The Course */}
@@ -18,7 +24,7 @@ const NewCoursesBox = () => {
             value={
               "آموزش صفر تا صد کتابخانه پرطرفدار بیل بیل بیل بیل بیل بیل بیل یبیلبیلسهتسیلهعساهعله"
             }
-            className="hidden monitor:flex text-fontGray text-base basis-2/12 bg-transparent resize-none truncate monitor:h-5 monitor:col-span-1"
+            className="hidden monitor:flex text-fontGray text-base basis-2/12 bg-transparent resize-none truncate monitor: h-7 monitor:col-span-1"
           />
           {/* span */}
           <span></span>
@@ -27,7 +33,7 @@ const NewCoursesBox = () => {
             readOnly
             disabled
             value={"محسن اسفندیاری، مهدی اصغری"}
-            className="text-fontGray text-sm monitor:text-base monitor:basis-30 monitor:text-primaryBlack resize-none bg-transparent monitor:truncate h-5"
+            className="text-fontGray text-sm monitor:text-base monitor:basis-30 monitor:text-primaryBlack resize-none bg-transparent monitor:truncate h-7"
           />
 
           {/* Date Of Course */}
@@ -45,7 +51,7 @@ const NewCoursesBox = () => {
             <IoEyeOutline size="24px" className="text-fontGray" />
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };
