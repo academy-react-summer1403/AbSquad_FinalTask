@@ -15,6 +15,8 @@ import Dashboard from "../../../components/Panel/Dashboard";
 import MyCourse from "../../../components/Panel/MyCourse";
 import MyFavCourse from "../../../components/Panel/MyFavCourse";
 import MyReserve from "../../../components/Panel/MyReserve";
+import MyFavNews from "../../../components/Panel/MyFavNews";
+
 export {
   Root,
   LandingPage,
@@ -33,4 +35,5 @@ export {
   MyCourse,
   MyFavCourse,
   MyReserve,
+  MyFavNews,
 };
