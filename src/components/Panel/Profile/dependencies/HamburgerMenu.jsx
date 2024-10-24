@@ -17,10 +17,10 @@ const HamburgerMenu = () => {
   const [RenderHamMenu, setRenderHamMenu] = useState("");
   const [activeButton, setActiveButton] = useState("");
   const handleClick = (buttonName) => {
-    setActiveButton(buttonName); // Set the clicked button as active
+    setActiveButton(buttonName);
   };
   return (
-    <div className=" w-[360px] rounded-[47px] h-[72px] bg-primaryWhite mx-auto mt-3 md:hidden dark:bg-primaryBlack dark:!text-primaryWhite">
+    <div className=" w-[360px] rounded-[47px] h-[72px] bg-primaryWhite mx-auto mt-3 md:hidden dark:bg-primaryBlack dark:!text-primaryWhite shadow-buttonShadow dark:shadow-darkButtonShadow sticky bottom-1">
       <ul className="flex justify-evenly py-1 ">
         <li>
           <Button
