@@ -7,7 +7,6 @@ const DateStudents = () => {
     <div className="flex flex-col w-full gap-3 ">
       <LittleRect
         title={"20 اردیبهشت 1403"}
-        subText="(شروع)"
         Icon={CgCalendarDates}
         iconSize="25px"
         textSize="sm:!text-xl "
