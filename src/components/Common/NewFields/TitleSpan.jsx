@@ -19,7 +19,9 @@ const TitleSpan = ({
         {selectValue != "انتخاب کنید..." &&
           title != "قیمت" &&
           title != "جست‌جو دوره" &&
-          title != "تاریخ برگذاری" && (
+          title != "تاریخ برگذاری" &&
+          title != "تاریخ انتشار" &&
+          title != "جست‌جو اخبار یا مقالات" && (
             <FilterDeleteButton
               setSelectValue={setSelectValue}
               setSearchParams={setSearchParams}

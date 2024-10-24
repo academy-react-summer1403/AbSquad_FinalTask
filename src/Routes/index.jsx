@@ -17,6 +17,7 @@ import {
   MyCourse,
   MyFavCourse,
   MyReserve,
+  MyFavNews,
 } from "../core/utilities/Routes/routes.utils.js";
 import { Children } from "react";
 export const PageRoutes = [
@@ -48,6 +49,10 @@ export const PageRoutes = [
         path: "/ContactUs",
         element: <ContactUs />,
       },
+      {
+        path: "/ContactUs",
+        element: <ContactUs />,
+      },
     ],
   },
   {
@@ -71,8 +76,8 @@ export const PageRoutes = [
         element: <MyFavCourse />,
       },
       {
-        path: "/Panel/MyReserve",
-        element: <MyReserve />,
+        path: "/Panel/MyFavNews",
+        element: <MyFavNews  />,
       },
     ],
   },
