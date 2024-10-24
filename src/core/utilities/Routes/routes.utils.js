@@ -11,6 +11,12 @@ import ForgotPass from "../../../Screens/ForgotPass/ForgotPass";
 import ContactUs from "../../../Screens/ContactUs";
 import RootPanel from "../../../components/Panel/Root/RootPanel";
 import ProfileMain from "../../../components/Panel/Profile/ProfileMain";
+import Dashboard from "../../../components/Panel/Dashboard";
+import MyCourse from "../../../components/Panel/MyCourse";
+import MyFavCourse from "../../../components/Panel/MyFavCourse";
+import MyReserve from "../../../components/Panel/MyReserve";
+import MyFavNews from "../../../components/Panel/MyFavNews";
+
 export {
   Root,
   LandingPage,
@@ -25,4 +31,9 @@ export {
   RootPanel,
   ContactUs,
   ProfileMain,
+  Dashboard,
+  MyCourse,
+  MyFavCourse,
+  MyReserve,
+  MyFavNews,
 };
