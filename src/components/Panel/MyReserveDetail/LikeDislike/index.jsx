@@ -8,16 +8,16 @@ const LikeDislike = () => {
     <>
       <div className="flex flex-row justify-between w-full">
         <Button text="صفحه دوره" phoneStyle={"!h-[55px]"} />
-        <div className="flex flex-row justify-center monitor:gap-5">
+        <div className="flex flex-row justify-center gap-3 monitor:gap-5">
           <LikeDislikeCircle
             Icon={AiOutlineLike}
             iconSize={"24px"}
-            style={"max-sm:!h-12 max-sm:!p-0 max-sm:w-12 "}
+            style={"max-sm:!h-14 max-sm:!w-14 max-sm:!p-0"}
           />
           <LikeDislikeCircle
             Icon={AiOutlineDislike}
             iconSize={"24px"}
-            style={"max-sm:!h-12 max-sm:!p-0 max-sm:w-12 "}
+            style={"max-sm:!h-14 max-sm:!w-14 max-sm:!p-0"}
           />
         </div>
       </div>
