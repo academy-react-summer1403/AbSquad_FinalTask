@@ -34,7 +34,7 @@ const CourseBox = ({ func }) => {
             />
           </div>
           {/* Second part of the rect which is the rest */}
-          <div className="basis-1/12 monitor:basis-full flex flex-col gap-y-1 monitor:flex-row monitor:items-center">
+          <div className="grow monitor:basis-full flex flex-col gap-y-1 monitor:flex-row monitor:items-center">
             {/* Name Of The Course */}
             <div className="text-base monitor:text-xl monitor:basis-[19.33338%]">
               ری اکت Js

@@ -18,7 +18,7 @@ const MyCourse = () => {
     <>
       <div className="flex flex-col my-10 gap-5">
         <PageTitle handleOpenFilter={handleOpenFilter} />
-        <FilterSection phoneStyle={"hidden"} />
+        <FilterSection phoneStyle={"!hidden monitor:!flex"} />
         <CourseSection func={handleOpenAll} />
       </div>
       {openAll == "open" && (
