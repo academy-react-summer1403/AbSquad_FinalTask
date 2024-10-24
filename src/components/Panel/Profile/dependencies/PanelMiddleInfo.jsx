@@ -12,6 +12,9 @@ import { VscBook } from "react-icons/vsc";
 import PanelTopBar from "../../LeftSection/dependencies/PanelTopBar";
 import { SlOptions } from "react-icons/sl";
 import PersonalInfo from "./PanelMiddleDependencies/PersonalInfo/PersonalInfo";
+import Links from "./PanelMiddleDependencies/Links/Links";
+import AddressTab from "./PanelMiddleDependencies/Address/AddressTab";
+import ProfilePic from "./PanelMiddleDependencies/ProfilePic/ProfilePic";
 const PanelMiddleInfo = () => {
   const [value, setValue] = useState(0);
   const handleClick = (buttonName) => {
@@ -41,7 +44,7 @@ const PanelMiddleInfo = () => {
               <span className="text-3xl">پارسا آقایی</span>
               <span>( ادمین ، دانشجو )</span>
             </div>
-            <div className="flex gap-4 items-center justify-end max-md:flex-col">
+            <div className="flex gap-4 items-center justify-end max-md:flex-col max-md:items-start max-md:mr-1">
               <div className="flex gap-2">
                 <GrDocumentUpload />
                 <span>09121231234</span>
@@ -65,7 +68,7 @@ const PanelMiddleInfo = () => {
 
           <div className="flex flex-col mr-auto">
             <span>درباره من</span>
-            <p className="w-[400px] h-[66px]">
+            <p className="w-[400px] h-[66px] max-md:w-[350px] p-2 mb-3">
               من پارسا آقایی دانشجوی نوب سگ هستم که اخیرا دارم یاد میگیرم برنامه
               نویسی رو و امیدوارم از نوبیت دربیام و بتونم یه کاری پیدا کنم تو 😊
               دنیای دیجیتال ، ممنون از همه
@@ -81,9 +84,9 @@ const PanelMiddleInfo = () => {
           <Tab label="لینک ها" className=" dark:text-primaryWhite " />
         </Tabs>
         {value === 0 && <PersonalInfo />}
-        {value === 1 && <PanelTopBar />}
-        {value === 2 && <PanelTopBar />}
-        {value === 3 && <PanelTopBar />}
+        {value === 1 && <ProfilePic />}
+        {value === 2 && <AddressTab />}
+        {value === 3 && <Links />}
       </div>
     </div>
   );

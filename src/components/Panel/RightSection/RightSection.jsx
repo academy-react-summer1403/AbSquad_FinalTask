@@ -10,8 +10,9 @@ import {
 import { VscBook } from "react-icons/vsc";
 import { CgProfile } from "react-icons/cg";
 import { CiBookmark } from "react-icons/ci";
-import { MdOutlineExitToApp } from "react-icons/md";
+
 import { TbUserEdit } from "react-icons/tb";
+import ExitingAlert from "./dependencies/ExitingAlert";
 
 const RightSection = () => {
   const [activeButton, setActiveButton] = useState("");
@@ -19,11 +20,11 @@ const RightSection = () => {
     setActiveButton(buttonName);
   };
   return (
-    <div className="flex gap-3 flex-col my-3 mr-8 bg-primaryWhite rounded-2xl p-5 max-md:hidden dark:bg-primaryBlack dark:!text-primaryWhite">
-      <div className="flex flex-row justify-start items-start self-start  mb-8 ">
+    <div className="flex gap-3 flex-col my-3 mr-3 bg-primaryBlue rounded-2xl p-5 max-md:hidden dark:bg-primaryBlack dark:!text-primaryWhite h-[700px] sticky top-2 bottom-2">
+      <div className="flex flex-row justify-start items-start self-start  mb-3 ">
         <BahrLogoComp />
       </div>
-      <ul className="flex gap-2 flex-col ">
+      <ul className="flex gap-1 flex-col ">
         <span className="">عمومی</span>
         <li>
           <Button
@@ -113,7 +114,7 @@ const RightSection = () => {
           />
         </li>
       </ul>
-      <ul className="flex gap-3 flex-col">
+      <ul className="flex gap-1 flex-col">
         <li>
           <Button
             phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite ${
@@ -127,11 +128,7 @@ const RightSection = () => {
           />
         </li>
         <li>
-          <Button
-            phoneStyle="h-[53px] w-[228px] flex gap-3 text-xl bg-primaryWhite text-black dark:bg-primaryBlack  text-red-500"
-            Icon={MdOutlineExitToApp}
-            text="خروج از حساب"
-          />
+          <ExitingAlert />
         </li>
       </ul>
     </div>
