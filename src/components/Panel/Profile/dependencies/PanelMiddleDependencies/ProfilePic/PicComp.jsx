@@ -5,7 +5,7 @@ import PicSetting from "./PicSetting";
 const PicComp = ({ isSelected, onSelected, OptionsOpen, Option }) => {
   return (
     <div
-      className="w-[310px] h-[310px] bg-primaryBlue rounded-2xl p-2 max-md:w-[148px] max-md:h-[148px]"
+      className="w-[300px] h-[300px] bg-primaryBlue rounded-2xl p-2 max-md:w-[148px] max-md:h-[148px]"
       onClick={onSelected}
     >
       <div className="flex gap-2" onClick={OptionsOpen}>
