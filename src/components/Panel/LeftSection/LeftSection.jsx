@@ -15,8 +15,6 @@ import { SlOptions } from "react-icons/sl";
 import PanelTopBar from "./dependencies/PanelTopBar";
 
 const LeftSection = () => {
-  // Function to handle click and set the active button
-
   return (
     <div className="w-full">
       <PanelTopBar />
