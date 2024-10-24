@@ -28,86 +28,98 @@ const RightSection = () => {
         <span className="">عمومی</span>
         <li>
           <NavLink to="/Panel/Dashboard">
-            <Button
-              phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite  ${
-                activeButton === "dashboard"
-                  ? "!bg-primaryBlue !text-white"
-                  : "!justify-start"
-              }`}
-              Icon={RxDashboard}
-              text="داشبورد"
-              onClick={() => handleClick("dashboard")}
-            />
+            {({ isActive }) => (
+              <Button
+                phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl ${
+                  isActive
+                    ? "!bg-primaryBlue !text-white"
+                    : "bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite"
+                }`}
+                Icon={RxDashboard}
+                text="داشبورد"
+                onClick={() => handleClick("dashboard")}
+              />
+            )}
           </NavLink>
         </li>
         <li>
           <NavLink to="/Panel/MyCourse">
-            <Button
-              phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite  ${
-                activeButton === "courses"
-                  ? "!bg-primaryBlue !text-white"
-                  : "!justify-start"
-              }`}
-              Icon={VscBook}
-              text="دوره من"
-              onClick={() => handleClick("courses")}
-            />{" "}
+            {({ isActive }) => (
+              <Button
+                phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl ${
+                  isActive
+                    ? "!bg-primaryBlue !text-white"
+                    : "bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite"
+                }`}
+                Icon={VscBook}
+                text="دوره من"
+                onClick={() => handleClick("courses")}
+              />
+            )}
           </NavLink>
         </li>
         <li>
           <NavLink to="/Panel/MyReserve">
-            <Button
-              phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite  ${
-                activeButton === "reservations"
-                  ? "!bg-primaryBlue !text-white"
-                  : "!justify-start"
-              }`}
-              Icon={PiClockCountdownLight}
-              text="رزرو من"
-              onClick={() => handleClick("reservations")}
-            />
+            {({ isActive }) => (
+              <Button
+                phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl ${
+                  isActive
+                    ? "!bg-primaryBlue !text-white"
+                    : "bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite"
+                }`}
+                Icon={PiClockCountdownLight}
+                text="رزرو من"
+                onClick={() => handleClick("reservations")}
+              />
+            )}
           </NavLink>
         </li>
         <li>
           <NavLink to="/Panel/MyFavCourse">
-            <Button
-              phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite ${
-                activeButton === "favoritesCourse"
-                  ? "!bg-primaryBlue !text-white"
-                  : "!justify-start"
-              }`}
-              Icon={PiBookBookmarkLight}
-              text="علاقعمندی دوره"
-              onClick={() => handleClick("favoritesCourse")}
-            />
+            {({ isActive }) => (
+              <Button
+                phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl ${
+                  isActive
+                    ? "!bg-primaryBlue !text-white"
+                    : "bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite"
+                }`}
+                Icon={PiBookBookmarkLight}
+                text="علاقعمندی دوره"
+                onClick={() => handleClick("favoritesCourse")}
+              />
+            )}
           </NavLink>
         </li>
         <li>
           <NavLink to="/Panel/MyFavNews">
-            <Button
-              phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite  ${
-                activeButton === "favoritesBook"
-                  ? "!bg-primaryBlue !text-white"
-                  : "!justify-start"
-              }`}
-              Icon={CiBookmark}
-              text="علاقهمندی کتاب"
-              onClick={() => handleClick("favoritesBook")}
-            />
+            {({ isActive }) => (
+              <Button
+                phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl ${
+                  isActive
+                    ? "!bg-primaryBlue !text-white"
+                    : "bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite"
+                }`}
+                Icon={CiBookmark}
+                text="علاقهمندی کتاب"
+                onClick={() => handleClick("favoritesBook")}
+              />
+            )}
           </NavLink>
         </li>
         <li>
           <NavLink to="/Panel/Profile">
-            <Button
-              phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite ${
-                activeButton === "profile"
-                  ? "!bg-primaryBlue !text-white"
-                  : "!justify-start"
-              }`}
-              Icon={PiMoneyWavy}
-              text="پروفایل"
-              onClick={() => handleClick("profile")}
-            />
+            {({ isActive }) => (
+              <Button
+                phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl ${
+                  isActive
+                    ? "!bg-primaryBlue !text-white"
+                    : "bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite"
+                }`}
+                Icon={PiMoneyWavy}
+                text="پروفایل"
+                onClick={() => handleClick("profile")}
+              />
+            )}
           </NavLink>
         </li>
       </ul>
@@ -115,16 +127,18 @@ const RightSection = () => {
         <span>مالی</span>
         <li>
           <NavLink to="/panel/Payment">
-            <Button
-              phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite ${
-                activeButton === "payments"
-                  ? "!bg-primaryBlue !text-white"
-                  : "!justify-start"
-              }`}
-              Icon={CgProfile}
-              text="پرداخت ها"
-              onClick={() => handleClick("payments")}
-            />
+            {({ isActive }) => (
+              <Button
+                phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl ${
+                  isActive
+                    ? "!bg-primaryBlue !text-white"
+                    : "bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite"
+                }`}
+                Icon={CgProfile}
+                text="پرداخت ها"
+                onClick={() => handleClick("payments")}
+              />
+            )}
           </NavLink>
         </li>
       </ul>
