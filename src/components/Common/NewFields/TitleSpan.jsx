@@ -18,7 +18,8 @@ const TitleSpan = ({
         <span className="block grow">{title}</span>
         {selectValue != "انتخاب کنید..." &&
           title != "قیمت" &&
-          title != "جست‌جو دوره" && (
+          title != "جست‌جو دوره" &&
+          title != "تاریخ برگذاری" && (
             <FilterDeleteButton
               setSelectValue={setSelectValue}
               setSearchParams={setSearchParams}

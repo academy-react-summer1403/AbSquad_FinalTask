@@ -13,6 +13,8 @@ import RootPanel from "../../../components/Panel/Root/RootPanel";
 import ProfileMain from "../../../components/Panel/Profile/ProfileMain";
 import Dashboard from "../../../components/Panel/Dashboard";
 import MyCourse from "../../../components/Panel/MyCourse";
+import MyFavCourse from "../../../components/Panel/MyFavCourse";
+
 export {
   Root,
   LandingPage,
@@ -29,4 +31,5 @@ export {
   ProfileMain,
   Dashboard,
   MyCourse,
+  MyFavCourse,
 };
