@@ -24,68 +24,70 @@ const CourseBox = ({ func }) => {
         className="w-full flex flex-row justify-start items-start flex-nowrap border-b py-3 monitor:border-none rounded-2xl hover:bg-primaryGray "
       >
         {/* Whole Rect */}
-        <div className="basis-full flex flex-col gap-y-1 monitor:flex-row monitor:items-center">
+        <div className="basis-full flex flex-row gap-y-1 monitor:flex-row monitor:items-center">
           {/* Course Image */}
-          <div className="monitor:basis-[16.66666%] h-full w-12  monitor:pr-5">
+          <div className="monitor:basis-[19.66666%] h-full basis-1/2 monitor:pr-5">
             <img
-              className="w-4/5 h-[72px] rounded-3xl border"
+              className=" w-11/12 monitor:w-4/5 monitor:h-[80px] h-20 rounded-lg border"
               src="/ErrImg.jpg"
               alt=""
             />
           </div>
-          {/* Name Of The Course */}
-          <div className="text-base monitor:text-xl monitor:basis-[16.66666%]">
-            ری اکت Js
-          </div>
-
-          {/* Teachers */}
-          <textarea
-            maxLength={10}
-            readOnly
-            disabled
-            value={"محسن اسفندیاری، مهدی اصغری"}
-            className="text-fontGray text-sm monitor:text-base monitor:text-primaryBlack resize-none bg-transparent monitor:truncate h-7 monitor:basis-[16.66666%]"
-          />
-
-          {/* Date Of Course */}
-          <div className="text-sm text-fontGray monitor:text-primaryBlack monitor:text-base monitor:basis-[16.66666%]">
-            25 اردبیهشت 1403
-          </div>
-          {/* Price of Course */}
-          <div className="hidden monitor:flex monitor:text-base monitor:basis-[16.66666%]">
-            <span className="text-xl">1,800,000</span> تومان
-          </div>
-          {/* Pay Progress Circle */}
-          <div className="hidden monitor:flex justify-start  items-center monitor:text-base monitor:basis-[16.66666%]">
-            <div className="w-16 h-16">
-              {" "}
-              <CircularProgressbar
-                value={percentage}
-                text={`${percentage}%`}
-                styles={buildStyles({
-                  strokeLinecap: "butt",
-                  pathTransitionDuration: 0.5,
-                  pathColor: color,
-                  textColor: color,
-                })}
-              />
+          {/* Second part of the rect which is the rest */}
+          <div className="basis-1/12 monitor:basis-full flex flex-col gap-y-1 monitor:flex-row monitor:items-center">
+            {/* Name Of The Course */}
+            <div className="text-base monitor:text-xl monitor:basis-[19.33338%]">
+              ری اکت Js
             </div>
-            {/*  */}
-            <span className="flex justify-center items-center mr-2">
-              پرداخت شده
-            </span>
-            {/* Eye Button */}
-            <div className="flex justify-end">
-              <div className="flex justify-center items-center gap-3 h-full rounded-full p-2">
-                <IoEyeOutline
-                  onClick={func}
-                  size="24px"
-                  className="text-fontGray hover:text-primaryBlue cursor-pointer"
+
+            {/* Teachers */}
+            <textarea
+              maxLength={10}
+              readOnly
+              disabled
+              value={"محسن اسفندیاری، مهدی اصغری"}
+              className="text-fontGray text-sm monitor:text-base monitor:text-primaryBlack resize-none bg-transparent truncate h-7 monitor:basis-[21.33338%]"
+            />
+
+            {/* Date Of Course */}
+            <div className="text-sm text-fontGray monitor:text-primaryBlack monitor:text-base monitor:basis-[20.33338%]">
+              25 اردبیهشت 1403
+            </div>
+            {/* Price of Course */}
+            <div className="hidden monitor:flex monitor:text-base monitor:basis-[19.66666%]">
+              <span className="text-xl">1,800,000</span> تومان
+            </div>
+            {/* Pay Progress Circle */}
+            <div className="hidden monitor:flex justify-start  items-center monitor:text-base monitor:grow">
+              <div className="w-16 h-16">
+                <CircularProgressbar
+                  value={percentage}
+                  text={`${percentage}%`}
+                  styles={buildStyles({
+                    strokeLinecap: "butt",
+                    pathTransitionDuration: 0.5,
+                    pathColor: color,
+                    textColor: color,
+                  })}
                 />
-                <LiaMoneyBillWaveAltSolid
-                  size="24px"
-                  className="text-fontGray hover:text-primaryBlue cursor-pointer"
-                />
+              </div>
+              {/*  */}
+              <span className="flex justify-center items-center mr-2">
+                پرداخت شده
+              </span>
+              {/* Eye Button */}
+              <div className="flex justify-end">
+                <div className="flex justify-center items-center gap-3 h-full rounded-full p-2">
+                  <IoEyeOutline
+                    onClick={func}
+                    size="24px"
+                    className="text-fontGray hover:text-primaryBlue cursor-pointer"
+                  />
+                  <LiaMoneyBillWaveAltSolid
+                    size="24px"
+                    className="text-fontGray hover:text-primaryBlue cursor-pointer"
+                  />
+                </div>
               </div>
             </div>
           </div>
