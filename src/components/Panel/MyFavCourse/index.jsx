@@ -3,7 +3,7 @@ import PageTitle from "./PageTitle";
 import { FilterSection } from "./CourseSection/FilterSection";
 import { CourseSection } from "./CourseSection";
 import { Modal } from "./Modal";
-import { CourseDetail } from "../MyCourseDetail";
+import { CourseDetail } from "../MyFavCourseDetail";
 const MyFavCourse = () => {
   const [openAll, setOpenAll] = useState("close");
   const handleOpenAll = () => {
