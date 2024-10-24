@@ -77,7 +77,11 @@ export const PageRoutes = [
       },
       {
         path: "/Panel/MyFavNews",
-        element: <MyFavNews  />,
+        element: <MyFavNews />,
+      },
+      {
+        path: "/Panel/MyReserve",
+        element: <MyReserve />,
       },
     ],
   },
