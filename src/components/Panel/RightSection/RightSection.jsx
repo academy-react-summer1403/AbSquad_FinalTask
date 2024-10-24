@@ -13,7 +13,7 @@ import { CiBookmark } from "react-icons/ci";
 
 import { TbUserEdit } from "react-icons/tb";
 import ExitingAlert from "./dependencies/ExitingAlert";
-
+import { NavLink } from "react-router-dom";
 const RightSection = () => {
   const [activeButton, setActiveButton] = useState("");
   const handleClick = (buttonName) => {
@@ -27,91 +27,105 @@ const RightSection = () => {
       <ul className="flex gap-1 flex-col ">
         <span className="">عمومی</span>
         <li>
-          <Button
-            phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite  ${
-              activeButton === "dashboard"
-                ? "!bg-primaryBlue !text-white"
-                : "!justify-start"
-            }`}
-            Icon={RxDashboard}
-            text="داشبورد"
-            onClick={() => handleClick("dashboard")}
-          />
+          <NavLink to="/Panel/Dashboard">
+            <Button
+              phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite  ${
+                activeButton === "dashboard"
+                  ? "!bg-primaryBlue !text-white"
+                  : "!justify-start"
+              }`}
+              Icon={RxDashboard}
+              text="داشبورد"
+              onClick={() => handleClick("dashboard")}
+            />
+          </NavLink>
         </li>
         <li>
-          <Button
-            phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite  ${
-              activeButton === "courses"
-                ? "!bg-primaryBlue !text-white"
-                : "!justify-start"
-            }`}
-            Icon={VscBook}
-            text="دوره من"
-            onClick={() => handleClick("courses")}
-          />
+          <NavLink to="/Panel/MyCourse">
+            <Button
+              phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite  ${
+                activeButton === "courses"
+                  ? "!bg-primaryBlue !text-white"
+                  : "!justify-start"
+              }`}
+              Icon={VscBook}
+              text="دوره من"
+              onClick={() => handleClick("courses")}
+            />{" "}
+          </NavLink>
         </li>
         <li>
-          <Button
-            phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite  ${
-              activeButton === "reservations"
-                ? "!bg-primaryBlue !text-white"
-                : "!justify-start"
-            }`}
-            Icon={PiClockCountdownLight}
-            text="رزرو من"
-            onClick={() => handleClick("reservations")}
-          />
+          <NavLink to="/Panel/MyReserve">
+            <Button
+              phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite  ${
+                activeButton === "reservations"
+                  ? "!bg-primaryBlue !text-white"
+                  : "!justify-start"
+              }`}
+              Icon={PiClockCountdownLight}
+              text="رزرو من"
+              onClick={() => handleClick("reservations")}
+            />
+          </NavLink>
         </li>
         <li>
-          <Button
-            phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite ${
-              activeButton === "favoritesCourse"
-                ? "!bg-primaryBlue !text-white"
-                : "!justify-start"
-            }`}
-            Icon={PiBookBookmarkLight}
-            text="علاقعمندی دوره"
-            onClick={() => handleClick("favoritesCourse")}
-          />
+          <NavLink to="/Panel/MyFavCourse">
+            <Button
+              phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite ${
+                activeButton === "favoritesCourse"
+                  ? "!bg-primaryBlue !text-white"
+                  : "!justify-start"
+              }`}
+              Icon={PiBookBookmarkLight}
+              text="علاقعمندی دوره"
+              onClick={() => handleClick("favoritesCourse")}
+            />
+          </NavLink>
         </li>
         <li>
-          <Button
-            phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite  ${
-              activeButton === "favoritesBook"
-                ? "!bg-primaryBlue !text-white"
-                : "!justify-start"
-            }`}
-            Icon={CiBookmark}
-            text="علاقهمندی کتاب"
-            onClick={() => handleClick("favoritesBook")}
-          />
+          <NavLink to="/Panel/MyFavNews">
+            <Button
+              phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite  ${
+                activeButton === "favoritesBook"
+                  ? "!bg-primaryBlue !text-white"
+                  : "!justify-start"
+              }`}
+              Icon={CiBookmark}
+              text="علاقهمندی کتاب"
+              onClick={() => handleClick("favoritesBook")}
+            />
+          </NavLink>
         </li>
         <li>
-          <Button
-            phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite ${
-              activeButton === "profile"
-                ? "!bg-primaryBlue !text-white"
-                : "!justify-start"
-            }`}
-            Icon={PiMoneyWavy}
-            text="پروفایل"
-            onClick={() => handleClick("profile")}
-          />
+          <NavLink to="/Panel/Profile">
+            <Button
+              phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite ${
+                activeButton === "profile"
+                  ? "!bg-primaryBlue !text-white"
+                  : "!justify-start"
+              }`}
+              Icon={PiMoneyWavy}
+              text="پروفایل"
+              onClick={() => handleClick("profile")}
+            />
+          </NavLink>
         </li>
       </ul>
       <ul className="flex gap-3 flex-col mb-3">
         <span>مالی</span>
         <li>
-          <Button
-            phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite ${
-              activeButton === "payments"
-                ? "!bg-primaryBlue !text-white"
-                : "!justify-start"
-            }`}
-            Icon={CgProfile}
-            text="پرداخت ها"
-            onClick={() => handleClick("payments")}
-          />
+          <NavLink to="/panel/Payment">
+            <Button
+              phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite ${
+                activeButton === "payments"
+                  ? "!bg-primaryBlue !text-white"
+                  : "!justify-start"
+              }`}
+              Icon={CgProfile}
+              text="پرداخت ها"
+              onClick={() => handleClick("payments")}
+            />
+          </NavLink>
         </li>
       </ul>
       <ul className="flex gap-1 flex-col">
