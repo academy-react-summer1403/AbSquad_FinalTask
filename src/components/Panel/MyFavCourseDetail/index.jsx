@@ -2,7 +2,7 @@
 import { ImagePart } from "./ImagePart";
 import { LikeDislike } from "./LikeDislike";
 import { CourseTitle } from "./CourseTitle";
-import { PaymentStatus } from "./PaymentStatus";
+import { SignUpStatus } from "./SignUpStatus";
 import { Description } from "./Description";
 import { CloseSection } from "./CloseSection";
 import { TeacherSection } from "./TeacherSection";
@@ -16,7 +16,7 @@ const CourseDetail = ({ func }) => {
         <ImagePart />
         <LikeDislike />
         <CourseTitle />
-        <PaymentStatus />
+        <SignUpStatus />
         <Description />
         <TeacherSection />
         <DateStudents />
