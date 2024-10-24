@@ -9,13 +9,13 @@ const DateStudents = () => {
         title={"20 اردیبهشت 1403"}
         Icon={CgCalendarDates}
         iconSize="25px"
-        textSize="sm:!text-xl "
+        textSize="!text-xl"
       />
       <LittleRect
         title={"98"}
         Icon={IoEyeOutline}
         iconSize="25px"
-        textSize="sm:!text-xl "
+        textSize="!text-xl"
       />
     </div>
   );

@@ -24,11 +24,11 @@ const AllNewCourses = ({ func }) => {
           phoneStyle="xl:hidden h-12 float-left"
           onClick={handleOpenFilter}
         />
-        <FilterSection phoneStyle="hidden " />
+        <FilterSection phoneStyle="hidden" />
         {/* Top Of The List */}
         <div className="flex flex-col justify-start items-center gap-y-5">
           <TopOfList />
-          <div className="w-full h-[470px] flex flex-col justify-start items-start flex-nowrap overflow-y-scroll px-5">
+          <div className="border rounded-3xl w-full h-[470px] flex flex-col justify-start items-start flex-nowrap overflow-y-scroll px-5">
             <NewCoursesBox />
             <NewCoursesBox />
             <NewCoursesBox />

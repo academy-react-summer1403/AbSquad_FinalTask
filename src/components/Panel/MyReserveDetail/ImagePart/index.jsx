@@ -6,10 +6,10 @@ const ImagePart = () => {
     <>
       {/* Image Part */}
       <div
-        className={`h-[287px] flex flex-col justify-between bg-[#FF9090] rounded-3xl relative overflow-hidden w-full`}
+        className={`shadow-md h-[287px] flex flex-col justify-between bg-[#FF9090] rounded-3xl relative overflow-hidden w-full`}
       >
-        <div className="flex flex-row gap-2 px-2  z-10">
-          <div className="flex flex-row gap-2 px-2 pt-2  z-10">
+     <div className="flex flex-row gap-2 px-2 z-10">
+     <div className="flex flex-row gap-2 px-2 pt-2 z-10">
             <RoundedDiv text={"مبتدی"} />
             <RoundedDiv text={"مبتدی"} />
           </div>
