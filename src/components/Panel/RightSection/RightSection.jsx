@@ -127,7 +127,7 @@ const RightSection = () => {
             onClick={() => handleClick("accountSettings")}
           />
         </li>
-        <li>
+        <li className="z-50">
           <ExitingAlert />
         </li>
       </ul>
