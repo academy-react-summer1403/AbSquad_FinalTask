@@ -16,7 +16,7 @@ import MyCourse from "../../../components/Panel/MyCourse";
 import MyFavCourse from "../../../components/Panel/MyFavCourse";
 import MyReserve from "../../../components/Panel/MyReserve";
 import MyFavNews from "../../../components/Panel/MyFavNews";
-
+import Payment from "../../../components/Panel/Payment/Payment";
 export {
   Root,
   LandingPage,
@@ -36,4 +36,5 @@ export {
   MyFavCourse,
   MyReserve,
   MyFavNews,
+  Payment,
 };
