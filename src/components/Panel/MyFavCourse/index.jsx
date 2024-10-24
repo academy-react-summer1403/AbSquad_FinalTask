@@ -3,7 +3,7 @@ import PageTitle from "./PageTitle";
 import { FilterSection } from "./CourseSection/FilterSection";
 import { CourseSection } from "./CourseSection";
 import { Modal } from "./Modal";
-// import { CourseDetail } from "../MyCourseDetail";
+import { CourseDetail } from "../MyCourseDetail";
 const MyFavCourse = () => {
   const [openAll, setOpenAll] = useState("close");
   const handleOpenAll = () => {
@@ -16,9 +16,9 @@ const MyFavCourse = () => {
         <FilterSection />
         <CourseSection func={handleOpenAll} />
       </div>
-      {/* {openAll == "open" && (
+      {openAll == "open" && (
         <Modal Component={CourseDetail} func={setOpenAll} />
-      )} */}
+      )}
     </>
   );
 };
