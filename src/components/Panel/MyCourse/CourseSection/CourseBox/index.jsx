@@ -70,22 +70,23 @@ const CourseBox = ({ func }) => {
                 })}
               />
             </div>
+            {/*  */}
             <span className="flex justify-center items-center mr-2">
               پرداخت شده
             </span>
-          </div>
-          {/* Eye Button */}
-          <div className="left-0 absolute flex justify-end monitor:grow">
-            <div className="flex justify-center items-center gap-3 h-full rounded-full p-2">
-              <IoEyeOutline
-                onClick={func}
-                size="24px"
-                className="text-fontGray hover:text-primaryBlue cursor-pointer"
-              />
-              <LiaMoneyBillWaveAltSolid
-                size="24px"
-                className="text-fontGray hover:text-primaryBlue cursor-pointer"
-              />
+            {/* Eye Button */}
+            <div className="flex justify-end">
+              <div className="flex justify-center items-center gap-3 h-full rounded-full p-2">
+                <IoEyeOutline
+                  onClick={func}
+                  size="24px"
+                  className="text-fontGray hover:text-primaryBlue cursor-pointer"
+                />
+                <LiaMoneyBillWaveAltSolid
+                  size="24px"
+                  className="text-fontGray hover:text-primaryBlue cursor-pointer"
+                />
+              </div>
             </div>
           </div>
         </div>
