@@ -5,7 +5,7 @@ const Description = () => {
   return (
     <>
       <div className="flex flex-col gap-5 w-full">
-        <FontGraySmallText text={"درباره اخبار یا مقاله"} />
+        <FontGraySmallText text={"درباره اخبار یا مقاله"} style="!text-base" />
         <h1 className="text-base">
           آموزش صفر تا صد کتابخانه پرطرفدار جی‌اس یعنی ری‌اکت همراه تسک های مفید
           برای یادگیری بهتر
