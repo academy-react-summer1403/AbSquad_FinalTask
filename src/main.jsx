@@ -5,7 +5,7 @@ import "./index.css";
 import App from "./components/App";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <div className="dark:bg-primaryBlack h-screen">
+    <div className="dark:bg-primaryBlack">
       <App />
     </div>
   </StrictMode>
