@@ -16,6 +16,7 @@ import {
   Dashboard,
   MyCourse,
   MyFavCourse,
+  MyReserve,
 } from "../core/utilities/Routes/routes.utils.js";
 import { Children } from "react";
 export const PageRoutes = [
@@ -68,6 +69,10 @@ export const PageRoutes = [
       {
         path: "/Panel/MyFavCourse",
         element: <MyFavCourse />,
+      },
+      {
+        path: "/Panel/MyReserve",
+        element: <MyReserve />,
       },
     ],
   },

@@ -14,7 +14,7 @@ import ProfileMain from "../../../components/Panel/Profile/ProfileMain";
 import Dashboard from "../../../components/Panel/Dashboard";
 import MyCourse from "../../../components/Panel/MyCourse";
 import MyFavCourse from "../../../components/Panel/MyFavCourse";
-
+import MyReserve from "../../../components/Panel/MyReserve";
 export {
   Root,
   LandingPage,
@@ -32,4 +32,5 @@ export {
   Dashboard,
   MyCourse,
   MyFavCourse,
+  MyReserve,
 };
