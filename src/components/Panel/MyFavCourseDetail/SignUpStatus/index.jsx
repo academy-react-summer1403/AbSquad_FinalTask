@@ -15,7 +15,7 @@ const SignUpStatus = () => {
   }
   return (
     <div className="w-full flex flex-col gap-5">
-      <FontGraySmallText text={"وضعیت ثبت نام"} />
+      <FontGraySmallText text={"وضعیت ثبت نام"} style="!text-base" />
       <div className="flex flex-row w-full h-full justify-between items-center">
         {/*Reserve Button*/}
         <Button text={"رزرو دوره"} phoneStyle={"h-12"} />

@@ -36,7 +36,7 @@ const CourseItems = ({ func }) => {
                 readOnly
                 disabled
                 value={"محسن اسفندیاری، مهدی اصغری"}
-                className="text-fontGray text-sm monitor:text-base monitor:text-primaryBlack resize-none bg-transparent truncate h-7 monitor:basis-[21.33338%] w-[70%]"
+                className="text-fontGray text-sm monitor:text-base monitor:text-primaryBlack resize-none bg-transparent truncate h-7 monitor:basis-[21.33338%] monitor:w-[70%]"
               />
             </div>
             {/* Date Of Course */}
