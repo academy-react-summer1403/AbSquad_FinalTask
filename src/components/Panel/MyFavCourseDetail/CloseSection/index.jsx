@@ -4,7 +4,7 @@ const CloseSection = ({ func }) => {
   return (
     <>
       <div className="flex flex-row justify-between w-full">
-        <span>دوره</span>
+        <span className="text-xl">دوره</span>
         <PanelCloseButton func={func} />
       </div>
     </>

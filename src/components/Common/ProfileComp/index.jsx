@@ -1,7 +1,15 @@
 ﻿import React from "react";
 import FontGraySmallText from "../FontGraySmallText";
 
-const ProfileComp = ({ name, skill, style, reply, pic = "" }) => {
+const ProfileComp = ({
+  name,
+  skill,
+  style,
+  reply,
+  pic = "",
+  nameSize = "",
+  skillSize = "",
+}) => {
   return (
     <>
       <div
@@ -17,9 +25,9 @@ const ProfileComp = ({ name, skill, style, reply, pic = "" }) => {
         </div>
         {/* Names Container */}
         <div className="flex flex-col justify-start items-start">
-          <div className="sm:text-xl text-base ">{name}</div>
+          <div className={`sm:text-xl text-base ${nameSize}`}>{name}</div>
           <div>
-            <FontGraySmallText text={skill} />
+            <FontGraySmallText text={skill} style={skillSize} />
           </div>
         </div>
       </div>

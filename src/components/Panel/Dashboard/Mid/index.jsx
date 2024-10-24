@@ -7,7 +7,7 @@ const Mid = () => {
   return (
     <div className="w-full h-full flex flex-col justify-start items-center gap-2 monitor:flex-row monitor:flex-nowrap">
       {/* Comments */}
-      <div className="w-full basis-[287px] border border-white order-2 rounded-2xl monitor:h-[374px]  monitor:order-1 monitor:basis-1/2 bg-primaryWhite py-5">
+      <div className="w-[320px] basis-[372px] border border-white order-2 rounded-2xl monitor:h-[374px]  monitor:order-1 monitor:basis-1/2 bg-primaryWhite py-5">
         <ShowAllHeader title={"نظرات شما"} />
       </div>
 
