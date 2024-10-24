@@ -84,6 +84,10 @@ export const PageRoutes = [
         path: "/Panel/Payment",
         element: <Payment />,
       },
+      {
+        path: "/Panel/MyReserve",
+        element: <MyReserve />,
+      },
     ],
   },
   { path: "/Register", element: <Register /> },
