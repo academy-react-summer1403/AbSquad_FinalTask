@@ -2,7 +2,7 @@
 
 const WelcomeMessage = ({ name }) => {
   return (
-    <h1 className=" text-2xl dark:text-primaryWhite basis-full monitor:basis-1/2 monitor:text-3xl">
+    <h1 className=" text-2xl dark:text-primaryWhite basis-full 2xl:basis-1/2 2xl:text-3xl">
       سلام، صبح بخیر {name} 😍
     </h1>
   );

@@ -9,7 +9,7 @@ const FilterSection = ({ phoneStyle }) => {
   return (
     <>
       <div
-        className={`flex flex-col px-10 gap-5 monitor:flex-row justify-evenly items-center monitor:gap-10 ${phoneStyle}`}
+        className={`flex flex-col px-10 gap-5 2xl:flex-row justify-evenly items-center 2xl:gap-10 ${phoneStyle}`}
       >
         <div className="basis-1/4 h-full w-full">
           <SearchField />
