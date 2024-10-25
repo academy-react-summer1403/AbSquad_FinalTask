@@ -11,7 +11,7 @@ import { DateStudents } from "./DateStudents";
 const CourseDetail = ({ func }) => {
   return (
     <>
-      <div className="w-full monitor:w-[700px] flex flex-col justify-start items-center p-5 bg-primaryWhite rounded-2xl gap-10 relative z-[100] mx-auto">
+      <div className="w-full 2xl:w-[700px] flex flex-col justify-start items-center p-5 bg-primaryWhite rounded-2xl gap-10 relative z-[100] mx-auto">
         <CloseSection func={func} />
         <ImagePart />
         <LikeDislike />

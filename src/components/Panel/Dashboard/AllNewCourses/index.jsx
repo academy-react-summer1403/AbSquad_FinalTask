@@ -15,7 +15,7 @@ const AllNewCourses = ({ func }) => {
       <div className="border rounded-2xl w-full flex flex-col gap-5 p-5 bg-primaryWhite ">
         {/* Top Title And Close Btn  */}
         <div className="flex flex-row w-full items-center justify-between">
-          <h1 className="text-xl monitor:text-[36px]">جدید ترین دوره ها</h1>
+          <h1 className="text-xl 2xl:text-[36px]">جدید ترین دوره ها</h1>
           <PanelCloseButton func={func} />
         </div>
         {/* Filter Section */}
@@ -24,7 +24,7 @@ const AllNewCourses = ({ func }) => {
           phoneStyle="xl:hidden h-12 float-left"
           onClick={handleOpenFilter}
         />
-        <FilterSection phoneStyle="hidden" />
+        <FilterSection phoneStyle="hidden 2xl:!flex" />
         {/* Top Of The List */}
         <div className="flex flex-col justify-start items-center gap-y-5">
           <TopOfList />

@@ -17,7 +17,7 @@ const PaymentStatus = () => {
       <FontGraySmallText text={"وضعیت پرداختی"} style="!text-base" />
       <div className="flex gap-5 flex-row flex-wrap w-full h-full justify-between items-center">
         {/* Progress Bar */}
-        <div className="flex basis-full items-center justify-start monitor:flex monitor:text-base ">
+        <div className="flex basis-full items-center justify-start 2xl:flex 2xl:text-base ">
           <div className="w-16 h-16">
             <CircularProgressbar
               value={percentage}
