@@ -8,7 +8,7 @@ const LikeDislike = () => {
     <>
       <div className="flex flex-row justify-between w-full">
         <Button text="صفحه دوره" phoneStyle={"!h-[55px]"} />
-        <div className="flex flex-row justify-center gap-3 monitor:gap-5">
+        <div className="flex flex-row justify-center gap-3 2xl:gap-5">
           <LikeDislikeCircle
             Icon={AiOutlineLike}
             iconSize={"24px"}
