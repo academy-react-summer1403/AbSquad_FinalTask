@@ -4,7 +4,7 @@ import { Mid } from "./Mid";
 import { Bottom } from "./Bottom";
 const Dashboard = () => {
   return (
-    <div className="flex flex-col w-full justify-start items-center pt-5  2xl:pt-10 gap-y-8">
+    <div className="flex flex-col w-full justify-start items-center pt-5  2xl:pt-10 gap-y-8 dark:text-primaryWhite">
       <Top />
       <Mid />
       <Bottom />

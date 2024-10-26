@@ -7,7 +7,7 @@ const Mid = () => {
   return (
     <div className="w-full h-full flex flex-col justify-start items-center gap-2 2xl:flex-row 2xl:flex-nowrap">
       {/* Comments */}
-      <div className="w-[320px] basis-[372px] border border-white order-2 rounded-2xl 2xl:h-[374px]  2xl:order-1 2xl:basis-5/12 bg-primaryWhite py-5">
+      <div className="w-[320px] basis-[372px] border border-white order-2 rounded-2xl 2xl:h-[374px]  2xl:order-1 2xl:basis-5/12 bg-primaryWhite py-5 dark:bg-primaryBlack">
         <ShowAllHeader title={"نظرات شما"} />
       </div>
 
@@ -17,7 +17,7 @@ const Mid = () => {
       </div>
 
       {/* Progress Bar */}
-      <div className="flex-col items-center justify-start hidden rounded-3xl h-[374px] bg-primaryWhite 2xl:flex 2xl:order-3 2xl:grow 2xl:px-5 2xl:py-5">
+      <div className="flex-col items-center justify-start hidden rounded-3xl h-[374px] bg-primaryWhite 2xl:flex 2xl:order-3 2xl:grow 2xl:px-5 2xl:py-5 dark:bg-primaryBlack dark:border">
         <ProgressBar />
       </div>
     </div>
