@@ -3,7 +3,7 @@ import FontGraySmallText from "../../../Common/FontGraySmallText";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 const PaymentStatus = () => {
-  const [percentage, setPercentage] = useState("10");
+  const [percentage, setPercentage] = useState("70");
   let color;
   if (percentage < 40) {
     color = "red";
@@ -14,10 +14,10 @@ const PaymentStatus = () => {
   }
   return (
     <div className="w-full flex flex-col gap-5">
-      <FontGraySmallText text={"وضعیت پرداختی"} />
-      <div className="flex flex-row w-full h-full justify-between items-center">
+      <FontGraySmallText text={"وضعیت پرداختی"} style="!text-base" />
+      <div className="flex gap-5 flex-row flex-wrap w-full h-full justify-between items-center">
         {/* Progress Bar */}
-        <div className=" monitor:flex monitor:text-base ">
+        <div className="flex basis-full items-center justify-start 2xl:flex 2xl:text-base ">
           <div className="w-16 h-16">
             <CircularProgressbar
               value={percentage}
@@ -36,8 +36,8 @@ const PaymentStatus = () => {
         </div>
         {/* Price */}
         <span className="text-3xl">
-          1,800,000 / 1,500,000{" "}
-          <span className="monitor:text-base text-primaryBlue">تومان</span>
+          1,800,000 / 1,500,000
+          <span className="text-base text-primaryBlue">تومان</span>
         </span>
       </div>
     </div>

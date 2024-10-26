@@ -9,14 +9,14 @@ const DateStudents = () => {
         title={" 80 / 120 دانشجو"}
         Icon={PiStudentBold}
         iconSize="25px"
-        textSize="sm:!text-xl"
+        textSize="!text-xl"
       />
       <LittleRect
         title={"20 اردیبهشت 1403"}
         subText="(شروع)"
         Icon={CgCalendarDates}
         iconSize="25px"
-        textSize="sm:!text-xl "
+        textSize="!text-xl"
       />
       <div className="flex flex-row justify-between items-center">
         <LittleRect
@@ -24,13 +24,17 @@ const DateStudents = () => {
           subText="(پایان)"
           Icon={CgCalendarDates}
           iconSize="25px"
-          textSize="sm:!text-xl"
+          textSize="!text-xl"
         />
-        <span className="monitor:text-3xl">
+        <span className="hidden 2xl:block 2xl:text-3xl text-[28px]">
           1,800,000
-          <span className="text-primaryBlue monitor:text-base">تومان</span>
+          <span className="text-primaryBlue text-base">تومان</span>
         </span>
       </div>
+      <span className="2xl:hidden text-[28px]">
+        1,800,000
+        <span className="text-primaryBlue text-base">تومان</span>
+      </span>
     </div>
   );
 };

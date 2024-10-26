@@ -1,6 +1,6 @@
 ﻿import React from "react";
 
-const ApprovalStatus = ({ statusId = "1" }) => {
+const ApprovalStatus = ({ statusId = "1", textSize = "" }) => {
   const Options = [
     {
       id: 1,
@@ -28,7 +28,7 @@ const ApprovalStatus = ({ statusId = "1" }) => {
           statusId == it.id && (
             <span
               key={index}
-              className={`${it.textColor} ${it.bgColor} text-xs rounded-xl w-max  mb-3 px-3 py-1 sm:text-sm z-10`}
+              className={`${textSize} ${it.textColor} ${it.bgColor} text-xs rounded-xl w-max  mb-3 px-3 py-1 sm:text-sm z-10`}
             >
               {it.name}
             </span>

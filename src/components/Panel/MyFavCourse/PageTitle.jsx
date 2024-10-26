@@ -1,9 +1,14 @@
 ﻿import React from "react";
-
-const PageTitle = () => {
+import Button from "../../Common/Button/Button";
+const PageTitle = ({ handleOpenFilter }) => {
   return (
-    <div className="w-full mb-7">
-      <h1 className="text-4xl">علاقه‌مندی دوره</h1>
+    <div className="flex justify-between w-full mb-7">
+      <h1 className="2xl:text-4xl text-2xl">علاقه‌مندی دوره</h1>
+      <Button
+        text={"فیلتر"}
+        phoneStyle={"2xl:hidden h-10"}
+        onClick={handleOpenFilter}
+      />
     </div>
   );
 };
