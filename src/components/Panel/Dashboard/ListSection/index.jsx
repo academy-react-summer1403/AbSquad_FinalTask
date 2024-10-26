@@ -2,7 +2,7 @@
 import NewCoursesBox from "../NewCoursesBox";
 import TopOfList from "./TopOfList";
 
-const ListSection = ({ courseList }) => {
+const ListSection = ({ courseList, totalCourses }) => {
   return (
     <>
       {/* The List */}
@@ -13,13 +13,17 @@ const ListSection = ({ courseList }) => {
         <div className="w-full h-[470px] flex flex-col justify-start items-start flex-nowrap overflow-y-scroll px-5">
           {courseList.map((it, index) => {
             return (
-              <NewCoursesBox
-                key={index}
-                title={it.title}
-                describe={it.describe}
-                teacherName={it.teacherName}
-                courseId={it.courseId}
-              />
+              index < 10 && (
+                <NewCoursesBox
+                  key={index}
+                  title={it.title}
+                  describe={it.describe}
+                  teacherName={it.teacherName}
+                  courseId={it.courseId}
+                  cost={parseInt(it.cost)}
+                  totalCourses={totalCourses}
+                />
+              )
             );
           })}
         </div>

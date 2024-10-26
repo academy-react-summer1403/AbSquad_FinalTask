@@ -3,12 +3,15 @@ import { IoEyeOutline } from "react-icons/io5";
 import { motion } from "framer-motion";
 import { GetCourseDetail } from "../../../../core/Services/Api/CourseDetail/course.detail.api";
 import { handleDateFormat } from "../../../../core/utilities/DateConverter/data.convert.utils";
+
 const NewCoursesBox = ({
   modal = "off",
   courseId,
   title,
   describe,
   teacherName,
+  cost,
+  totalCourses,
 }) => {
   // ************************* FETCHING DETAILS FOR DATES *************************
   const [courseDetail, setCourseDetail] = useState({}); // For Getting The Details, Especially Start And End Date
@@ -25,7 +28,7 @@ const NewCoursesBox = ({
   }, [courseId]);
   // ************************* END OF FETCHING DETAILS FOR DATES *************************
 
-  // Converting Dates
+  // Converting Dates ********************************************************************
   const [formattedDateStart, setFormattedDateStart] = useState("");
   const [formattedDateEnd, setFormattedDateEnd] = useState("");
   useEffect(() => {
@@ -34,6 +37,8 @@ const NewCoursesBox = ({
     if (courseDetail.endTime !== undefined)
       setFormattedDateEnd(handleDateFormat(courseDetail.endTime));
   }, [courseDetail.startTime && courseDetail.startTime]);
+
+  // Render Start ***********************************************************************
   return (
     <>
       {/* Items   */}
@@ -80,7 +85,7 @@ const NewCoursesBox = ({
           </div>
           {/* Price of Course */}
           <div className="hidden 2xl:flex 2xl:text-base">
-            <span className="text-xl">1,800,000</span> تومان
+            <span className="text-xl">{cost.toLocaleString()}</span> تومان
           </div>
         </div>
         {/* Eye Button */}

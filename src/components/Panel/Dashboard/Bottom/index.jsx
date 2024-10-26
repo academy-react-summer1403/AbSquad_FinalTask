@@ -50,12 +50,13 @@ const Bottom = () => {
         {/* Intro Top Part */}
         <ShowAllHeader title={"جدیدترین دوره ها"} funcs={handleOpenAll} />
         {/* List */}
-        <ListSection courseList={courseList} />
+        <ListSection courseList={courseList} totalCourses={totalCourses} />
       </div>
       {openAll == "open" && (
         <Modal
           Component={AllNewCourses}
           courseList={courseList}
+          totalCourses={totalCourses}
           func={setOpenAll}
         />
       )}
