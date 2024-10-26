@@ -15,7 +15,7 @@ const DashboardDate = () => {
 
   return (
     <>
-      <div className="basis-1/2 monitor:basis-1/4">
+      <div className="basis-1/2 2xl:basis-1/4">
         <DateTimeComp
           title={"تاریخ"}
           Icon={CgCalendarDates}

@@ -9,23 +9,24 @@ const NewCoursesBox = () => {
         initial={{ scale: 1 }}
         whileHover={{ scale: 1.01 }}
         transition={{ duration: 0.1, ease: "linear" }}
-        className="w-full flex flex-row justify-start items-start flex-nowrap border-b py-3 monitor:border-none monitor:grid monitor:grid-cols-7 rounded-2xl hover:bg-primaryGray "
+        className="w-full flex flex-row justify-start items-start flex-nowrap border-b py-3 2xl:border-none 2xl:grid 2xl:grid-cols-7 rounded-2xl hover:bg-primaryGray "
       >
         {/* EveryTHing But the Eye Button */}
-        <div className="basis-10/12 flex flex-col gap-y-1 monitor:grid monitor:grid-cols-6  monitor:col-span-6 monitor:items-center monitor:gap-10">
+        <div className="basis-10/12 flex flex-col gap-y-1 2xl:grid 2xl:grid-cols-6  2xl:col-span-6 2xl:items-center 2xl:gap-10">
           {/* Name Of The Course */}
-          <div className="text-base monitor:text-xl monitor:pr-5">
-            ری اکت Js
-          </div>
+          <div className="text-base 2xl:text-xl 2xl:pr-5">ری اکت Js</div>
           {/* About Course */}
-          <textarea
-            readOnly
-            disabled
-            value={
-              "آموزش صفر تا صد کتابخانه پرطرفدار بیل بیل بیل بیل بیل بیل بیل یبیلبیلسهتسیلهعساهعله"
-            }
-            className="hidden monitor:flex text-fontGray text-base basis-2/12 bg-transparent resize-none truncate monitor: h-7 monitor:col-span-1"
-          />
+          <div>
+            {" "}
+            <textarea
+              readOnly
+              disabled
+              value={
+                "آموزش صفر تا صد کتابخانه پرطرفدار بیل بیل بیل بیل بیل بیل بیل یبیلبیلسهتسیلهعساهعله"
+              }
+              className="hidden 2xl:flex text-fontGray text-base basis-2/12 bg-transparent resize-none truncate 2xl:h-7 2xl:col-span-1"
+            />
+          </div>
           {/* span */}
           <span></span>
           {/* Teachers */}
@@ -33,15 +34,15 @@ const NewCoursesBox = () => {
             readOnly
             disabled
             value={"محسن اسفندیاری، مهدی اصغری"}
-            className="text-fontGray text-sm monitor:text-base monitor:basis-30 monitor:text-primaryBlack resize-none bg-transparent monitor:truncate h-7"
+            className="text-fontGray text-sm 2xl:text-base 2xl:basis-30 2xl:text-primaryBlack resize-none bg-transparent 2xl:truncate h-7"
           />
 
           {/* Date Of Course */}
-          <div className="text-sm text-fontGray monitor:text-primaryBlack monitor:text-base">
+          <div className="text-sm text-fontGray 2xl:text-primaryBlack 2xl:text-base">
             25 اردبیهشت 1403
           </div>
           {/* Price of Course */}
-          <div className="hidden monitor:flex monitor:text-base">
+          <div className="hidden 2xl:flex 2xl:text-base">
             <span className="text-xl">1,800,000</span> تومان
           </div>
         </div>
