@@ -26,12 +26,12 @@ const DateStudents = () => {
           iconSize="25px"
           textSize="!text-xl"
         />
-        <span className="hidden monitor:block monitor:text-3xl text-[28px]">
+        <span className="hidden 2xl:block 2xl:text-3xl text-[28px]">
           1,800,000
           <span className="text-primaryBlue text-base">تومان</span>
         </span>
       </div>
-      <span className="monitor:hidden text-[28px]">
+      <span className="2xl:hidden text-[28px]">
         1,800,000
         <span className="text-primaryBlue text-base">تومان</span>
       </span>
