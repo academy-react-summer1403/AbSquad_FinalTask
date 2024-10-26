@@ -5,7 +5,7 @@ import NewCoursesBox from "../NewCoursesBox";
 import { FilterSection } from "./FilterSection";
 import Button from "../../../Common/Button/Button";
 import HambMenu from "../../../Common/HambMenu";
-const AllNewCourses = ({ func }) => {
+const AllNewCourses = ({ func, courseList }) => {
   const [openFilter, setOpenFilter] = useState("close");
   const handleOpenFilter = () => {
     setOpenFilter("open");
@@ -27,36 +27,20 @@ const AllNewCourses = ({ func }) => {
         <FilterSection phoneStyle="hidden 2xl:!flex" />
         {/* Top Of The List */}
         <div className="flex flex-col justify-start items-center gap-y-5">
-          <TopOfList />
+          <TopOfList modal="on" />
           <div className="border rounded-3xl w-full h-[470px] flex flex-col justify-start items-start flex-nowrap overflow-y-scroll px-5">
-            <NewCoursesBox />
-            <NewCoursesBox />
-            <NewCoursesBox />
-            <NewCoursesBox />
-            <NewCoursesBox />
-            <NewCoursesBox />
-            <NewCoursesBox />
-            <NewCoursesBox />
-            <NewCoursesBox />
-            <NewCoursesBox />
-            <NewCoursesBox />
-            <NewCoursesBox />
-            <NewCoursesBox />
-            <NewCoursesBox />
-            <NewCoursesBox />
-            <NewCoursesBox />
-            <NewCoursesBox />
-            <NewCoursesBox />
-            <NewCoursesBox />
-            <NewCoursesBox />
-            <NewCoursesBox />
-            <NewCoursesBox />
-            <NewCoursesBox />
-            <NewCoursesBox />
-            <NewCoursesBox />
-            <NewCoursesBox />
-            <NewCoursesBox />
-            <NewCoursesBox />
+            {courseList.map((it, index) => {
+              return (
+                <NewCoursesBox
+                  modal="on"
+                  key={index}
+                  title={it.title}
+                  describe={it.describe}
+                  teacherName={it.teacherName}
+                  courseId={it.courseId}
+                />
+              );
+            })}
           </div>
         </div>
         {/* Hamb Menu */}
