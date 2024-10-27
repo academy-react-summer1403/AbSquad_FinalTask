@@ -36,7 +36,7 @@ const NewCoursesBox = ({
       setFormattedDateStart(handleDateFormat(courseDetail.startTime));
     if (courseDetail.endTime !== undefined)
       setFormattedDateEnd(handleDateFormat(courseDetail.endTime));
-  }, [courseDetail.startTime && courseDetail.startTime]);
+  }, [courseDetail.startTime && courseDetail.endTime]);
 
   // Render Start ***********************************************************************
   return (
