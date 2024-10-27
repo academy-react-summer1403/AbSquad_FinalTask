@@ -30,7 +30,7 @@ const AllNewCourses = ({ func, courseList, totalCourses }) => {
         {/* Top Title And Close Btn  */}
         <div className="flex flex-row w-full items-center justify-between">
           <h1 className="text-xl 2xl:text-[36px]">جدید ترین دوره ها</h1>
-          <PanelCloseButton func={func} />
+          <PanelCloseButton func={func} setSearchParams={setSearchParams} />
         </div>
         {/* Filter Section */}
         <Button
