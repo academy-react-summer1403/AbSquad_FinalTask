@@ -25,6 +25,8 @@ const CourseBox = ({ func }) => {
             newsId={it.newsId}
             title={it.title}
             image={it.currentImageAddressTumb}
+            favId={it.favoriteId}
+            handleGetAllFavArticle={handleGetAllFavArticle}
           />
         );
       })}

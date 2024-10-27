@@ -1,13 +1,21 @@
 ﻿import React, { useEffect, useState } from "react";
 import { IoEyeOutline } from "react-icons/io5";
 import { motion } from "framer-motion";
-import { LuBookDown } from "react-icons/lu";
 import { RxCross1 } from "react-icons/rx";
 import "react-circular-progressbar/dist/styles.css";
 import { GetNewsDetail } from "../../../../../core/Services/Api/NewsDetail/news.detail.api";
 import { handleDateFormat } from "../../../../../core/utilities/DateConverter/data.convert.utils";
-
-const CourseItems = ({ func, newsId, title, image }) => {
+import { DeleteFavArticle } from "../../../../../core/Services/Api/Student/AddDeleteFavNews/delete.fav.api";
+import PopUpMessages from "../../../../Common/PopUpMessages/PopUpMessages";
+import { BsTrash3 } from "react-icons/bs";
+const CourseItems = ({
+  func,
+  newsId,
+  title,
+  image,
+  favId,
+  handleGetAllFavArticle,
+}) => {
   const [articleDetail, setArticleDetail] = useState({});
   const handleArticleDetail = async (id) => {
     const res = await GetNewsDetail(id);
@@ -23,8 +31,27 @@ const CourseItems = ({ func, newsId, title, image }) => {
     if (articleDetail.insertDate !== undefined)
       setFormattedDateStart(handleDateFormat(articleDetail.insertDate));
   }, [articleDetail.insertDate]);
-
   // Render Start ***********************************************************************
+
+  // Delete Button Handle
+  const handleDelete = async (id) => {
+    await DeleteFavArticle({
+      data: { deleteEntityId: id },
+    });
+    handleGetAllFavArticle();
+  };
+
+  // Is Open For Modal Deleting Things
+  const [isOpen, setIsOpen] = useState("deactive");
+  //Function for Pop Up Message ********************************
+  const PopUpFuncs = {
+    delete: () => {
+      handleDelete(favId);
+    },
+    close: () => {
+      setIsOpen("deactive");
+    },
+  };
   return (
     <>
       <motion.div
@@ -82,6 +109,9 @@ const CourseItems = ({ func, newsId, title, image }) => {
                     className="text-fontGray hover:text-primaryBlue cursor-pointer"
                   />
                   <RxCross1
+                    onClick={() => {
+                      setIsOpen("active");
+                    }}
                     size="24px"
                     className="text-instaRed cursor-pointer"
                   />
@@ -91,6 +121,28 @@ const CourseItems = ({ func, newsId, title, image }) => {
           </div>
         </div>
       </motion.div>
+      {/* Modal */}
+      {isOpen == "active" && (
+        <div className="absolute top-0 right-0 bg-primaryBlack bg-opacity-50 w-screen h-screen z-[70]  ">
+          <PopUpMessages
+            OnclickRight={PopUpFuncs.delete}
+            OnclickLeft={PopUpFuncs.close}
+            TopSpan={"آیا از حذف دوره مطمئن هستید؟"}
+            BottomSpan={
+              "در صورت تایید این دوره از لیست علاقه‌مندی دوره شما حذف خواهد شد"
+            }
+            IconComponent={BsTrash3}
+            RightPhoneStyle={"!w-40 !h-14 bg-instaRed text-xl"}
+            RightIconComponent={undefined}
+            RightText={"حذف مقاله"}
+            LeftIconComponent={undefined}
+            LeftPhoneStyle={
+              "bg-instaRed text-xl !bg-[#F0F0F0] !text-primaryBlack"
+            }
+            LeftText={"انصراف"}
+          />
+        </div>
+      )}
     </>
   );
 };
