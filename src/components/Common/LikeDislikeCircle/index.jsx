@@ -1,4 +1,5 @@
 ﻿import React, { useEffect, useState } from "react";
+import { MdOutlineBookmarkRemove } from "react-icons/md";
 // Student exclusive API
 import { AddFavArticle } from "../../../core/Services/Api/Student/AddDeleteFavNews/add.fav.api";
 import { GetAllFavArticle } from "../../../core/Services/Api/Student/AddDeleteFavNews/getFavNews.api";
@@ -55,7 +56,17 @@ const LikeDislikeCircle = ({ Icon, iconSize, style = "", newsId }) => {
           isFavBtn == "active" ? "!bg-primaryBlue border-none" : ""
         }`}
       >
-        <Icon size={`${iconSize}`} className={`dark:text-primaryWhite`} />
+        {isFavBtn == "deactive" && (
+          <Icon size={`${iconSize}`} className={`dark:text-primaryWhite`} />
+        )}
+        {isFavBtn == "active" && (
+          <MdOutlineBookmarkRemove
+            size={`${iconSize}`}
+            className={`dark:text-primaryWhite ${
+              isFavBtn == "active" ? "text-primaryWhite" : ""
+            }`}
+          />
+        )}
       </div>
     </>
   );
