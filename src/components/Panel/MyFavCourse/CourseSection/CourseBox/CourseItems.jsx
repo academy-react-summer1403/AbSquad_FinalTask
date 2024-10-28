@@ -6,7 +6,10 @@ import { RxCross1 } from "react-icons/rx";
 import "react-circular-progressbar/dist/styles.css";
 import { GetCourseDetail } from "../../../../../core/Services/Api/CourseDetail/course.detail.api";
 import { handleDateFormat } from "../../../../../core/utilities/DateConverter/data.convert.utils";
-
+import { DeleteFavCourse } from "../../../../../core/Services/Api/Student/AddDeleteFavCourse/delete.fav.course.api";
+import { GetAllFavCourse } from "../../../../../core/Services/Api/Student/AddDeleteFavCourse/GetAllCourse.api";
+import PopUpMessages from "../../../../Common/PopUpMessages/PopUpMessages";
+import { BsTrash3 } from "react-icons/bs";
 const CourseItems = ({
   func,
   courseId,
@@ -16,6 +19,8 @@ const CourseItems = ({
   handleGetAllFavCourse,
 }) => {
   const [detailCourse, setDetailCourse] = useState({});
+  const [favCourse, setFavCourse] = useState([]);
+
   const handleDetailCourse = async (id) => {
     const res = await GetCourseDetail("CourseId=" + id);
     setDetailCourse(res);
@@ -30,6 +35,28 @@ const CourseItems = ({
     if (detailCourse.startTime !== undefined)
       setFormattedDateStart(handleDateFormat(detailCourse.startTime));
   }, [detailCourse.startTime]);
+
+  // Delete Button Handle
+  const handleDelete = async (id) => {
+    const formData = new FormData();
+    formData.append("CourseFavoriteId", id);
+    await DeleteFavCourse({ data: formData });
+    handleGetAllFavCourse();
+  };
+
+  // Is Open For Modal Deleting Things
+  const [isOpen, setIsOpen] = useState("deactive");
+
+  //Function for Pop Up Message
+  const PopUpFuncs = {
+    delete: () => {
+      handleDelete(favId);
+    },
+    close: () => {
+      setIsOpen("deactive");
+    },
+  };
+
   // Render Start ***********************************************************************
   return (
     <>
@@ -89,6 +116,7 @@ const CourseItems = ({
                     className="text-fontGray hover:text-primaryBlue cursor-pointer"
                   />
                   <RxCross1
+                    onClick={() => setIsOpen("active")}
                     size="24px"
                     className="text-instaRed cursor-pointer"
                   />
@@ -98,6 +126,28 @@ const CourseItems = ({
           </div>
         </div>
       </motion.div>
+      {/* Modal */}
+      {isOpen == "active" && (
+        <div className="absolute top-0 right-0 bg-primaryBlack bg-opacity-50 w-screen h-screen z-[70]  ">
+          <PopUpMessages
+            OnclickRight={PopUpFuncs.delete}
+            OnclickLeft={PopUpFuncs.close}
+            TopSpan={"آیا از حذف دوره مطمئن هستید؟"}
+            BottomSpan={
+              "در صورت تایید این دوره از لیست علاقه‌مندی دوره شما حذف خواهد شد"
+            }
+            IconComponent={BsTrash3}
+            RightPhoneStyle={"!w-40 !h-14 bg-instaRed text-xl"}
+            RightIconComponent={undefined}
+            RightText={"حذف دوره"}
+            LeftIconComponent={undefined}
+            LeftPhoneStyle={
+              "bg-instaRed text-xl !bg-[#F0F0F0] !text-primaryBlack"
+            }
+            LeftText={"انصراف"}
+          />
+        </div>
+      )}
     </>
   );
 };

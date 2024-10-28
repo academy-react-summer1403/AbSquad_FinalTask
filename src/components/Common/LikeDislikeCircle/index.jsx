@@ -62,9 +62,7 @@ const LikeDislikeCircle = ({
         await AddFavCourse({ courseId: courseId });
       } else if (foundCourse != undefined) {
         const formData = new FormData();
-
         formData.append("CourseFavoriteId", foundCourse.favoriteId);
-        console.log(formData);
         await DeleteFavCourse({ data: formData });
       }
       await handleGetAllFavCourse();
