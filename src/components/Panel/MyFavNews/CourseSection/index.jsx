@@ -1,6 +1,7 @@
 ﻿import React from "react";
 import { TopOfList } from "./CourseBox/TopOfList";
 import { CourseBox } from "./CourseBox";
+
 const CourseSection = ({ func }) => {
   return (
     <>

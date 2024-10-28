@@ -1,21 +1,21 @@
 ﻿import React from "react";
 
-const ApprovalStatus = ({ statusId = "1", textSize = "" }) => {
+const ApprovalStatus = ({ statusId = "false", textSize = "" }) => {
   const Options = [
     {
-      id: 1,
+      id: true,
       name: "تایید شده",
       bgColor: "bg-[#17C96433]",
       textColor: "text-[#17C964]",
     },
     {
-      id: 2,
+      id: false,
       name: "تایید نشده",
       bgColor: "bg-[#F3126033]",
       textColor: "text-[#F31260]",
     },
     {
-      id: 3,
+      id: "admin",
       name: "در انتظار ادمین",
       bgColor: "bg-[#7828C833]",
       textColor: "text-[#7828C8]",
