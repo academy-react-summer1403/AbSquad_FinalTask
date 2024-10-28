@@ -12,8 +12,14 @@ import LikeDislikeCircle from "../../Common/LikeDislikeCircle";
 import { AiOutlineLike } from "react-icons/ai";
 import { AiOutlineDislike } from "react-icons/ai";
 import { handleDateFormat } from "../../../core/utilities/DateConverter/data.convert.utils";
-
+import { AddReserve } from "../../../core/Services/Api/Student/AddReserve/add.reserve.api";
 const RightSide = ({ courseDetail, setReserveModalOpen }) => {
+  // Reserve Api **********************************************
+  const handleReserveCourse = async (id) => {
+    console.log(id);
+    const res = await AddReserve({ courseId: id });
+  };
+  // END OF RESERVE API **********************************************
   const handleReserveModalOpen = () => {
     setReserveModalOpen("open");
   };
@@ -67,7 +73,10 @@ const RightSide = ({ courseDetail, setReserveModalOpen }) => {
           <Button
             text={"رزرو دوره"}
             phoneStyle={"h-full basis-1/2 sm:text-xl "}
-            onClick={handleReserveModalOpen}
+            onClick={() => {
+              handleReserveModalOpen();
+              handleReserveCourse(courseDetail.courseId);
+            }}
           />
           <div className="flex flex-row justify-center gap-1 sm:gap-10 basis-1/2 h-full">
             <LikeDislikeCircle
