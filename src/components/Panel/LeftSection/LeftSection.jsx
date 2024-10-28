@@ -16,7 +16,7 @@ import PanelTopBar from "./dependencies/PanelTopBar";
 
 const LeftSection = () => {
   return (
-    <div className="w-full">
+    <div className="w-full sticky top-2 z-50">
       <PanelTopBar />
     </div>
   );
