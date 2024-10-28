@@ -74,6 +74,8 @@ const RightSide = ({ courseDetail, setReserveModalOpen }) => {
               Icon={MdOutlineBookmarkAdd}
               iconSize={"24px"}
               style={"max-sm:!h-12 max-sm:!p-0 max-sm:w-12 "}
+              courseId={courseDetail.courseId}
+              type={"course"}
             />
             <LikeDislikeCircle
               Icon={AiOutlineLike}

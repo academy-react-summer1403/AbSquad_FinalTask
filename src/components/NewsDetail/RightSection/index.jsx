@@ -55,6 +55,7 @@ const RightSection = ({ newsDetail, newsId }) => {
               iconSize={"24px"}
               style={"max-sm:!h-12 max-sm:!p-0 max-sm:w-12 "}
               newsId={newsId}
+              type={"news"}
             />
             <LikeDislikeCircle
               Icon={AiOutlineLike}
