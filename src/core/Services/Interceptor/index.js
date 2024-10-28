@@ -21,7 +21,6 @@ instance.interceptors.response.use(onSuccess, onError);
 instance.interceptors.request.use((opt) => {
   const token = localStorage.getItem("token");
   opt.headers.Authorization = "Bearer " + token;
-  // opt.headers["Content-Type"] = "application/json";
   return opt;
 });
 export default instance;

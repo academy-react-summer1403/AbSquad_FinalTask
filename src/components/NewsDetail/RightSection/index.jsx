@@ -13,7 +13,7 @@ import ProfileComp from "../../Common/ProfileComp";
 import FontGraySmallText from "../../Common/FontGraySmallText";
 
 // import ProfileComp from "../../../Common/ProfileComp";
-const RightSection = ({ newsDetail }) => {
+const RightSection = ({ newsDetail, newsId }) => {
   const [formattedDates, setFormattedDates] = useState("");
   useEffect(() => {
     if (newsDetail.insertDate !== undefined)
@@ -54,6 +54,8 @@ const RightSection = ({ newsDetail }) => {
               Icon={MdOutlineBookmarkAdd}
               iconSize={"24px"}
               style={"max-sm:!h-12 max-sm:!p-0 max-sm:w-12 "}
+              newsId={newsId}
+              type={"news"}
             />
             <LikeDislikeCircle
               Icon={AiOutlineLike}

@@ -22,7 +22,7 @@ const PopUpMessages = ({
       aria-labelledby="popupTitle"
     >
       <div className="bg-primaryGray rounded-2xl w-[330px] h-[330px] flex flex-col justify-evenly items-center">
-        <div>{IconComponent && <IconComponent size={48} />}</div>
+        <div>{IconComponent && <IconComponent size={"48px"} />}</div>
         <div className="flex flex-col justify-center items-center">
           <span id="popupTitle">{TopSpan}</span>
           <span className="w-[292px] text-center text-[15px] text-gray-500">
