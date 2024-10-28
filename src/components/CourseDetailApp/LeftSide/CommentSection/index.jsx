@@ -54,21 +54,21 @@ const CommentSection = ({
   // }, [newsDetail]);
 
   //fetching All Comments
-  useEffect(() => {
-    const array = [];
-    if (comments) {
-      comments.map(async (it, index) => {
-        if (it.acceptReplysCount !== 0) {
-          array.push(
-            ...(await handleReplyComments(it.id, it.courseId, "course"))
-          );
-        }
-      });
-    }
-  }, [comments]);
-  useEffect(() => {
-    if (replyComments) console.log(replyComments);
-  }, [replyComments]);
+  // useEffect(() => {
+  //   const array = [];
+  //   if (comments) {
+  //     comments.map(async (it, index) => {
+  //       if (it.acceptReplysCount !== 0) {
+  //         array.push(
+  //           ...(await handleReplyComments(it.id, it.courseId, "course"))
+  //         );
+  //       }
+  //     });
+  //   }
+  // }, [comments]);
+  // useEffect(() => {
+  //   if (replyComments) console.log(replyComments);
+  // }, [replyComments]);
 
   return (
     <>
@@ -86,7 +86,6 @@ const CommentSection = ({
 
           {/* Comment Rendering */}
           {comments &&
-            replyComments &&
             comments.map((it, index) => {
               return (
                 <>
@@ -103,7 +102,7 @@ const CommentSection = ({
                     reply={"no"}
                     repliedTo={it.acceptReplysCount || it.replyCount}
                   />
-                  {replyComments &&
+                  {/* {replyComments &&
                     replyComments.map((it2, index2) => {
                       return (
                         it.id == it2.parentId && (
@@ -122,7 +121,7 @@ const CommentSection = ({
                           />
                         )
                       );
-                    })}
+                    })} */}
                 </>
               );
               // End Of Reply Section

@@ -23,7 +23,7 @@ const NewsDetailApp = () => {
   return (
     <>
       <div className="flex xl:flex-row xl:gap-16 my-10 flex-col">
-        <RightSection newsDetail={newsDetail} />
+        <RightSection newsDetail={newsDetail} newsId={Id} />
         <LeftSection
           setCommentModalOpen={setCommentModalOpen}
           newsDetail={newsDetail}
