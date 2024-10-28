@@ -66,7 +66,7 @@ const RegisterForm = ({ step, stepLogin, handleNext }) => {
     if (res.success == true) {
       navigate("/panel/profile");
     }
-    FetchProfile();
+
     console.log("");
   };
   const RegisterLast = async (event) => {
