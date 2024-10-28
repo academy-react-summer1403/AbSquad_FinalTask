@@ -5,7 +5,9 @@ import "./LeftSectionField.css";
 import Button from "../../../../../Common/Button/Button";
 import CalField from "../../../../../Common/Fields/CalField";
 import { DatePicker } from "zaman";
-
+import { setProfileInfo } from "../../../../../../redux/userSlice";
+import { useDispatch } from "react-redux";
+import { UpdateProfileInfo } from "../../../../../../core/Services/Api/Panel/UpdateProfileInfo";
 const validationSchema = Yup.object({
   firstName: Yup.string().required("نام خانوادگی را وارد کنید"),
   lastName: Yup.string().required("نام را وارد کنید"),
@@ -21,8 +23,31 @@ const validationSchema = Yup.object({
   address: Yup.string().required("آدرس سکونت را وارد کنید"),
   gender: Yup.string().required("جنسیت را انتخاب کنید"),
 });
-
+console.log(localStorage.token);
 const RightSec = () => {
+  const dispatch = useDispatch();
+  const UpDateProfileData = async (values) => {
+    try {
+      const formData = new FormData();
+      formData.append("LName", values.lastName);
+      formData.append("FName", values.firstName);
+      formData.append("UserAbout", values.aboutMe);
+      // formData.append("LinkdinProfile", values.linkdinProfile);
+      // formData.append("TelegramLink", values.telegramLink);
+      // formData.append("ReceiveMessageEvent", values.receiveMessageEvent);
+      formData.append("HomeAdderess", values.address);
+      formData.append("NationalCode", values.nationalCode);
+      formData.append("Gender", values.gender);
+      formData.append("BirthDay", "1753-01-01T00:00:00.000Z");
+      // formData.append("Latitude", values.latitude);
+      // formData.append("Longitude", values.longitude);
+      // dispatch(setProfileInfo(values));
+      const response = await UpdateProfileInfo(formData);
+      console.log("Response:", response);
+    } catch (error) {
+      console.error("Error updating profile data:", error);
+    }
+  };
   return (
     <Formik
       initialValues={{
@@ -37,8 +62,10 @@ const RightSec = () => {
         gender: "",
       }}
       validationSchema={validationSchema}
-      onSubmit={(values) => {
+      onSubmit={async (values) => {
         console.log(values);
+
+        UpDateProfileData(values);
       }}
     >
       {({ errors, touched, setFieldValue, values }) => (
@@ -110,11 +137,15 @@ const RightSec = () => {
               <div className="flex flex-col flex-grow">
                 <label>تاریخ تولد</label>
                 <DatePicker
-                  value={values.birthDate}
+                  value={[values.birthDate]}
                   name="birthDate"
                   onChange={(dateObj) => {
-                    const date = new Date(dateObj.value);
+                    const date =
+                      dateObj.value instanceof Date
+                        ? dateObj.value.toISOString().split("T")[0]
+                        : dateObj.value;
                     setFieldValue("birthDate", date);
+                    console.log(date);
                   }}
                   inputClass="filterStyle dark:bg-primaryBlack dark:outline !dark:focus:outline relative z-[60] text-center"
                   round="x4"
@@ -127,11 +158,11 @@ const RightSec = () => {
                 <label>جنسیت</label>
                 <div className="flex gap-5">
                   <div>
-                    <Field type="radio" name="gender" value="مرد" />
+                    <Field type="radio" name="gender" value="true" />
                     <span>مرد</span>
                   </div>
                   <div>
-                    <Field type="radio" name="gender" value="زن" />
+                    <Field type="radio" name="gender" value="false" />
                     <span>زن</span>
                   </div>
                   {errors.gender && touched.gender ? (

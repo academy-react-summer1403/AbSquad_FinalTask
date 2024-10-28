@@ -1,30 +1,40 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import PicComp from "./PicComp";
 import AddNewPic from "./AddNewPic";
 
-const ProfilePic = () => {
+const ProfilePic = ({ setRefetch = { setRefetch } }) => {
+  const userImages = useSelector((state) => state.userSlice.profile.userImage); // Accessing images from Redux
   const [selectedPic, setSelectedPic] = useState(null);
-  const handleSelected = (index) => {
-    setSelectedPic(index);
-  };
-  const [Option, setOption] = useState("");
-  const OptionsOpen = (index) => {
-    setOption(index);
-  };
+  const [option, setOption] = useState("");
+
+  const handleSelected = (index) => setSelectedPic(index);
+  const optionsOpen = (index) => setOption(index);
+
+  console.log(userImages, "User Images: ", userImages);
 
   return (
     <div className="flex gap-8 flex-wrap max-md:justify-center p-3">
-      {Array(4)
-        .fill(0)
-        .map((_, index) => (
-          <PicComp
-            key={index}
-            isSelected={selectedPic === index}
-            onSelected={() => handleSelected(index)}
-            OptionsOpen={() => OptionsOpen(index)}
-            Option={Option === index}
-          />
-        ))}
+      {userImages && userImages.length > 0 ? (
+        userImages.map((image, index) => {
+          const imageSrc = image ? image.puctureAddress || "" : "";
+          const ImageID = image.id;
+          return (
+            <PicComp
+              key={image?.id || index}
+              imageSrc={imageSrc}
+              isSelected={selectedPic === index}
+              onSelected={() => handleSelected(index)}
+              optionsOpen={() => optionsOpen(index)}
+              option={option === index}
+              ImageID={ImageID}
+              setRefetch={setRefetch}
+            />
+          );
+        })
+      ) : (
+        <p>No images available</p>
+      )}
 
       <div className="ml-auto max-md:mr-8">
         <AddNewPic />

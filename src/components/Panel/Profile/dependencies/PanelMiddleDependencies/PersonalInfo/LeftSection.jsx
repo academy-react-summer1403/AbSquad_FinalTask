@@ -2,9 +2,22 @@ import React from "react";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import "./LeftSectionField.css";
+import { useSelector } from "react-redux";
 
 const LeftSection = () => {
-  const percentage = 20;
+  const profile = useSelector((state) => state.userSlice.profile);
+  let incompleteFields = 0;
+  for (const key in profile) {
+    if (!profile[key]) {
+      incompleteFields += 1;
+    }
+  }
+  const totalFields = Object.keys(profile).length;
+  let percentage =
+    totalFields > 0
+      ? ((totalFields - incompleteFields) / totalFields) * 100
+      : 0;
+  percentage = Math.ceil(percentage / 5) * 5;
 
   let color;
   if (percentage < 40) {
