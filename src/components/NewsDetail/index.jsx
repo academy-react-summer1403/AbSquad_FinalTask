@@ -19,6 +19,11 @@ const NewsDetailApp = () => {
   useEffect(() => {
     fecthDetail();
   }, [Id]);
+  useEffect(() => {
+    // this changes the scrolling behavior to "smooth"
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, []);
+
   const [commentModalOpen, setCommentModalOpen] = useState("close");
   return (
     <>
