@@ -22,7 +22,20 @@ const RegisterInfoForm = ({}) => {
   };
   const [Password, setPassword] = useState("");
   const [PhoneOrGmail, setPhoneOrGmail] = useState("");
+  const FetchProfile = async () => {
+    try {
+      const ProfileInfo = await GetProfileInfo();
 
+      // console.log(dispatch(setProfileInfo(ProfileInfo)));
+      dispatch(setProfileInfo(ProfileInfo));
+    } catch (error) {
+      console.error("Error fetching profile info:", error);
+    }
+  };
+
+  useEffect(() => {
+    FetchProfile();
+  }, []);
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -35,14 +48,15 @@ const RegisterInfoForm = ({}) => {
 
     const token = res.data.token;
     const result = await GetProfileInfo(token);
-    console.log(result);
+    // console.log(result);
 
     localStorage.setItem("token", token);
     dispatch(handleToken(token));
 
-    // if (res.data.success == true) {
-    //   navigate("/panel");
-    // }
+    if (res.success == true) {
+      navigate("/panel");
+    }
+    // console.log(res.success);
   };
   return (
     <div className="flex flex-col gap-6" onSubmit={onSubmit}>

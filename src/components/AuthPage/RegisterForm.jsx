@@ -8,7 +8,9 @@ import { LuClipboardEdit } from "react-icons/lu";
 import { useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { GetProfileInfo } from "../../core/Services/Api/Panel/GetProfileInfo";
 import { useDispatch } from "react-redux";
+import { setProfileInfo } from "../../redux/userSlice";
 import { handleToken } from "../../redux/userSlice";
 import CustomField from "../Common/Fields/Second Approach/CustomFIeld";
 import Button from "../Common/Button/Button";
@@ -37,7 +39,22 @@ const RegisterForm = ({ step, stepLogin, handleNext }) => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-
+  // const FetchProfile = async () => {
+  //   try {
+  //     const ProfileInfo = await GetProfileInfo();
+  //     console.log("profile info clg", ProfileInfo);
+  //     console.log(
+  //       "this is what u dispatched",
+  //       dispatch(setProfileInfo(ProfileInfo))
+  //     );
+  //     dispatch(setProfileInfo(ProfileInfo));
+  //   } catch (error) {
+  //     console.error("Error fetching profile info:", error);
+  //   }
+  // };
+  // useEffect(() => {
+  //   FetchProfile();
+  // }, []);
   const onSubmitLogin = async (event) => {
     event.preventDefault();
     const user = { PhoneOrGmail, Password, rememberMe: true };
@@ -46,9 +63,11 @@ const RegisterForm = ({ step, stepLogin, handleNext }) => {
     localStorage.setItem("token", token);
     dispatch(handleToken(token));
     console.log(res);
-    // if (res.success == true) {
-    //   navigate("/panel");
-    // }
+    if (res.success == true) {
+      navigate("/panel/profile");
+    }
+    FetchProfile();
+    console.log("");
   };
   const RegisterLast = async (event) => {
     event.preventDefault();
