@@ -1,11 +1,13 @@
 ﻿import React from "react";
 
-const LittleRect = ({ title, subText = "", Icon, iconSize }) => {
+const LittleRect = ({ title, subText = "", Icon, iconSize, textSize = "" }) => {
   return (
     <>
-      <div className="flex flex-row justify-start items-center text-sm dark:text-primaryWhite sm:text-base">
+      <div
+        className={`flex flex-row justify-start items-center text-sm dark:text-primaryWhite sm:text-base`}
+      >
         <Icon size={iconSize} />
-        <span className="text-sm font-bold pr-3  sm:text-base">
+        <span className={`text-sm font-bold pr-3  sm:text-base ${textSize}`}>
           {title}
           <span className="text-fontGray text-sm sm:text-base">{subText}</span>
         </span>

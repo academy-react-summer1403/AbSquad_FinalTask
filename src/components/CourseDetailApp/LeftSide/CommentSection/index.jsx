@@ -90,7 +90,6 @@ const CommentSection = ({
 
           {/* Comment Rendering */}
           {comments &&
-            replyComments &&
             comments.map((it, index) => {
               return (
                 <>

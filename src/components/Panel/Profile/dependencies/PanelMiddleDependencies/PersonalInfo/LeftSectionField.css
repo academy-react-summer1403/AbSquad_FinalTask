@@ -1,0 +1,19 @@
+.ProfileForm {
+  height: 48px;
+  border-radius: 16px;
+  background: #e8e7e8;
+  font-size: 14px;
+  line-height: 20px;
+  color: #787878;
+  padding: 10px;
+  border-radius: 5px;
+  width: 286px;
+}
+
+.ProfileForm:focus {
+  outline: none;
+}
+
+.ProfileForm-input {
+  padding-right: 10px;
+}

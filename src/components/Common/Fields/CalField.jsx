@@ -3,13 +3,13 @@ import { DatePicker } from "zaman";
 import TitleSpan from "../NewFields/TitleSpan";
 import { LuCalendarRange } from "react-icons/lu";
 
-const CalField = ({}) => {
+const CalField = ({ bgStyle = "", title = "تاریخ برگذاری" }) => {
   const [selectValue, setSelectValue] = useState("");
   return (
     <>
       <div className="flex flex-col w-full text-align">
         <TitleSpan
-          title="تاریخ برگذاری"
+          title={title}
           Icon={LuCalendarRange}
           setSelectValue={setSelectValue}
           selectValue={selectValue}
@@ -19,7 +19,7 @@ const CalField = ({}) => {
           onChange={(e) => {
             setSelectValue(e.from);
           }}
-          inputClass="filterStyle  dark:bg-primaryBlack dark:border relative z-[60]"
+          inputClass={`filterStyle  dark:bg-primaryBlack dark:border relative z-[60] ${bgStyle}`}
           round="x4"
           range
         />

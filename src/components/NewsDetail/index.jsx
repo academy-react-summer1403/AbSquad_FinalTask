@@ -19,11 +19,16 @@ const NewsDetailApp = () => {
   useEffect(() => {
     fecthDetail();
   }, [Id]);
+  useEffect(() => {
+    // this changes the scrolling behavior to "smooth"
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, []);
+
   const [commentModalOpen, setCommentModalOpen] = useState("close");
   return (
     <>
       <div className="flex xl:flex-row xl:gap-16 my-10 flex-col">
-        <RightSection newsDetail={newsDetail} />
+        <RightSection newsDetail={newsDetail} newsId={Id} />
         <LeftSection
           setCommentModalOpen={setCommentModalOpen}
           newsDetail={newsDetail}

@@ -42,7 +42,6 @@ export const FilterOptions = [
     icon: GoStack,
     label: await handleLevel(GetLevel),
   },
-  //[{ name: "مبتدی" }, { name: "متوسط" }, { name: "پیشرفته" }]
   {
     id: 3,
     filterTitle: "اساتید",

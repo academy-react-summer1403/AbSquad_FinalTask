@@ -10,111 +10,144 @@ import {
 import { VscBook } from "react-icons/vsc";
 import { CgProfile } from "react-icons/cg";
 import { CiBookmark } from "react-icons/ci";
-import { MdOutlineExitToApp } from "react-icons/md";
-import { TbUserEdit } from "react-icons/tb";
 
+import { TbUserEdit } from "react-icons/tb";
+import ExitingAlert from "./dependencies/ExitingAlert";
+import { NavLink } from "react-router-dom";
+import OtherUsers from "./dependencies/OtherUsers";
 const RightSection = () => {
   const [activeButton, setActiveButton] = useState("");
   const handleClick = (buttonName) => {
     setActiveButton(buttonName);
   };
   return (
-    <div className="flex gap-3 flex-col my-3 mr-8 bg-primaryWhite rounded-2xl p-5 max-md:hidden dark:bg-primaryBlack dark:!text-primaryWhite">
-      <div className="flex flex-row justify-start items-start self-start  mb-8 ">
+    <div className="flex gap-3 flex-col my-3 mr-3 bg-primaryWhite rounded-2xl p-5 max-md:hidden dark:bg-primaryBlack dark:!text-primaryWhite h-[700px] sticky top-2 bottom-2">
+      <div className="flex flex-row justify-start items-start self-start  mb-3 ">
         <BahrLogoComp />
       </div>
-      <ul className="flex gap-2 flex-col ">
+      <ul className="flex gap-1 flex-col ">
         <span className="">عمومی</span>
         <li>
-          <Button
-            phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite  ${
-              activeButton === "dashboard"
-                ? "!bg-primaryBlue !text-white"
-                : "!justify-start"
-            }`}
-            Icon={RxDashboard}
-            text="داشبورد"
-            onClick={() => handleClick("dashboard")}
-          />
+          <NavLink to="/Panel/Dashboard">
+            {({ isActive }) => (
+              <Button
+                phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl ${
+                  isActive
+                    ? "!bg-primaryBlue !text-white"
+                    : "bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite"
+                }`}
+                Icon={RxDashboard}
+                text="داشبورد"
+                onClick={() => handleClick("dashboard")}
+              />
+            )}
+          </NavLink>
         </li>
         <li>
-          <Button
-            phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite  ${
-              activeButton === "courses"
-                ? "!bg-primaryBlue !text-white"
-                : "!justify-start"
-            }`}
-            Icon={VscBook}
-            text="دوره من"
-            onClick={() => handleClick("courses")}
-          />
+          <NavLink to="/Panel/MyCourse">
+            {({ isActive }) => (
+              <Button
+                phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl ${
+                  isActive
+                    ? "!bg-primaryBlue !text-white"
+                    : "bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite"
+                }`}
+                Icon={VscBook}
+                text="دوره من"
+                onClick={() => handleClick("courses")}
+              />
+            )}
+          </NavLink>
         </li>
         <li>
-          <Button
-            phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite  ${
-              activeButton === "reservations"
-                ? "!bg-primaryBlue !text-white"
-                : "!justify-start"
-            }`}
-            Icon={PiClockCountdownLight}
-            text="رزرو من"
-            onClick={() => handleClick("reservations")}
-          />
+          <NavLink to="/Panel/MyReserve">
+            {({ isActive }) => (
+              <Button
+                phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl ${
+                  isActive
+                    ? "!bg-primaryBlue !text-white"
+                    : "bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite"
+                }`}
+                Icon={PiClockCountdownLight}
+                text="رزرو من"
+                onClick={() => handleClick("reservations")}
+              />
+            )}
+          </NavLink>
         </li>
         <li>
-          <Button
-            phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite ${
-              activeButton === "favoritesCourse"
-                ? "!bg-primaryBlue !text-white"
-                : "!justify-start"
-            }`}
-            Icon={PiBookBookmarkLight}
-            text="علاقعمندی دوره"
-            onClick={() => handleClick("favoritesCourse")}
-          />
+          <NavLink to="/Panel/MyFavCourse">
+            {({ isActive }) => (
+              <Button
+                phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl ${
+                  isActive
+                    ? "!bg-primaryBlue !text-white"
+                    : "bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite"
+                }`}
+                Icon={PiBookBookmarkLight}
+                text="علاقعمندی دوره"
+                onClick={() => handleClick("favoritesCourse")}
+              />
+            )}
+          </NavLink>
         </li>
         <li>
-          <Button
-            phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite  ${
-              activeButton === "favoritesBook"
-                ? "!bg-primaryBlue !text-white"
-                : "!justify-start"
-            }`}
-            Icon={CiBookmark}
-            text="علاقهمندی کتاب"
-            onClick={() => handleClick("favoritesBook")}
-          />
+          <NavLink to="/Panel/MyFavNews">
+            {({ isActive }) => (
+              <Button
+                phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl ${
+                  isActive
+                    ? "!bg-primaryBlue !text-white"
+                    : "bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite"
+                }`}
+                Icon={CiBookmark}
+                text="علاقهمندی کتاب"
+                onClick={() => handleClick("favoritesBook")}
+              />
+            )}
+          </NavLink>
         </li>
         <li>
-          <Button
-            phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite ${
-              activeButton === "profile"
-                ? "!bg-primaryBlue !text-white"
-                : "!justify-start"
-            }`}
-            Icon={PiMoneyWavy}
-            text="پروفایل"
-            onClick={() => handleClick("profile")}
-          />
+          <NavLink to="/Panel/Profile">
+            {({ isActive }) => (
+              <Button
+                phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl ${
+                  isActive
+                    ? "!bg-primaryBlue !text-white"
+                    : "bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite"
+                }`}
+                Icon={PiMoneyWavy}
+                text="پروفایل"
+                onClick={() => handleClick("profile")}
+              />
+            )}
+          </NavLink>
         </li>
       </ul>
       <ul className="flex gap-3 flex-col mb-3">
         <span>مالی</span>
         <li>
-          <Button
-            phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite ${
-              activeButton === "payments"
-                ? "!bg-primaryBlue !text-white"
-                : "!justify-start"
-            }`}
-            Icon={CgProfile}
-            text="پرداخت ها"
-            onClick={() => handleClick("payments")}
-          />
+          <NavLink to="/panel/Payment">
+            {({ isActive }) => (
+              <Button
+                phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl ${
+                  isActive
+                    ? "!bg-primaryBlue !text-white"
+                    : "bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite"
+                }`}
+                Icon={CgProfile}
+                text="پرداخت ها"
+                onClick={() => handleClick("payments")}
+              />
+            )}
+          </NavLink>
         </li>
       </ul>
-      <ul className="flex gap-3 flex-col">
+      <ul className="flex gap-1 flex-col">
         <li>
+          <div className="md:hidden">
+            <OtherUsers />
+          </div>
           <Button
             phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite ${
               activeButton === "accountSettings"
@@ -126,12 +159,8 @@ const RightSection = () => {
             onClick={() => handleClick("accountSettings")}
           />
         </li>
-        <li>
-          <Button
-            phoneStyle="h-[53px] w-[228px] flex gap-3 text-xl bg-primaryWhite text-black dark:bg-primaryBlack  text-red-500"
-            Icon={MdOutlineExitToApp}
-            text="خروج از حساب"
-          />
+        <li className="z-50">
+          <ExitingAlert />
         </li>
       </ul>
     </div>

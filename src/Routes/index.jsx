@@ -12,7 +12,15 @@ import {
   ForgotPass,
   RootPanel,
   ContactUs,
+  ProfileMain,
+  Dashboard,
+  MyCourse,
+  MyFavCourse,
+  MyReserve,
+  MyFavNews,
+  Payment,
 } from "../core/utilities/Routes/routes.utils.js";
+import { Children } from "react";
 export const PageRoutes = [
   {
     path: "/",
@@ -42,11 +50,45 @@ export const PageRoutes = [
         path: "/ContactUs",
         element: <ContactUs />,
       },
+      {
+        path: "/ContactUs",
+        element: <ContactUs />,
+      },
     ],
   },
   {
     path: "/Panel",
     element: <RootPanel />,
+    children: [
+      {
+        path: "/Panel/Profile",
+        element: <ProfileMain />,
+      },
+      {
+        path: "/Panel/Dashboard",
+        element: <Dashboard />,
+      },
+      {
+        path: "/Panel/MyCourse",
+        element: <MyCourse />,
+      },
+      {
+        path: "/Panel/MyFavCourse",
+        element: <MyFavCourse />,
+      },
+      {
+        path: "/Panel/MyFavNews",
+        element: <MyFavNews />,
+      },
+      {
+        path: "/Panel/Payment",
+        element: <Payment />,
+      },
+      {
+        path: "/Panel/MyReserve",
+        element: <MyReserve />,
+      },
+    ],
   },
   { path: "/Register", element: <Register /> },
   { path: "/Login", element: <Login /> },
