@@ -105,26 +105,9 @@ const CommentSection = ({
                     style={" absolute -right-[30px]"}
                     reply={"no"}
                     repliedTo={it.acceptReplysCount || it.replyCount}
+                    commentId={it.id}
+                    replyComments={replyComments}
                   />
-                  {replyComments.map((it2, index2) => {
-                    return (
-                      it.id == it2.parentId && (
-                        <CommentBox
-                          key={index2}
-                          name={it2.author || it2.autor}
-                          title={it2.title}
-                          subTitle={it2.describe}
-                          pic={it2.pictureAddress}
-                          likeCount={it2.likeCount}
-                          disLikeCount={it2.disslikeCount}
-                          skill={"هیچی"}
-                          style={" absolute -right-[30px]"}
-                          reply={"yes"}
-                          repliedTo={it2.acceptReplysCount || it2.replyCount}
-                        />
-                      )
-                    );
-                  })}
                 </>
               );
               // End Of Reply Section
