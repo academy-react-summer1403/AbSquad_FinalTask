@@ -3,11 +3,40 @@ import Button from "../Button/Button";
 import NavLinkComp from "./NavLinks/NavLinksComp";
 import HambMenu from "../HambMenu";
 import BahrLogoComp from "../BahrLogoComp";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import DarkModeButton from "../DarkModeButton";
+import ProfileComp from "../ProfileComp";
+import { useSelector, useDispatch } from "react-redux";
+import { setProfileInfo } from "../../../redux/userSlice";
+import { GetProfileInfo } from "../../../core/Services/Api/Panel/GetProfileInfo";
 
 const Header = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [navOpen, setNavOpen] = useState("close");
+  // Token Getting And Check
+  const [tokenExist, setTokenExist] = useState("");
+  const student = useSelector((state) => state.userSlice.profile);
+  useEffect(() => {
+    // Checking The Token
+    const token = localStorage.token;
+    setTokenExist(token);
+    // Getting Student Info
+  }, []);
+  // Fetching Profile
+  const FetchProfile = async () => {
+    try {
+      const ProfileInfo = await GetProfileInfo(tokenExist);
+      dispatch(setProfileInfo(ProfileInfo));
+    } catch {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    FetchProfile();
+  }, [tokenExist]);
+
   const openNavModal = () => {
     setNavOpen("open");
   };
@@ -26,12 +55,27 @@ const Header = () => {
           {/* Night Mode Button */}
           <DarkModeButton />
           {/* SignUp/Login Button  */}
-          <NavLink to="/Register" className="h-full">
-            <Button
-              phoneStyle="max-lg:text-base h-full"
-              text="ورود یا ثبت نام"
-            />
-          </NavLink>
+          {!tokenExist && (
+            <NavLink to="/Register" className="h-full">
+              <Button
+                phoneStyle="max-lg:text-base h-full"
+                text="ورود یا ثبت نام"
+              />
+            </NavLink>
+          )}
+          {!!tokenExist && (
+            <div
+              className="cursor-pointer"
+              onClick={() => navigate("/Panel/Dashboard")}
+            >
+              <ProfileComp
+                name={`${student.fName} ${student.lName}`}
+                reply="hel"
+                skill="دانشجو"
+                pic={student.currentPictureAddress}
+              />
+            </div>
+          )}
           {/* Menu Phone  */}
           <div
             className="lg:hidden  h-3/5  w-10 relative after:content-[' '] after:w-4  after:border  after:border-solid after:border-primaryBlack after:absolute after:top-0 after:left-0 after:rounded-t-lg before:content-[' '] before:w-3  before:border  before:border-solid before:border-primaryBlack before:absolute before:bottom-0 before:left-0 before:rounded-t-lg dark:after:border-primaryWhite dark:before:border-primaryWhite"
