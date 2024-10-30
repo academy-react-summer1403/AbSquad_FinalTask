@@ -33,7 +33,7 @@ const ImageContainer = ({ course, type, tableImgConStyle }) => {
               ? course.tumbImageAddress
               : course.currentImageAddressTumb
               ? course.currentImageAddressTumb
-              : "./ErrImg.jpg"
+              : "/ErrImg.jpg"
           }
         />
       </div>
