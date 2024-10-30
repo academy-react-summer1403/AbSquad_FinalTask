@@ -64,7 +64,7 @@ const RegisterForm = ({ step, stepLogin, handleNext }) => {
     dispatch(handleToken(token));
     console.log(res);
     if (res.success == true) {
-      navigate("/panel/profile");
+      navigate("/panel/dashboard");
     }
     FetchProfile();
     console.log("");

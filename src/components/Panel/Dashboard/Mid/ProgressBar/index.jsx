@@ -3,7 +3,7 @@ import { RiEdit2Line } from "react-icons/ri";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 const ProgressBar = () => {
-  const [percentage, setPercentage] = useState("70");
+  const [percentage, setPercentage] = useState("90");
 
   let color;
   if (percentage < 40) {

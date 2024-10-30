@@ -9,7 +9,7 @@ const LandingApp = () => {
     <>
       <div className="my-10">
         <HeroSection />
-        <Licences />
+        {/* <Licences /> */}
         <PopularCoursesSection />
         <TeacherSection />
         <ArticlesSection />
