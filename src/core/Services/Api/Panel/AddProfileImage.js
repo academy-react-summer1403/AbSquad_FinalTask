@@ -6,9 +6,7 @@ export const AddProfileImage = async (file) => {
   formData.append("formFile", file);
 
   try {
-    const res = await http.post("/SharePanel/AddProfileImage", formData, {
-      headers: { "Content-Type": "multipart/form-data" },
-    });
+    const res = await http.post("/SharePanel/AddProfileImage", formData);
     return res.data;
   } catch (error) {
     console.error("Upload failed:", error);
