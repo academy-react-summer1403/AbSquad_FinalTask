@@ -14,6 +14,9 @@ import { AiOutlineDislike } from "react-icons/ai";
 import { handleDateFormat } from "../../../core/utilities/DateConverter/data.convert.utils";
 import { AddReserve } from "../../../core/Services/Api/Student/AddReserve/add.reserve.api";
 import { GetReserve } from "../../../core/Services/Api/Student/AddReserve/get.reserve.api";
+import { LikeCourse } from "../../../core/Services/Api/LikeDislikeCourseDetail/like.course.api";
+import { DisLikeCourse } from "../../../core/Services/Api/LikeDislikeCourseDetail/dislike.course.api";
+
 const RightSide = ({ courseDetail, setReserveModalOpen }) => {
   // Reserve Api **********************************************
   const handleReserveCourse = async (id) => {
@@ -44,6 +47,13 @@ const RightSide = ({ courseDetail, setReserveModalOpen }) => {
       setFormattedDateEnd(handleDateFormat(courseDetail.endTime));
   }, [courseDetail.startTime && courseDetail.startTime]);
 
+  // Like And DisLike Api
+  const handleLikeCourse = (id) => {
+    LikeCourse(id);
+  };
+  const handleDisLikeCourse = (id) => {
+    DisLikeCourse(id);
+  };
   return (
     // Right Side Container
     <div className="xl:basis-2/5">
@@ -103,16 +113,21 @@ const RightSide = ({ courseDetail, setReserveModalOpen }) => {
               style={"max-sm:!h-12 max-sm:!p-0 max-sm:w-12 "}
               courseId={courseDetail.courseId}
               type={"course"}
+              btnType="bookMark"
             />
             <LikeDislikeCircle
               Icon={AiOutlineLike}
               iconSize={"24px"}
               style={"max-sm:!h-12 max-sm:!p-0 max-sm:w-12 "}
+              onClickFunc={() => handleLikeCourse(courseDetail.courseId)}
+              btnType="like"
             />
             <LikeDislikeCircle
               Icon={AiOutlineDislike}
               iconSize={"24px"}
               style={"max-sm:!h-12 max-sm:!p-0 max-sm:w-12 "}
+              onClickFunc={() => handleDisLikeCourse(courseDetail.courseId)}
+              btnType="disLike"
             />
           </div>
         </div>
