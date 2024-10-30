@@ -4,7 +4,6 @@ import { BsChatLeftText } from "react-icons/bs";
 import CommentBox from "../../../Common/CommentBox";
 import { GetNewsComments } from "../../../../core/Services/Api/DetailComments/detail.comments.api";
 import { GetCourseComments } from "../../../../core/Services/Api/CourseComments/course.comments.api";
-import { GetCourseCommentsReply } from "../../../../core/Services/Api/CourseCommentsReply/course.reply.api";
 
 const CommentSection = ({
   setCommentModalOpen,
@@ -12,8 +11,8 @@ const CommentSection = ({
   newsDetail = "",
 }) => {
   const [comments, setComments] = useState([]);
-  const [replyComments, setReplyComments] = useState([]);
-  const [replyArray, setReplyArray] = useState([]);
+
+  //fetching All Comments
   const handleComments = async (id, type) => {
     if (type == "news") {
       const res = await GetNewsComments(id);
@@ -24,55 +23,50 @@ const CommentSection = ({
       setComments(res);
     }
   };
-  useEffect(() => {
-    if (newsDetail) {
-      handleComments(newsDetail.id, "news");
-    }
-  }, [newsDetail]);
 
-  //fetching All Comments
   useEffect(() => {
     if (courseDetail) {
       handleComments(courseDetail.courseId, "course");
     }
   }, [courseDetail]);
+  // *******************************************************************************
+  // useEffect(() => {
+  //   if (newsDetail) {
+  //     handleComments(newsDetail.id, "news");
+  //   }
+  // }, [newsDetail]);
 
   // Fetch Replies FOR COURSES
 
-  const handleReplyComments = async (id, courseId, type) => {
-    // if (type == "news") {
-    //   const res = await GetNewsReplyComments(id);
-    //   setComments(res);
-    // }
-    if (type == "course") {
-      const res = await GetCourseCommentsReply(id, courseId);
-      return res;
-    }
-  };
+  // if (type == "news") {
+  //   const res = await GetNewsReplyComments(id);
+  //   setComments(res);
+  // }
+  // };
   // useEffect(() => {
   //   if (newsDetail) {
   //     handleReplyComments(newsDetail.id, "news");
   //   }
   // }, [newsDetail]);
 
-  //fetching All Comments
-  useEffect(() => {
-    const array = [];
-    if (comments) {
-      comments.map(async (it, index) => {
-        if (it.acceptReplysCount !== 0) {
-          array.push(
-            ...(await handleReplyComments(it.id, it.courseId, "course"))
-          );
-          setReplyArray(array);
-        }
-      });
-    }
-  }, [comments]);
+  //fetching All Reply Comments
+  // useEffect(() => {
+  //   const array = [];
+  //   if (comments) {
+  //     comments.map(async (it, index) => {
+  //       if (it.acceptReplysCount !== 0) {
+  //         array.push(
+  //           ...(await handleReplyComments(it.id, it.courseId, "course"))
+  //         );
+  //         setReplyArray(array);
+  //       }
+  //     });
+  //   }
+  // }, [comments]);
 
-  useEffect(() => {
-    setReplyComments(replyArray);
-  }, [replyArray]);
+  // useEffect(() => {
+  //   setReplyComments(replyArray);
+  // }, [replyArray]);
 
   return (
     <>
@@ -106,11 +100,11 @@ const CommentSection = ({
                     reply={"no"}
                     repliedTo={it.acceptReplysCount || it.replyCount}
                     commentId={it.id}
-                    replyComments={replyComments}
+                    courseId={it.courseId}
+                    type="course"
                   />
                 </>
               );
-              // End Of Reply Section
             })}
         </div>
       </div>
