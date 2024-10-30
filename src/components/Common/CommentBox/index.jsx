@@ -6,6 +6,7 @@ import { TbMessageReply } from "react-icons/tb";
 import LikeDisLikeComment from "../../CourseDetailApp/LeftSide/CommentSection/LikeDisLikeComment";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { GetCourseCommentsReply } from "../../../core/Services/Api/CourseCommentsReply/course.reply.api";
+
 const CommentBox = ({
   name,
   skill,
@@ -24,10 +25,12 @@ const CommentBox = ({
   const [replyComments, setReplyComments] = useState([]);
   const handleReplyComments = async (commentId, courseId, type) => {
     if (type == "course") {
-      console.log("Use Effect ejra shod");
       const res = await GetCourseCommentsReply(commentId, courseId);
       setReplyComments(res);
-      return res;
+    }
+    if (type == "news") {
+      const res = await GetNewsReplyComments(id);
+      setComments(res);
     }
   };
   useEffect(() => {
@@ -35,9 +38,7 @@ const CommentBox = ({
       handleReplyComments(commentId, courseId, type);
     }
   }, [commentId]);
-  useEffect(() => {
-    console.log("comments:" + commentId + " with replies: " + replyComments);
-  }, []);
+
   return (
     <>
       <div
@@ -75,7 +76,7 @@ const CommentBox = ({
           />
           <div
             className={`flex-row justify-start items-center cursor-pointer ${
-              reply == 0 && repliedTo == "no" ? "flex" : "hidden"
+              reply == 0 && replyComments == 0 ? "flex" : "hidden"
             }`}
           >
             <span className="text-base underline hidden sm:flex">
@@ -102,7 +103,6 @@ const CommentBox = ({
               skill={"هیچی"}
               style={" absolute -right-[30px]"}
               reply={"yes"}
-              // repliedTo={it2.acceptReplysCount || it2.replyCount}
             />
           );
         })}

@@ -2,13 +2,14 @@
 import Button from "../../../Common/Button/Button";
 import { BsChatLeftText } from "react-icons/bs";
 import CommentBox from "../../../Common/CommentBox";
-import { GetNewsComments } from "../../../../core/Services/Api/DetailComments/detail.comments.api";
+
 import { GetCourseComments } from "../../../../core/Services/Api/CourseComments/course.comments.api";
 
 const CommentSection = ({
   setCommentModalOpen,
   courseDetail = "",
   newsDetail = "",
+  type = "",
 }) => {
   const [comments, setComments] = useState([]);
 
@@ -23,50 +24,27 @@ const CommentSection = ({
       setComments(res);
     }
   };
-
+  // Only Course
   useEffect(() => {
-    if (courseDetail) {
+    if (courseDetail && type == "course") {
       handleComments(courseDetail.courseId, "course");
     }
   }, [courseDetail]);
   // *******************************************************************************
-  // useEffect(() => {
-  //   if (newsDetail) {
-  //     handleComments(newsDetail.id, "news");
-  //   }
-  // }, [newsDetail]);
+  useEffect(() => {
+    if (newsDetail && type == "news") {
+      handleComments(newsDetail.id, "news");
+    }
+  }, [newsDetail]);
 
   // Fetch Replies FOR COURSES
 
-  // if (type == "news") {
-  //   const res = await GetNewsReplyComments(id);
-  //   setComments(res);
-  // }
-  // };
+
   // useEffect(() => {
   //   if (newsDetail) {
   //     handleReplyComments(newsDetail.id, "news");
   //   }
   // }, [newsDetail]);
-
-  //fetching All Reply Comments
-  // useEffect(() => {
-  //   const array = [];
-  //   if (comments) {
-  //     comments.map(async (it, index) => {
-  //       if (it.acceptReplysCount !== 0) {
-  //         array.push(
-  //           ...(await handleReplyComments(it.id, it.courseId, "course"))
-  //         );
-  //         setReplyArray(array);
-  //       }
-  //     });
-  //   }
-  // }, [comments]);
-
-  // useEffect(() => {
-  //   setReplyComments(replyArray);
-  // }, [replyArray]);
 
   return (
     <>
@@ -98,10 +76,9 @@ const CommentSection = ({
                     skill={"هیچی"}
                     style={" absolute -right-[30px]"}
                     reply={"no"}
-                    repliedTo={it.acceptReplysCount || it.replyCount}
                     commentId={it.id}
                     courseId={it.courseId}
-                    type="course"
+                    type={type}
                   />
                 </>
               );
