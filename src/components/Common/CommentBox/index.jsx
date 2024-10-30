@@ -6,6 +6,7 @@ import { TbMessageReply } from "react-icons/tb";
 import LikeDisLikeComment from "../../CourseDetailApp/LeftSide/CommentSection/LikeDisLikeComment";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { GetCourseCommentsReply } from "../../../core/Services/Api/CourseCommentsReply/course.reply.api";
+import { GetNewsReplyComments } from "../../../core/Services/Api/NewsCommentsReply/course.reply.api";
 
 const CommentBox = ({
   name,
@@ -17,7 +18,6 @@ const CommentBox = ({
   likeCount = 432,
   disLikeCount = 432,
   reply = "",
-  repliedTo = 0,
   courseId = "",
   commentId = "",
   type = "",
@@ -29,8 +29,8 @@ const CommentBox = ({
       setReplyComments(res);
     }
     if (type == "news") {
-      const res = await GetNewsReplyComments(id);
-      setComments(res);
+      const res = await GetNewsReplyComments(commentId);
+      setReplyComments(res);
     }
   };
   useEffect(() => {

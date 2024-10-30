@@ -16,6 +16,7 @@ const LeftSection = ({ newsDetail, setCommentModalOpen }) => {
             desc={newsDetail.describe}
           />
         </div>
+
         <RateSection />
 
         <CommentSection

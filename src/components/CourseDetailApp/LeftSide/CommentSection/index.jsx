@@ -2,8 +2,8 @@
 import Button from "../../../Common/Button/Button";
 import { BsChatLeftText } from "react-icons/bs";
 import CommentBox from "../../../Common/CommentBox";
-
 import { GetCourseComments } from "../../../../core/Services/Api/CourseComments/course.comments.api";
+import { GetNewsComments } from "../../../../core/Services/Api/NewsComments/detail.comments.api";
 
 const CommentSection = ({
   setCommentModalOpen,
@@ -31,20 +31,12 @@ const CommentSection = ({
     }
   }, [courseDetail]);
   // *******************************************************************************
+  // Only News
   useEffect(() => {
     if (newsDetail && type == "news") {
       handleComments(newsDetail.id, "news");
     }
   }, [newsDetail]);
-
-  // Fetch Replies FOR COURSES
-
-
-  // useEffect(() => {
-  //   if (newsDetail) {
-  //     handleReplyComments(newsDetail.id, "news");
-  //   }
-  // }, [newsDetail]);
 
   return (
     <>
