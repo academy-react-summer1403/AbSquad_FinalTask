@@ -4,7 +4,7 @@ import PicComp from "./PicComp";
 import AddNewPic from "./AddNewPic";
 
 const ProfilePic = ({ setRefetch = { setRefetch } }) => {
-  const userImages = useSelector((state) => state.userSlice.profile.userImage); // Accessing images from Redux
+  const userImages = useSelector((state) => state.userSlice.profile.userImage);
   const [selectedPic, setSelectedPic] = useState(null);
   const [option, setOption] = useState("");
 
@@ -37,7 +37,7 @@ const ProfilePic = ({ setRefetch = { setRefetch } }) => {
       )}
 
       <div className="ml-auto max-md:mr-8">
-        <AddNewPic />
+        <AddNewPic setRefetch={setRefetch} />
       </div>
     </div>
   );
