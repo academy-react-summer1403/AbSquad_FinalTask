@@ -15,14 +15,20 @@ const CommentBox = ({
   title = "",
   subTitle = "",
   pic = "",
-  likeCount = 432,
-  disLikeCount = 432,
+  likeCount = 43,
+  disLikeCount = 32,
   reply = "",
   courseId = "",
   commentId = "",
   type = "",
 }) => {
   const [replyComments, setReplyComments] = useState([]);
+  const [replyCommentNumber, setReplyCommentNumber] = useState(1);
+  const [replyCommentLength, setReplyCommentLength] = useState(1);
+  useEffect(() => {
+    setReplyCommentLength(replyComments.length);
+  }, [replyComments]);
+
   const handleReplyComments = async (commentId, courseId, type) => {
     if (type == "course") {
       const res = await GetCourseCommentsReply(commentId, courseId);
@@ -76,11 +82,26 @@ const CommentBox = ({
           />
           <div
             className={`flex-row justify-start items-center cursor-pointer ${
-              reply == 0 && replyComments == 0 ? "flex" : "hidden"
+              replyComments.length != 0 ? "flex" : "hidden"
             }`}
           >
-            <span className="text-base underline hidden sm:flex">
-              مشاهده جواب ها(20)
+            <span
+              onClick={() => {
+                if (replyCommentNumber != replyCommentLength) {
+                  setReplyCommentNumber(replyCommentLength);
+                  // setReplyCommentLength(1);
+                } else {
+                  setReplyCommentNumber(1);
+                  // setReplyCommentLength(replyComments.length);
+                }
+              }}
+              className="text-base underline hidden sm:flex"
+            >
+              {replyComments.length - replyCommentNumber != 0
+                ? ` مشاهده جواب ها (${
+                    replyComments.length - replyCommentNumber
+                  })`
+                : "بستن جواب ها"}
             </span>
             <MdOutlineKeyboardArrowDown
               className="hidden sm:block"
@@ -92,18 +113,20 @@ const CommentBox = ({
       {replyComments &&
         replyComments.map((it2, index2) => {
           return (
-            <CommentBox
-              key={index2}
-              name={it2.author || it2.autor}
-              title={it2.title}
-              subTitle={it2.describe}
-              pic={it2.pictureAddress}
-              likeCount={it2.likeCount}
-              disLikeCount={it2.disslikeCount}
-              skill={"هیچی"}
-              style={" absolute -right-[30px]"}
-              reply={"yes"}
-            />
+            index2 < replyCommentNumber && (
+              <CommentBox
+                key={index2}
+                name={it2.author || it2.autor}
+                title={it2.title}
+                subTitle={it2.describe}
+                pic={it2.pictureAddress}
+                likeCount={it2.likeCount}
+                disLikeCount={it2.disslikeCount}
+                skill={"هیچی"}
+                style={" absolute -right-[30px]"}
+                reply={"yes"}
+              />
+            )
           );
         })}
     </>
