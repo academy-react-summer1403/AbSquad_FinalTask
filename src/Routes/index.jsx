@@ -1,4 +1,5 @@
 ﻿import { path } from "framer-motion/client";
+import AuthRoute from "../core/utilities/AuthCheck/AuthRoute.jsx";
 import {
   Root,
   LandingPage,
@@ -58,7 +59,11 @@ export const PageRoutes = [
   },
   {
     path: "/Panel",
-    element: <RootPanel />,
+    element: (
+      <AuthRoute>
+        <RootPanel />
+      </AuthRoute>
+    ),
     children: [
       {
         path: "/Panel/Profile",

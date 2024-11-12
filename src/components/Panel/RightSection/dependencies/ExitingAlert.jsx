@@ -12,6 +12,7 @@ const ExitingAlert = () => {
   };
 
   const handleConfirmExit = () => {
+    localStorage.removeItem("token");
     navigate("/");
   };
 

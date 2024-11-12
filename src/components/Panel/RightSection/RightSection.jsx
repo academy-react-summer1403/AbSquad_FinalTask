@@ -15,6 +15,7 @@ import { TbUserEdit } from "react-icons/tb";
 import ExitingAlert from "./dependencies/ExitingAlert";
 import { NavLink } from "react-router-dom";
 import OtherUsers from "./dependencies/OtherUsers";
+
 const RightSection = () => {
   const [activeButton, setActiveButton] = useState("");
   const handleClick = (buttonName) => {
@@ -22,9 +23,11 @@ const RightSection = () => {
   };
   return (
     <div className="flex gap-3 flex-col my-3 mr-3 bg-primaryWhite rounded-2xl p-5 max-md:hidden dark:bg-primaryBlack dark:!text-primaryWhite h-[700px] sticky top-2 bottom-2">
-      <div className="flex flex-row justify-start items-start self-start  mb-3 ">
-        <BahrLogoComp />
-      </div>
+      <NavLink to="/">
+        <div className="flex flex-row justify-start items-start self-start  mb-3 ">
+          <BahrLogoComp />
+        </div>
+      </NavLink>
       <ul className="flex gap-1 flex-col ">
         <span className="">عمومی</span>
         <li>

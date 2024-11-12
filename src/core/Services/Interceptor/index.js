@@ -8,19 +8,30 @@ const onSuccess = (response) => {
     return response.data;
   }
 };
+// const onError = (error) => {
+//   if (error.response) {
+//     console.error("API Error:", error.response.data);
+//     return Promise.reject(error.response.data);
+//   } else {
+//     console.error("Error:", error.message);
+//     return Promise.reject({ error: error.message });
+//   }
+// };
 const onError = (error) => {
   if (error.response) {
     console.error("API Error:", error.response.data);
-    return Promise.reject(error.response.data);
+    return Promise.reject(error.response); // Reject the full error response
   } else {
     console.error("Error:", error.message);
     return Promise.reject({ error: error.message });
   }
 };
+
 instance.interceptors.response.use(onSuccess, onError);
 instance.interceptors.request.use((opt) => {
   const token = localStorage.getItem("token");
   opt.headers.Authorization = "Bearer " + token;
+  opt.headers["Content-Type"] = "application/json";
   return opt;
 });
 export default instance;

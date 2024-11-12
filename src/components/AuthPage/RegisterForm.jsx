@@ -17,7 +17,7 @@ import Button from "../Common/Button/Button";
 import { NavLink } from "react-router-dom";
 import { PiShieldStarBold } from "react-icons/pi";
 import { PostLoginAPI } from "../../core/Services/Api/AuthPage/Login/Login";
-import { toast } from "react-hot-toast";
+import { toast, Toaster } from "react-hot-toast";
 import "react-toastify/dist/ReactToastify.css";
 import { FinalStepRegister } from "../../core/Services/Api/AuthPage/register/registerLevel3";
 import { useSelector } from "react-redux";
@@ -55,19 +55,40 @@ const RegisterForm = ({ step, stepLogin, handleNext }) => {
   // useEffect(() => {
   //   FetchProfile();
   // }, []);
+  // const onSubmitLogin = async (event) => {
+  //   event.preventDefault();
+  //   const user = { PhoneOrGmail, Password, rememberMe: true };
+  //   const res = await PostLoginAPI(user);
+  //   const token = res.token;
+  //   localStorage.setItem("token", token);
+  //   dispatch(handleToken(token));
+  //   console.log(res);
+  //   if (res.success == true) {
+  //     navigate("/panel/dashboard");
+  //   }
+  //   FetchProfile();
+  //   console.log("");
+  // };
   const onSubmitLogin = async (event) => {
     event.preventDefault();
     const user = { PhoneOrGmail, Password, rememberMe: true };
     const res = await PostLoginAPI(user);
-    const token = res.token;
-    localStorage.setItem("token", token);
-    dispatch(handleToken(token));
-    console.log(res);
-    if (res.success == true) {
-      navigate("/panel/dashboard");
+
+    // Check if the token is not null or undefined before setting it in localStorage
+    if (res.token) {
+      const token = res.token;
+      localStorage.setItem("token", token);
+      dispatch(handleToken(token));
+    } else {
+      toast.error("Token is null or undefined");
     }
+
+    console.log(res);
+    if (res.success === true) {
+      navigate("/panel/profile");
+    }
+
     FetchProfile();
-    console.log("");
   };
   const RegisterLast = async (event) => {
     event.preventDefault();
@@ -75,6 +96,9 @@ const RegisterForm = ({ step, stepLogin, handleNext }) => {
     const RegisterData = { gmail, Password, phoneNumber };
     const RegisterFinalStep = await FinalStepRegister(RegisterData);
     console.log(RegisterData, RegisterFinalStep);
+    if (RegisterFinalStep.success == true) {
+      navigate("/panel/dashboard");
+    }
   };
 
   return (
@@ -85,6 +109,7 @@ const RegisterForm = ({ step, stepLogin, handleNext }) => {
     >
       {() => (
         <Form className="flex flex-col gap-6">
+          <Toaster />
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-2">
               <span className="text-xl">ایمیل</span>
