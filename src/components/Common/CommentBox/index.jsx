@@ -89,10 +89,8 @@ const CommentBox = ({
               onClick={() => {
                 if (replyCommentNumber != replyCommentLength) {
                   setReplyCommentNumber(replyCommentLength);
-                  // setReplyCommentLength(1);
                 } else {
                   setReplyCommentNumber(1);
-                  // setReplyCommentLength(replyComments.length);
                 }
               }}
               className="text-base underline hidden sm:flex"
