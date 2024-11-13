@@ -82,7 +82,7 @@ const CommentBox = ({
           />
           <div
             className={`flex-row justify-start items-center cursor-pointer ${
-              replyComments.length != 0 ? "flex" : "hidden"
+              replyComments.length > 1 ? "flex" : "hidden"
             }`}
           >
             <span
