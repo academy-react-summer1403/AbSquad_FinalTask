@@ -39,6 +39,17 @@ const FilterDeleteButton = ({ setSelectValue, setSearchParams, title }) => {
               return op;
             });
           }
+          if (title == "تاریخ برگذاری") {
+            console.log("asdasd");
+            setSearchParams((op) => {
+              op.delete("StartDate");
+              return op;
+            });
+            setSearchParams((op) => {
+              op.delete("EndDate");
+              return op;
+            });
+          }
         }}
         className="flex flex-row  justify-center items-center gap-2 h-full rounded-blueButton py-[9px] px-4 cursor-pointer shadow-[0px_0px_0px_1px_#ff4242] text-instaRed"
       >
