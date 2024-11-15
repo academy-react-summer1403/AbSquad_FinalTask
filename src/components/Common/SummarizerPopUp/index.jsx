@@ -22,7 +22,7 @@ const SummarizerPopUp = ({
   }, []);
   //   summarizing Text
   const handleSummarize = async (text) => {
-    const res = await SummarizerApi(text);
+    // const res = await SummarizerApi(text);
     setSummedText(res);
   };
   return (
@@ -34,7 +34,7 @@ const SummarizerPopUp = ({
       }}
       onClick={() => {
         if (orgOrSum == "org") {
-          if (summedText == "") handleSummarize(text);
+          //   if (summedText == "") handleSummarize(text);
           setOrgOrSum("sum");
         } else {
           setOrgOrSum("org");
