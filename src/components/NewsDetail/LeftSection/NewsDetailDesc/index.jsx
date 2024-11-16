@@ -5,17 +5,16 @@ const NewsDetailDesc = ({ title, desc }) => {
   const [orgOrSum, setOrgOrSum] = useState("org");
   return (
     <>
-      <SummarizerPopUp
-        text={desc}
-        setOrgOrSum={setOrgOrSum}
-        orgOrSum={orgOrSum}
-        setSummedText={setSummedText}
-        summedText={summedText}
-      />
-      <div className="w-full dark:text-primaryWhite">
+      <div className="w-full dark:text-primaryWhite relative">
+        <SummarizerPopUp
+          text={desc}
+          setOrgOrSum={setOrgOrSum}
+          orgOrSum={orgOrSum}
+          setSummedText={setSummedText}
+          summedText={summedText}
+        />
         <h1 className="sm:text-2xl text-xl mb-6 p-0 font-bold ">{title}</h1>
         <h2 className="sm:text-xl text-base">
-          {" "}
           {orgOrSum == "org" ? desc : summedText}
         </h2>
       </div>
