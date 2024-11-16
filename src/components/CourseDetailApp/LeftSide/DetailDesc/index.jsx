@@ -4,6 +4,7 @@ import SummarizerPopUp from "../../../Common/SummarizerPopUp";
 const DetailDesc = ({ title, desc }) => {
   const [summedText, setSummedText] = useState("");
   const [orgOrSum, setOrgOrSum] = useState("org");
+  useEffect(() => {}, []);
 
   return (
     <>
