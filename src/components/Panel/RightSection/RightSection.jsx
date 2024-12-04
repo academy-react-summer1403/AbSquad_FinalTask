@@ -15,7 +15,7 @@ import { TbUserEdit } from "react-icons/tb";
 import ExitingAlert from "./dependencies/ExitingAlert";
 import { NavLink } from "react-router-dom";
 import OtherUsers from "./dependencies/OtherUsers";
-
+import { FaRegComments } from "react-icons/fa";
 const RightSection = () => {
   const [activeButton, setActiveButton] = useState("");
   const handleClick = (buttonName) => {
@@ -122,6 +122,22 @@ const RightSection = () => {
                 Icon={PiMoneyWavy}
                 text="پروفایل"
                 onClick={() => handleClick("profile")}
+              />
+            )}
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/Panel/Comments">
+            {({ isActive }) => (
+              <Button
+                phoneStyle={`h-[53px] w-[228px] flex gap-3 text-xl ${
+                  isActive
+                    ? "!bg-primaryBlue !text-white"
+                    : "bg-primaryWhite !text-primaryBlack dark:bg-primaryBlack dark:!text-primaryWhite"
+                }`}
+                Icon={FaRegComments}
+                text="کامنت ها"
+                onClick={() => handleClick("comments")}
               />
             )}
           </NavLink>

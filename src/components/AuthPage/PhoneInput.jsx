@@ -22,7 +22,7 @@ const PhoneInput = ({ titleF, handleNext, step, stepForgot }) => {
         console.log(res, "this is for res");
         if (res.success === true) {
           console.log("first");
-          toast.success(res.message);
+          toast.success(res.message);دد
           handleNext();
           dispatch(handlePhoneNumber(PhoneNumber));
         }

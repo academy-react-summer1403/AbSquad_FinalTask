@@ -9,7 +9,6 @@ import ProfileComp from "../ProfileComp";
 import { useSelector, useDispatch } from "react-redux";
 import { setProfileInfo } from "../../../redux/userSlice";
 import { GetProfileInfo } from "../../../core/Services/Api/Panel/GetProfileInfo";
-
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();

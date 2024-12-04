@@ -21,6 +21,7 @@ import { toast, Toaster } from "react-hot-toast";
 import "react-toastify/dist/ReactToastify.css";
 import { FinalStepRegister } from "../../core/Services/Api/AuthPage/register/registerLevel3";
 import { useSelector } from "react-redux";
+import { handleLoginInfo } from "../../redux/LoginInfoSlice";
 const RegisterForm = ({ step, stepLogin, handleNext }) => {
   const phoneNumber = useSelector((state) => state.phone.phoneNumber);
   const [showPassword, setShowPassword] = useState(false);
@@ -71,24 +72,36 @@ const RegisterForm = ({ step, stepLogin, handleNext }) => {
   // };
   const onSubmitLogin = async (event) => {
     event.preventDefault();
+
     const user = { PhoneOrGmail, Password, rememberMe: true };
-    const res = await PostLoginAPI(user);
+    dispatch(handleLoginInfo(user));
+    try {
+      const res = await PostLoginAPI(user); // Call the API
+      console.log(res.id, "this is id");
 
-    // Check if the token is not null or undefined before setting it in localStorage
-    if (res.token) {
-      const token = res.token;
-      localStorage.setItem("token", token);
-      dispatch(handleToken(token));
-    } else {
-      toast.error("Token is null or undefined");
+      // Handle token if it exists
+      if (res.token != null) {
+        const token = res.token;
+        const id = res.id;
+        localStorage.setItem("token", token);
+        localStorage.setItem("id", id);
+        dispatch(handleToken(token));
+        console.log("Token set successfully");
+        return; // Exit after handling token
+      }
+
+      // Handle success if no token
+      if (res.success) {
+        console.log("ersal shod");
+        handleNext(); // Call handleNext
+        return; // Exit after handling success
+      }
+
+      // Handle failure
+      console.log("nashod");
+    } catch (error) {
+      console.error("Error during login:", error.response || error.message);
     }
-
-    console.log(res);
-    if (res.success === true) {
-      navigate("/panel/profile");
-    }
-
-    FetchProfile();
   };
   const RegisterLast = async (event) => {
     event.preventDefault();

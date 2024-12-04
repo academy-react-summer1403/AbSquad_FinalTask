@@ -23,7 +23,7 @@ import { useEffect } from "react";
 const PanelMiddleInfo = () => {
   const dispatch = useDispatch();
   const profile = useSelector((state) => state.userSlice.profile);
-  console.log(profile, "this is profile null");
+  // console.log(profile, "this is profile null");
 
   const [value, setValue] = useState(0);
   const handleClick = (buttonName) => {
@@ -33,7 +33,7 @@ const PanelMiddleInfo = () => {
     try {
       const storedToken = localStorage.getItem("token");
       const ProfileInfo = await GetProfileInfo(storedToken);
-      console.log(ProfileInfo);
+      // console.log(ProfileInfo);
       dispatch(setProfileInfo(ProfileInfo));
     } catch (error) {
       console.error(error);

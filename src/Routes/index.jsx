@@ -20,6 +20,7 @@ import {
   MyReserve,
   MyFavNews,
   Payment,
+  CommentSectionMain,
 } from "../core/utilities/Routes/routes.utils.js";
 import { Children } from "react";
 export const PageRoutes = [
@@ -92,6 +93,10 @@ export const PageRoutes = [
       {
         path: "/Panel/MyReserve",
         element: <MyReserve />,
+      },
+      {
+        path: "/Panel/Comments",
+        element: <CommentSectionMain />,
       },
     ],
   },
