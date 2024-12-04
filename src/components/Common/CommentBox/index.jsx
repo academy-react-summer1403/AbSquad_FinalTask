@@ -1,10 +1,13 @@
-﻿import React from "react";
+﻿import React, { useEffect, useState } from "react";
 import ProfileComp from "../ProfileComp";
 import TitleSubCommentSection from "./TitleSubCommentSection";
 import Button from "../Button/Button";
 import { TbMessageReply } from "react-icons/tb";
 import LikeDisLikeComment from "../../CourseDetailApp/LeftSide/CommentSection/LikeDisLikeComment";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import { GetCourseCommentsReply } from "../../../core/Services/Api/CourseCommentsReply/course.reply.api";
+import { GetNewsReplyComments } from "../../../core/Services/Api/NewsCommentsReply/course.reply.api";
+
 const CommentBox = ({
   name,
   skill,
@@ -12,23 +15,45 @@ const CommentBox = ({
   title = "",
   subTitle = "",
   pic = "",
-  likeCount = 432,
-  disLikeCount = 432,
+  likeCount = 43,
+  disLikeCount = 32,
   reply = "",
-  repliedTo = 0,
-  comments = "",
-  replyComments,
-  commentId,
+  courseId = "",
+  commentId = "",
+  type = "",
 }) => {
+  const [replyComments, setReplyComments] = useState([]);
+  const [replyCommentNumber, setReplyCommentNumber] = useState(1);
+  const [replyCommentLength, setReplyCommentLength] = useState(1);
+  useEffect(() => {
+    setReplyCommentLength(replyComments.length);
+  }, [replyComments]);
+
+  const handleReplyComments = async (commentId, courseId, type) => {
+    if (type == "course") {
+      const res = await GetCourseCommentsReply(commentId, courseId);
+      setReplyComments(res);
+    }
+    if (type == "news") {
+      const res = await GetNewsReplyComments(commentId);
+      setReplyComments(res);
+    }
+  };
+  useEffect(() => {
+    if (commentId) {
+      handleReplyComments(commentId, courseId, type);
+    }
+  }, [commentId]);
+
   return (
     <>
       <div
         className={` border-2  bg-primaryWhite dark:bg-primaryBlack dark:text-primaryWhite border-l-0 border-t-0  w-11/12 h-[276px] relative ${
-          reply == "no" && repliedTo !== 0
+          reply == "no" && replyComments != 0
             ? "border-fontGray rounded-br-3xl"
-            : reply == "yes" && repliedTo == 0
+            : reply == "yes" && replyComments == 0
             ? "-top-[30px] w-5/6 right-[5%] border-r-0 border-b-0 after:content-[' '] after:absolute after:-right-[8%] after:bottom-0 after:border after:border-solid after:border-primaryGray after:w-full  "
-            : reply == "no" && repliedTo == 0
+            : reply == "no" && replyComments == 0
             ? "border-none"
             : ""
         }`}
@@ -57,11 +82,24 @@ const CommentBox = ({
           />
           <div
             className={`flex-row justify-start items-center cursor-pointer ${
-              reply == 0 && repliedTo == "no" ? "flex" : "hidden"
+              replyComments.length > 1 ? "flex" : "hidden"
             }`}
           >
-            <span className="text-base underline hidden sm:flex">
-              مشاهده جواب ها(20)
+            <span
+              onClick={() => {
+                if (replyCommentNumber != replyCommentLength) {
+                  setReplyCommentNumber(replyCommentLength);
+                } else {
+                  setReplyCommentNumber(1);
+                }
+              }}
+              className="text-base underline hidden sm:flex"
+            >
+              {replyComments.length - replyCommentNumber != 0
+                ? ` مشاهده جواب ها (${
+                    replyComments.length - replyCommentNumber
+                  })`
+                : "بستن جواب ها"}
             </span>
             <MdOutlineKeyboardArrowDown
               className="hidden sm:block"
@@ -73,7 +111,7 @@ const CommentBox = ({
       {replyComments &&
         replyComments.map((it2, index2) => {
           return (
-            commentId == it2.parentId && (
+            index2 < replyCommentNumber && (
               <CommentBox
                 key={index2}
                 name={it2.author || it2.autor}
@@ -85,7 +123,6 @@ const CommentBox = ({
                 skill={"هیچی"}
                 style={" absolute -right-[30px]"}
                 reply={"yes"}
-                repliedTo={it2.acceptReplysCount || it2.replyCount}
               />
             )
           );

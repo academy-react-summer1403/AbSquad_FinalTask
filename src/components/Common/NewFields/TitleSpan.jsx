@@ -9,6 +9,7 @@ const TitleSpan = ({
   setSelectValue = "",
   setSearchParams = "",
 }) => {
+  
   return (
     <>
       <div
@@ -19,7 +20,6 @@ const TitleSpan = ({
         {selectValue != "انتخاب کنید..." &&
           title != "قیمت" &&
           title != "جست‌جو دوره" &&
-          title != "تاریخ برگذاری" &&
           title != "تاریخ انتشار" &&
           title != "جست‌جو اخبار یا مقالات" && (
             <FilterDeleteButton

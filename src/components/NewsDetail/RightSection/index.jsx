@@ -56,16 +56,19 @@ const RightSection = ({ newsDetail, newsId }) => {
               style={"max-sm:!h-12 max-sm:!p-0 max-sm:w-12 "}
               newsId={newsId}
               type={"news"}
+              btnType="bookMark"
             />
             <LikeDislikeCircle
               Icon={AiOutlineLike}
               iconSize={"24px"}
               style={"max-sm:!h-12 max-sm:!p-0 max-sm:w-12 "}
+              btnType="like"
             />
             <LikeDislikeCircle
               Icon={AiOutlineDislike}
               iconSize={"24px"}
               style={"max-sm:!h-12 max-sm:!p-0 max-sm:w-12 "}
+              btnType="disLike"
             />
           </div>
         </div>

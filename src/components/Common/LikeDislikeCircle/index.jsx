@@ -15,6 +15,8 @@ const LikeDislikeCircle = ({
   newsId,
   courseId,
   type,
+  btnType = "",
+  onClickFunc,
 }) => {
   const [favArticles, setFavArticles] = useState([]);
   const [favCourse, setFavCourse] = useState([]);
@@ -108,7 +110,11 @@ const LikeDislikeCircle = ({
     <>
       <div
         onClick={() => {
-          handleAddFav(newsId, courseId, type);
+          if (btnType == "bookMark") handleAddFav(newsId, courseId, type);
+
+          if (btnType == "like") onClickFunc();
+
+          if (btnType == "disLike") onClickFunc();
         }}
         className={`p-4 rounded-full border border-primaryGray flex justify-center items-center ${style} cursor-pointer ${
           isFavBtn == "active" ? "!bg-primaryBlue border-none" : ""
