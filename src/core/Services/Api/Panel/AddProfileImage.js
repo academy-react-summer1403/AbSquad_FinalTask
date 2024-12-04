@@ -1,4 +1,3 @@
-// Adjust path as necessary
 import http from "../../Interceptor";
 
 export const AddProfileImage = async (file) => {

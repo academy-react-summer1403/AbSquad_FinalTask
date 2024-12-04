@@ -19,7 +19,7 @@ import { GetProfileInfo } from "../../../../core/Services/Api/Panel/GetProfileIn
 import { useSelector, useDispatch } from "react-redux";
 import { setProfileInfo } from "../../../../redux/userSlice";
 import { useEffect } from "react";
-
+import JobHistoryForm from "./PanelMiddleDependencies/JobRelated/JobMain";
 const PanelMiddleInfo = () => {
   const dispatch = useDispatch();
   const profile = useSelector((state) => state.userSlice.profile);
@@ -126,11 +126,13 @@ const PanelMiddleInfo = () => {
           <Tab label="عکس پروفایل" className=" dark:text-primaryWhite " />
           <Tab label="آدرس سکونت" className=" dark:text-primaryWhite " />
           <Tab label="لینک ها" className=" dark:text-primaryWhite " />
+          <Tab label="سابقه کاری" className=" dark:text-primaryWhite " />
         </Tabs>
         {value === 0 && <PersonalInfo setRefetch={setRefetch} />}
         {value === 1 && <ProfilePic setRefetch={setRefetch} />}
         {value === 2 && <AddressTab setRefetch={setRefetch} />}
         {value === 3 && <Links setRefetch={setRefetch} />}
+        {value === 4 && <JobHistoryForm setRefetch={setRefetch} />}
       </div>
     </div>
   );

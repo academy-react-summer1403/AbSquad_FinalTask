@@ -15,16 +15,18 @@ const CourseBox = ({ func }) => {
 
   return (
     <>
-      {reservedCourses.map((it, index) => {
-        return (
+      {reservedCourses.length === 0 ? (
+        <p>Nothing to map</p>
+      ) : (
+        reservedCourses.map((it, index) => (
           <CourseItems
             key={index}
             func={func}
             statusId={it.accept}
             courseId={it.courseId}
           />
-        );
-      })}
+        ))
+      )}
     </>
   );
 };
