@@ -2,18 +2,22 @@
 import Button from "../../../Common/Button/Button";
 import { BsChatLeftText } from "react-icons/bs";
 import CommentBox from "../../../Common/CommentBox";
-import { GetNewsComments } from "../../../../core/Services/Api/DetailComments/detail.comments.api";
 import { GetCourseComments } from "../../../../core/Services/Api/CourseComments/course.comments.api";
-import { GetCourseCommentsReply } from "../../../../core/Services/Api/CourseCommentsReply/course.reply.api";
-
+import { GetNewsComments } from "../../../../core/Services/Api/NewsComments/detail.comments.api";
+import { LiaCommentMedicalSolid } from "react-icons/lia";
+import { comment } from "postcss";
 const CommentSection = ({
   setCommentModalOpen,
   courseDetail = "",
   newsDetail = "",
+  type = "",
 }) => {
   const [comments, setComments] = useState([]);
-  const [replyComments, setReplyComments] = useState([]);
-  const [replyArray, setReplyArray] = useState([]);
+  const [commentNumber, setCommentNumber] = useState(2);
+  const handleCommentNumbers = (num) => {
+    setCommentNumber(num + 2);
+  };
+  //fetching All Comments
   const handleComments = async (id, type) => {
     if (type == "news") {
       const res = await GetNewsComments(id);
@@ -24,62 +28,26 @@ const CommentSection = ({
       setComments(res);
     }
   };
+  // Only Course
   useEffect(() => {
-    if (newsDetail) {
-      handleComments(newsDetail.id, "news");
-    }
-  }, [newsDetail]);
-
-  //fetching All Comments
-  useEffect(() => {
-    if (courseDetail) {
+    if (courseDetail && type == "course") {
       handleComments(courseDetail.courseId, "course");
     }
   }, [courseDetail]);
-
-  // Fetch Replies FOR COURSES
-
-  const handleReplyComments = async (id, courseId, type) => {
-    // if (type == "news") {
-    //   const res = await GetNewsReplyComments(id);
-    //   setComments(res);
-    // }
-    if (type == "course") {
-      const res = await GetCourseCommentsReply(id, courseId);
-      return res;
-    }
-  };
-  // useEffect(() => {
-  //   if (newsDetail) {
-  //     handleReplyComments(newsDetail.id, "news");
-  //   }
-  // }, [newsDetail]);
-
-  //fetching All Comments
+  // *******************************************************************************
+  // Only News
   useEffect(() => {
-    const array = [];
-    if (comments) {
-      comments.map(async (it, index) => {
-        if (it.acceptReplysCount !== 0) {
-          array.push(
-            ...(await handleReplyComments(it.id, it.courseId, "course"))
-          );
-          setReplyArray(array);
-        }
-      });
+    if (newsDetail && type == "news") {
+      handleComments(newsDetail.id, "news");
     }
-  }, [comments]);
-
-  useEffect(() => {
-    setReplyComments(replyArray);
-  }, [replyArray]);
+  }, [newsDetail]);
 
   return (
     <>
       <div className="flex flex-col my-20 w-full">
         <h1 className="sm:text-[48px] text-3xl mb-9">نظرات</h1>
         {/* Comment Section */}
-        <div className="flex flex-col items-center grayBox p-5 ">
+        <div className="flex flex-col items-center grayBox p-5">
           <Button
             text={"نظر شما"}
             phoneStyle={"w-full sm:text-xl text-base h-10 gap-3 mb-10"}
@@ -92,7 +60,7 @@ const CommentSection = ({
           {comments &&
             comments.map((it, index) => {
               return (
-                <>
+                index < commentNumber && (
                   <CommentBox
                     key={index}
                     name={it.author || it.autor}
@@ -104,14 +72,25 @@ const CommentSection = ({
                     skill={"هیچی"}
                     style={" absolute -right-[30px]"}
                     reply={"no"}
-                    repliedTo={it.acceptReplysCount || it.replyCount}
                     commentId={it.id}
-                    replyComments={replyComments}
+                    courseId={it.courseId}
+                    type={type}
                   />
-                </>
+                )
               );
-              // End Of Reply Section
             })}
+          <Button
+            text={"نمایش بیشتر"}
+            phoneStyle={
+              "w-full !bg-primaryGray !text-primaryBlack lg:text-xl h-10 mt-3"
+            }
+            Icon={LiaCommentMedicalSolid}
+            iconSize="30px"
+            iconStyle="ml-2"
+            onClick={() => {
+              handleCommentNumbers(commentNumber);
+            }}
+          />
         </div>
       </div>
     </>
