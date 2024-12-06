@@ -39,22 +39,22 @@ const RegisterForm = ({ step, stepLogin, handleNext }) => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-  // const FetchProfile = async () => {
-  //   try {
-  //     const ProfileInfo = await GetProfileInfo();
-  //     console.log("profile info clg", ProfileInfo);
-  //     console.log(
-  //       "this is what u dispatched",
-  //       dispatch(setProfileInfo(ProfileInfo))
-  //     );
-  //     dispatch(setProfileInfo(ProfileInfo));
-  //   } catch (error) {
-  //     console.error("Error fetching profile info:", error);
-  //   }
-  // };
-  // useEffect(() => {
-  //   FetchProfile();
-  // }, []);
+  const FetchProfile = async () => {
+    try {
+      const ProfileInfo = await GetProfileInfo();
+      console.log("profile info clg", ProfileInfo);
+      console.log(
+        "this is what u dispatched",
+        dispatch(setProfileInfo(ProfileInfo))
+      );
+      dispatch(setProfileInfo(ProfileInfo));
+    } catch (error) {
+      console.error("Error fetching profile info:", error);
+    }
+  };
+  useEffect(() => {
+    FetchProfile();
+  }, []);
   const onSubmitLogin = async (event) => {
     event.preventDefault();
     const user = { PhoneOrGmail, Password, rememberMe: true };

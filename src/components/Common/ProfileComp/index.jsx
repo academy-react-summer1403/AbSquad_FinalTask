@@ -9,6 +9,8 @@ const ProfileComp = ({
   pic = "",
   nameSize = "",
   skillSize = "",
+  LeftLogo = "",
+  leftLogoStyle = "",
 }) => {
   return (
     <>
@@ -24,11 +26,19 @@ const ProfileComp = ({
           </div>
         </div>
         {/* Names Container */}
-        <div className="flex flex-col justify-start items-start">
-          <div className={`sm:text-xl text-base ${nameSize}`}>{name}</div>
+        <div
+          className={`flex flex-col justify-start items-start ${
+            LeftLogo ? "grow" : ""
+          }`}
+        >
+          <div className={`sm:text-2xl text-base ${nameSize}`}>{name}</div>
           <div>
             <FontGraySmallText text={skill} style={skillSize} />
           </div>
+        </div>
+        {/* A Logo At THe Left Of The Component */}
+        <div className="flex justify-end items-start h-full mt-5">
+          {LeftLogo && <LeftLogo size={24} className={`w-10`} />}
         </div>
       </div>
     </>
