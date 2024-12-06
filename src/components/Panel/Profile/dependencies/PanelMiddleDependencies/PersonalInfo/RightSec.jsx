@@ -32,16 +32,10 @@ const RightSec = () => {
       formData.append("LName", values.lastName);
       formData.append("FName", values.firstName);
       formData.append("UserAbout", values.aboutMe);
-      // formData.append("LinkdinProfile", values.linkdinProfile);
-      // formData.append("TelegramLink", values.telegramLink);
-      // formData.append("ReceiveMessageEvent", values.receiveMessageEvent);
       formData.append("HomeAdderess", values.address);
       formData.append("NationalCode", values.nationalCode);
       formData.append("Gender", values.gender);
       formData.append("BirthDay", "1753-01-01T00:00:00.000Z");
-      // formData.append("Latitude", values.latitude);
-      // formData.append("Longitude", values.longitude);
-      // dispatch(setProfileInfo(values));
       const response = await UpdateProfileInfo(formData);
       console.log("Response:", response);
     } catch (error) {
