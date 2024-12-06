@@ -7,7 +7,7 @@ import { GetAllFavArticle } from "../../../core/Services/Api/Student/AddDeleteFa
 import { GetAllFavCourse } from "../../../core/Services/Api/Student/AddDeleteFavCourse/GetAllCourse.api";
 import { DeleteFavArticle } from "../../../core/Services/Api/Student/AddDeleteFavNews/delete.fav.api";
 import { DeleteFavCourse } from "../../../core/Services/Api/Student/AddDeleteFavCourse/delete.fav.course.api";
-
+import { toast } from "react-hot-toast";
 const LikeDislikeCircle = ({
   Icon,
   iconSize,
@@ -47,11 +47,40 @@ const LikeDislikeCircle = ({
         return it.newsId == id;
       });
       if (foundArticle == undefined) {
-        await AddFavArticle(id);
+        const res = await AddFavArticle(id);
+        if (res?.success) {
+          // Success Toast
+          toast.success("خبر به علاقه مندی ها اضافه شد!", {
+            icon: "🌟", // A star icon for favorites
+            style: {
+              border: "2px solid #4caf50", // Green border for success
+              padding: "16px",
+              color: "#155724", // Dark green text
+              background: "#d4edda", // Light green background
+              borderRadius: "8px", // Rounded corners
+              boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)", // Subtle shadow
+            },
+          });
+        }
       } else if (foundArticle != undefined) {
-        await DeleteFavArticle({
+        const res = await DeleteFavArticle({
           data: { deleteEntityId: foundArticle.favoriteId },
         });
+
+        if (!res?.success) {
+          // Success Toast (with red theme for deletion)
+          toast.success("دوره از علاقه مندی حذف شد!", {
+            icon: "🗑️", // Trash icon for deletion
+            style: {
+              border: "2px solid #f44336", // Red border for success (to indicate deletion)
+              padding: "16px",
+              color: "#721c24", // Dark red text
+              background: "#f8d7da", // Light red background
+              borderRadius: "8px", // Rounded corners
+              boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)", // Subtle shadow
+            },
+          });
+        }
       }
       await handleGetAllFavArticle();
     }
@@ -61,11 +90,39 @@ const LikeDislikeCircle = ({
         return it.courseId == courseId;
       });
       if (foundCourse == undefined) {
-        await AddFavCourse({ courseId: courseId });
+        const res = await AddFavCourse({ courseId: courseId });
+        if (res?.success) {
+          // Success Toast
+          toast.success("دوره به علاقه مندی ها اضافه شد!", {
+            icon: "🌟", // A star icon for favorites
+            style: {
+              border: "2px solid #4caf50", // Green border for success
+              padding: "16px",
+              color: "#155724", // Dark green text
+              background: "#d4edda", // Light green background
+              borderRadius: "8px", // Rounded corners
+              boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)", // Subtle shadow
+            },
+          });
+        }
       } else if (foundCourse != undefined) {
         const formData = new FormData();
         formData.append("CourseFavoriteId", foundCourse.favoriteId);
-        await DeleteFavCourse({ data: formData });
+        const res = await DeleteFavCourse({ data: formData });
+        if (res?.success) {
+          // Success Toast (with red theme for deletion)
+          toast.success("دوره از علاقه مندی حذف شد!", {
+            icon: "🗑️", // Trash icon for deletion
+            style: {
+              border: "2px solid #f44336", // Red border for success (to indicate deletion)
+              padding: "16px",
+              color: "#721c24", // Dark red text
+              background: "#f8d7da", // Light red background
+              borderRadius: "8px", // Rounded corners
+              boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)", // Subtle shadow
+            },
+          });
+        }
       }
       await handleGetAllFavCourse();
     }
