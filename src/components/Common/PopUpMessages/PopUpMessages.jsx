@@ -17,7 +17,7 @@ const PopUpMessages = ({
 }) => {
   return (
     <div
-      className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50 flex-col"
+      className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-99999 flex-col"
       role="alertdialog"
       aria-labelledby="popupTitle"
     >

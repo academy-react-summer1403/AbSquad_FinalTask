@@ -21,59 +21,57 @@ const Header = () => {
   const [tokenExist, setTokenExist] = useState("");
   const student = useSelector((state) => state.userSlice.profile);
 
-  // Ensure Driver.js runs only once
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setTokenExist(token); // Set tokenExist state to the token or null
+  }, []);
+
+  // Fetching Profile
+  const FetchProfile = async () => {
+    if (!tokenExist) return; // Prevent API call if token doesn't exist
+    try {
+      const ProfileInfo = await GetProfileInfo(tokenExist);
+      dispatch(setProfileInfo(ProfileInfo));
+    } catch (error) {
+      console.error("Error fetching profile:", error);
+    }
+  };
+
+  useEffect(() => {
+    FetchProfile();
+  }, [tokenExist]);
+
+  // Initialize Driver.js and Add Steps for Tour
   useEffect(() => {
     const hasRunTour = localStorage.getItem("hasRunTour");
+    const token = localStorage.getItem("token");
 
     if (!hasRunTour) {
-      // Initialize Driver.js
-      const driverObj = driver({
-        showProgress: true,
-        steps: [
-          {
-            element: "#HeaderContainer",
-            popover: {
-              title: "Header",
-              description: "This is the main header.",
-            },
+      const steps = [
+        {
+          element: "#HeaderContainer",
+          popover: {
+            title: "Header",
+            description: "This is the main header.",
           },
-          {
-            element: "#NavLinksContainer",
-            popover: {
-              title: "Navigation Links",
-              description: "These are the navigation links.",
-            },
+        },
+        {
+          element: "#NavLinksContainer",
+          popover: {
+            title: "Navigation Links",
+            description: "These are the navigation links.",
           },
-          {
-            element: "#DarkModeButton",
-            popover: {
-              title: "Dark Mode",
-              description: "Toggle dark mode here.",
-            },
+        },
+        {
+          element: "#DarkModeButton",
+          popover: {
+            title: "Dark Mode",
+            description: "Toggle dark mode here.",
           },
-          {
-            element: "#LoginButton",
-            popover: {
-              title: "Login/Sign Up",
-              description: "Login or register here.",
-            },
-          },
-          {
-            element: "#Exist",
-            popover: {
-              title:
-                "Login/Sign Uasdasdasdajgiruefnjqnwiegthiuerifwjepiworebhiuoivjeoqpeiwbfp",
-              description: "Login or register here.",
-            },
-          },
-        ],
-      });
-      driverObj.drive();
-
-      // Mark tour as completed in localStorage
+        },
+      ];
 
       if (token) {
-        // Add step for existing user
         steps.push({
           element: "#Exist",
           popover: {
@@ -82,7 +80,6 @@ const Header = () => {
           },
         });
       } else {
-        // Add step for login/signup
         steps.push({
           element: "#LoginButton",
           popover: {
@@ -91,29 +88,16 @@ const Header = () => {
           },
         });
       }
+
+      const driverObj = driver({
+        showProgress: true,
+        steps: steps,
+      });
+      driverObj.drive();
+
       localStorage.setItem("hasRunTour", "true");
     }
-  }, []); // Empty dependency array ensures it runs only once after app load
-
-  useEffect(() => {
-    // Checking The Token
-    const token = localStorage.token;
-    setTokenExist(token);
   }, []);
-
-  // Fetching Profile
-  const FetchProfile = async () => {
-    try {
-      const ProfileInfo = await GetProfileInfo(tokenExist);
-      dispatch(setProfileInfo(ProfileInfo));
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    FetchProfile();
-  }, [tokenExist]);
 
   const openNavModal = () => {
     setNavOpen("open");
@@ -166,7 +150,7 @@ const Header = () => {
               />
             </div>
           )}
-          {/* Menu Phone  */}
+          {/* Menu Phone */}
           <div
             id="HambMenuButton"
             className="lg:hidden  h-3/5  w-10 relative after:content-[' '] after:w-4  after:border  after:border-solid after:border-primaryBlack after:absolute after:top-0 after:left-0 after:rounded-t-lg before:content-[' '] before:w-3  before:border  before:border-solid before:border-primaryBlack before:absolute before:bottom-0 before:left-0 before:rounded-t-lg dark:after:border-primaryWhite dark:before:border-primaryWhite"
@@ -176,7 +160,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      {navOpen == "open" && (
+      {navOpen === "open" && (
         <HambMenu
           Component={NavLinkComp}
           navOpen={navOpen}
