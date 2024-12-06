@@ -16,11 +16,12 @@ import { AddReserve } from "../../../core/Services/Api/Student/AddReserve/add.re
 import { GetReserve } from "../../../core/Services/Api/Student/AddReserve/get.reserve.api";
 import { LikeCourse } from "../../../core/Services/Api/LikeDislikeCourseDetail/like.course.api";
 import { DisLikeCourse } from "../../../core/Services/Api/LikeDislikeCourseDetail/dislike.course.api";
-
+import { toast } from "react-hot-toast";
 const RightSide = ({ courseDetail, setReserveModalOpen }) => {
   // Reserve Api **********************************************
   const handleReserveCourse = async (id) => {
-    await AddReserve({ courseId: id });
+    const res = await AddReserve({ courseId: id });
+    console.log(res);
     handleGetReservedCourses();
   };
 
@@ -103,6 +104,18 @@ const RightSide = ({ courseDetail, setReserveModalOpen }) => {
                 handleReserveModalOpen();
                 handleReserveCourse(courseDetail.courseId);
               } else {
+                toast("این دوره رزرو شده!", {
+                  icon: "⚠️", // Warning icon
+                  style: {
+                    border: "2px solid #ffa726", // Orange border
+                    padding: "16px",
+                    color: "#5a5a5a", // Subtle text color
+                    background: "linear-gradient(to right, #fff3e0, #ffcc80)", // Gradient background
+                    fontWeight: "bold",
+                    borderRadius: "10px", // Rounded corners
+                    boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)", // Subtle shadow
+                  },
+                });
               }
             }}
           />
