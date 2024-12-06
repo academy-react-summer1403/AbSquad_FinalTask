@@ -4,6 +4,9 @@ import Licences from "../../components/Landing/Licences";
 import PopularCoursesSection from "./PopularCoursesSection";
 import TeacherSection from "./TeacherSection";
 import ArticlesSection from "./ArticlesSection";
+import { driver } from "driver.js";
+import "driver.js/dist/driver.css";
+
 const LandingApp = () => {
   return (
     <>
