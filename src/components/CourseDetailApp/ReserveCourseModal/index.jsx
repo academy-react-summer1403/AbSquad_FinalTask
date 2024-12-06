@@ -3,7 +3,9 @@ import SuccessBar from "./SuccessBar";
 import ReserveVisual from "./ReserveVisual";
 import { NavLink } from "react-router-dom";
 import Button from "../../Common/Button/Button";
+import { useNavigate } from "react-router-dom";
 const ReserveCourseModal = ({ setReserveModalOpen }) => {
+  const navigate = useNavigate();
   const handleReserveModalClose = () => {
     setReserveModalOpen("close");
   };
@@ -26,6 +28,9 @@ const ReserveCourseModal = ({ setReserveModalOpen }) => {
             <Button
               text={"لیست رزرو های من"}
               phoneStyle={"basis-8/12 h-full max-sm:text-base"}
+              onClick={() => {
+                navigate("/Panel/MyReserve");
+              }}
             />
             <Button
               text={"باشه"}

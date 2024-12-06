@@ -48,10 +48,39 @@ const LikeDislikeCircle = ({
       });
       if (foundArticle == undefined) {
         const res = await AddFavArticle(id);
+        if (res?.success) {
+          // Success Toast
+          toast.success("خبر به علاقه مندی ها اضافه شد!", {
+            icon: "🌟", // A star icon for favorites
+            style: {
+              border: "2px solid #4caf50", // Green border for success
+              padding: "16px",
+              color: "#155724", // Dark green text
+              background: "#d4edda", // Light green background
+              borderRadius: "8px", // Rounded corners
+              boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)", // Subtle shadow
+            },
+          });
+        }
       } else if (foundArticle != undefined) {
-        await DeleteFavArticle({
+        const res = await DeleteFavArticle({
           data: { deleteEntityId: foundArticle.favoriteId },
         });
+
+        if (!res?.success) {
+          // Success Toast (with red theme for deletion)
+          toast.success("دوره از علاقه مندی حذف شد!", {
+            icon: "🗑️", // Trash icon for deletion
+            style: {
+              border: "2px solid #f44336", // Red border for success (to indicate deletion)
+              padding: "16px",
+              color: "#721c24", // Dark red text
+              background: "#f8d7da", // Light red background
+              borderRadius: "8px", // Rounded corners
+              boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)", // Subtle shadow
+            },
+          });
+        }
       }
       await handleGetAllFavArticle();
     }
