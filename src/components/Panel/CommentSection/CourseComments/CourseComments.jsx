@@ -23,14 +23,14 @@ const CourseComments = () => {
   }, []);
 
   return (
-    <div className="h-[640px]">
-      <div className="flex flex-col bg-primaryWhite rounded-2xl p-3 mt-2 mb-5 gap-2">
+    <div className="h-[640px] dark:bg-primaryBlack dark:text-primaryWhite">
+      <div className="flex flex-col bg-primaryWhite rounded-2xl p-3 mt-2 mb-5 gap-2 dark:bg-primaryBlack dark:text-primaryWhite">
         <PageTitle />
-        <div className="flex flex-row gap-3">
+        <div className="flex flex-row gap-3 dark:bg-primaryBlack dark:text-primaryWhite">
           <Header courseComments={courseComments} />
         </div>
       </div>
-      <div className="flex flex-col bg-primaryWhite rounded-2xl p-3">
+      <div className="flex flex-col bg-primaryWhite rounded-2xl p-3 dark:bg-primaryBlack dark:text-primaryWhite">
         <CourseMapping courseComments={courseComments.myCommentsDtos} />
       </div>
     </div>
