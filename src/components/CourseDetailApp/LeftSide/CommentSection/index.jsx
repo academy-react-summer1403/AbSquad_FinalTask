@@ -5,15 +5,19 @@ import CommentBox from "../../../Common/CommentBox";
 import { GetCourseComments } from "../../../../core/Services/Api/CourseComments/course.comments.api";
 import { GetNewsComments } from "../../../../core/Services/Api/NewsComments/detail.comments.api";
 import { LiaCommentMedicalSolid } from "react-icons/lia";
-import { comment } from "postcss";
+import CommentAddModal from "../../../Common/CommentAddModal";
 const CommentSection = ({
-  setCommentModalOpen,
   courseDetail = "",
   newsDetail = "",
   type = "",
+  newsId = "",
 }) => {
   const [comments, setComments] = useState([]);
   const [commentNumber, setCommentNumber] = useState(2);
+  const [commentModalOpen, setCommentModalOpen] = useState("close");
+  useEffect(() => {
+    if (comments) console.log(comments);
+  }, [comments]);
   const handleCommentNumbers = (num) => {
     setCommentNumber(num + 2);
   };
@@ -23,6 +27,7 @@ const CommentSection = ({
       const res = await GetNewsComments(id);
       setComments(res);
     }
+
     if (type == "course") {
       const res = await GetCourseComments(id);
       setComments(res);
@@ -74,6 +79,7 @@ const CommentSection = ({
                     reply={"no"}
                     commentId={it.id}
                     courseId={it.courseId}
+                    newsId={it.newsId}
                     type={type}
                   />
                 )
@@ -92,6 +98,21 @@ const CommentSection = ({
             }}
           />
         </div>
+        {commentModalOpen == "open" && type == "course" && (
+          <CommentAddModal
+            onClickFunc={setCommentModalOpen}
+            modalTitle="نظرات"
+            type="course"
+          />
+        )}
+        {commentModalOpen == "open" && type == "news" && (
+          <CommentAddModal
+            onClickFunc={setCommentModalOpen}
+            modalTitle="نظرات"
+            type="news"
+            newsId={newsId}
+          />
+        )}
       </div>
     </>
   );
