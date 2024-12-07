@@ -11,12 +11,13 @@ const onSuccess = (response) => {
 const onError = (error) => {
   if (error.response) {
     console.error("API Error:", error.response.data);
-    return Promise.reject(error.response.data);
+    return Promise.reject(error.response); // Reject the full error response
   } else {
     console.error("Error:", error.message);
     return Promise.reject({ error: error.message });
   }
 };
+
 instance.interceptors.response.use(onSuccess, onError);
 instance.interceptors.request.use((opt) => {
   const token = localStorage.getItem("token");

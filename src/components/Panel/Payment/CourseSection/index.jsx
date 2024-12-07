@@ -8,7 +8,7 @@ const CourseSection = ({ func }) => {
         {/* Top Of The List */}
         <TopOfList />
         {/* Items Wrapper */}
-        <div className="w-full h-[470px] flex flex-col justify-start items-start flex-nowrap overflow-y-scroll px-5">
+        <div className="w-full h-[360px] flex flex-col justify-start items-start flex-nowrap overflow-y-scroll px-5">
           <CourseBox func={func} />
         </div>
       </div>

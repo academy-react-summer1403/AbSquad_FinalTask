@@ -1,193 +1,66 @@
-﻿import React from "react";
+﻿import React, { useEffect, useState } from "react";
 import { IoEyeOutline } from "react-icons/io5";
 import { motion } from "framer-motion";
 import { LuBookDown } from "react-icons/lu";
 import { RxCross1 } from "react-icons/rx";
 import "react-circular-progressbar/dist/styles.css";
 import ApprovalStatus from "./ApprovalStatus";
+import { GetStudentPayList } from "../../../../../core/Services/Api/Payment/GetPaymeantDATA/StudentGetList";
+import { CourseItems } from "./CourseItems";
 const CourseBox = ({ func }) => {
+  const [payedList, setPayedList] = useState([]);
+  const FetchStudentPayList = async () => {
+    const res = await GetStudentPayList(); // Assuming this returns a Promise
+    console.log(res);
+    setPayedList(Array.isArray(res) ? res : []); // Safely ensure `res` is an array
+  };
+
+  useEffect(() => {
+    FetchStudentPayList();
+  }, []);
+
   return (
     <>
-      {/* Items   */}
-      <motion.div
-        initial={{ scale: 1 }}
-        whileHover={{ scale: 1.01 }}
-        transition={{ duration: 0.1, ease: "linear" }}
-        className="w-full flex flex-row justify-start items-start flex-nowrap border-b py-3 monitor:border-none rounded-2xl hover:bg-primaryGray "
-      >
-        {/* Whole Rect */}
-        <div className="basis-full flex flex-col gap-y-1 monitor:flex-row monitor:items-center">
-          {/* Course Image */}
-          <div className="monitor:basis-[15%] h-full w-12  monitor:pr-5">
-            <img
-              className="w-4/5 h-[72px] rounded-3xl border"
-              src="/ErrImg.jpg"
-              alt=""
-            />
-          </div>
-          {/* Name Of The Course */}
-          <div className="text-base monitor:text-xl monitor:basis-[15%]">
-            ری اکت Js
-          </div>
+      {/* accept
+: 
+true
+courseId
+: 
+"723bf735-e0ad-ef11-b6ed-e2b8c6c9e309"
+courseUserId
+: 
+"bd054868-6eb3-ef11-b6ee-fd09e32c9077"
+groupName
+: 
+"New Group"
+insertDate
+: 
+"2024-12-06T04:37:27.007"
+paid
+: 
+111
+paymentId
+: 
+"fa9bdc74-6eb3-ef11-b6ee-fd09e32c9077"
+paymentInvoiceImage
+: 
+"https://classapi.sepehracademy.ir/\\Files\\Payment\\Screenshot 2024-12-06 024225_39f8f7df-4623-44d5-8cb0-7cc504d1d131.png"
+peymentDate
+: 
+"2024-11-07T00:00:00" */}
 
-          {/* Teachers */}
-          <div className="monitor:basis-[16.9%]">
-            <textarea
-              maxLength={10}
-              readOnly
-              disabled
-              value={"محسن اسفندیاری، مهدی اصغری"}
-              className="text-fontGray text-sm monitor:text-base monitor:text-primaryBlack resize-none bg-transparent monitor:truncate h-7 w-3/4"
-            />
-          </div>
-
-          {/* Date Of Course */}
-          <div className="hidden monitor:flex text-sm text-fontGray monitor:text-primaryBlack monitor:text-base monitor:basis-[15.5%]">
-            25 اردبیهشت 1403
-          </div>
-          {/* Price of Course */}
-          <div className="hidden monitor:flex monitor:text-base monitor:basis-[15%]">
-            <span className="text-xl">1,800,000</span> تومان
-          </div>
-          {/* Sign Up Status */}
-          <div className="">
-            <ApprovalStatus statusId="1" />
-          </div>
-          {/* Icons */}
-          <div className="hidden monitor:flex justify-end  items-center monitor:text-base monitor:grow">
-            {/* Eye Button */}
-            <div className="flex justify-end">
-              <div className="flex justify-center items-center gap-3 h-full rounded-full p-2">
-                <IoEyeOutline
-                  onClick={func}
-                  size="24px"
-                  className="text-fontGray hover:text-primaryBlue cursor-pointer"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </motion.div>
-      {/* Item 2 */}
-      <motion.div
-        initial={{ scale: 1 }}
-        whileHover={{ scale: 1.01 }}
-        transition={{ duration: 0.1, ease: "linear" }}
-        className="w-full flex flex-row justify-start items-start flex-nowrap border-b py-3 monitor:border-none rounded-2xl hover:bg-primaryGray "
-      >
-        {/* Whole Rect */}
-        <div className="basis-full flex flex-col gap-y-1 monitor:flex-row monitor:items-center">
-          {/* Course Image */}
-          <div className="monitor:basis-[15%] h-full w-12  monitor:pr-5">
-            <img
-              className="w-4/5 h-[72px] rounded-3xl border"
-              src="/ErrImg.jpg"
-              alt=""
-            />
-          </div>
-          {/* Name Of The Course */}
-          <div className="text-base monitor:text-xl monitor:basis-[15%]">
-            ری اکت Js
-          </div>
-
-          {/* Teachers */}
-          <div className="monitor:basis-[16.9%]">
-            <textarea
-              maxLength={10}
-              readOnly
-              disabled
-              value={"محسن اسفندیاری، مهدی اصغری"}
-              className="text-fontGray text-sm monitor:text-base monitor:text-primaryBlack resize-none bg-transparent monitor:truncate h-7 w-3/4"
-            />
-          </div>
-
-          {/* Date Of Course */}
-          <div className="hidden monitor:flex text-sm text-fontGray monitor:text-primaryBlack monitor:text-base monitor:basis-[15.5%]">
-            25 اردبیهشت 1403
-          </div>
-          {/* Price of Course */}
-          <div className="hidden monitor:flex monitor:text-base monitor:basis-[15%]">
-            <span className="text-xl">1,800,000</span> تومان
-          </div>
-          {/* Sign Up Status */}
-          <div className="">
-            <ApprovalStatus statusId="2" />
-          </div>
-          {/* Icons */}
-          <div className="hidden monitor:flex justify-end  items-center monitor:text-base monitor:grow">
-            {/* Eye Button */}
-            <div className="flex justify-end">
-              <div className="flex justify-center items-center gap-3 h-full rounded-full p-2">
-                <IoEyeOutline
-                  onClick={func}
-                  size="24px"
-                  className="text-fontGray hover:text-primaryBlue cursor-pointer"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </motion.div>
-      {/* Item3 */}
-      <motion.div
-        initial={{ scale: 1 }}
-        whileHover={{ scale: 1.01 }}
-        transition={{ duration: 0.1, ease: "linear" }}
-        className="w-full flex flex-row justify-start items-start flex-nowrap border-b py-3 monitor:border-none rounded-2xl hover:bg-primaryGray "
-      >
-        {/* Whole Rect */}
-        <div className="basis-full flex flex-col gap-y-1 monitor:flex-row monitor:items-center">
-          {/* Course Image */}
-          <div className="monitor:basis-[15%] h-full w-12  monitor:pr-5">
-            <img
-              className="w-4/5 h-[72px] rounded-3xl border"
-              src="/ErrImg.jpg"
-              alt=""
-            />
-          </div>
-          {/* Name Of The Course */}
-          <div className="text-base monitor:text-xl monitor:basis-[15%]">
-            ری اکت Js
-          </div>
-
-          {/* Teachers */}
-          <div className="monitor:basis-[16.9%]">
-            <textarea
-              maxLength={10}
-              readOnly
-              disabled
-              value={"محسن اسفندیاری، مهدی اصغری"}
-              className="text-fontGray text-sm monitor:text-base monitor:text-primaryBlack resize-none bg-transparent monitor:truncate h-7 w-3/4"
-            />
-          </div>
-
-          {/* Date Of Course */}
-          <div className="hidden monitor:flex text-sm text-fontGray monitor:text-primaryBlack monitor:text-base monitor:basis-[15.5%]">
-            25 اردبیهشت 1403
-          </div>
-          {/* Price of Course */}
-          <div className="hidden monitor:flex monitor:text-base monitor:basis-[15%]">
-            <span className="text-xl">1,800,000</span> تومان
-          </div>
-          {/* Sign Up Status */}
-          <div className="">
-            <ApprovalStatus statusId="3" />
-          </div>
-          {/* Icons */}
-          <div className="hidden monitor:flex justify-end  items-center monitor:text-base monitor:grow">
-            {/* Eye Button */}
-            <div className="flex justify-end">
-              <div className="flex justify-center items-center gap-3 h-full rounded-full p-2">
-                <IoEyeOutline
-                  onClick={func}
-                  size="24px"
-                  className="text-fontGray hover:text-primaryBlue cursor-pointer"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </motion.div>
+      {payedList.length === 0 ? (
+        <p>Nothing to map</p>
+      ) : (
+        payedList.map((it, index) => (
+          <CourseItems
+            key={it.paymentId}
+            groupName={it.groupName}
+            accept={it.accept}
+            paid={it.paid}
+          />
+        ))
+      )}
     </>
   );
 };

@@ -3,7 +3,7 @@ import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import "./LeftSectionField.css";
 import { useSelector } from "react-redux";
-
+import TwoStepVerifcation from "./LeftSecDependencies/TwoStepVerifcation";
 const LeftSection = () => {
   const profile = useSelector((state) => state.userSlice.profile);
   let incompleteFields = 0;
@@ -42,6 +42,7 @@ const LeftSection = () => {
         })}
       />
       <span className="text-[18px]">اطلاعات حساب‌کابری شما تکمیل نیست</span>
+      <TwoStepVerifcation />
     </div>
   );
 };
