@@ -23,15 +23,12 @@ const CourseComments = () => {
   }, []);
 
   return (
-    <div>
-      <div className="flex flex-col bg-primaryWhite rounded-2xl p-3 mt-2 mb-5 gap-2 ">
+    <div className="h-[640px]">
+      <div className="flex flex-col bg-primaryWhite rounded-2xl p-3 mt-2 mb-5 gap-2">
         <PageTitle />
         <div className="flex flex-row gap-3">
           <Header courseComments={courseComments} />
         </div>
-      </div>
-      <div className="flex flex-col bg-primaryWhite rounded-2xl p-3 mb-2">
-        <div>Header sort and filter</div>
       </div>
       <div className="flex flex-col bg-primaryWhite rounded-2xl p-3">
         <CourseMapping courseComments={courseComments.myCommentsDtos} />

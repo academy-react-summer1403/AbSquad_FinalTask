@@ -6,8 +6,9 @@ import Button from "../Common/Button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { TwoStepLogin } from "../../core/Services/Api/AuthPage/TwoStepLogin/TwoStepLogin";
 import { handleToken } from "../../redux/userSlice";
-
+import { useNavigate } from "react-router-dom";
 const VerificationCode = ({ stepLogin, handleNext, step }) => {
+  const navigate = useNavigate();
   const Password = useSelector(
     (state) => state.LoginInforSlice.LoginInfo.Password
   );
@@ -47,6 +48,8 @@ const VerificationCode = ({ stepLogin, handleNext, step }) => {
       const token = res.token;
       localStorage.setItem("token", token);
       dispatch(handleToken(token));
+      navigate("/");
+      navigate("/panel/profile");
     } catch (error) {
       console.error("Error during login:", error.response || error.message);
     }

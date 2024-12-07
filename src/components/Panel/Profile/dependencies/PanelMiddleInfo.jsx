@@ -122,11 +122,36 @@ const PanelMiddleInfo = () => {
       </div>
       <div className="bg-primaryWhite max-md:w-screen dark:bg-primaryBlack dark:!text-primaryWhite ">
         <Tabs value={value} onChange={handleChange}>
-          <Tab label="اطلاعات شخصی" className=" dark:text-primaryWhite " />
-          <Tab label="عکس پروفایل" className=" dark:text-primaryWhite " />
-          <Tab label="آدرس سکونت" className=" dark:text-primaryWhite " />
-          <Tab label="لینک ها" className=" dark:text-primaryWhite " />
-          <Tab label="سابقه کاری" className=" dark:text-primaryWhite " />
+          <Tab
+            label="اطلاعات شخصی"
+            sx={{
+              fontFamily: "IRANYekan",
+            }}
+          />
+          <Tab
+            label="عکس پروفایل"
+            sx={{
+              fontFamily: "IRANYekan",
+            }}
+          />
+          <Tab
+            label="آدرس سکونت"
+            sx={{
+              fontFamily: "IRANYekan",
+            }}
+          />
+          <Tab
+            label="لینک ها"
+            sx={{
+              fontFamily: "IRANYekan",
+            }}
+          />
+          <Tab
+            label="سابقه کاری"
+            sx={{
+              fontFamily: "IRANYekan",
+            }}
+          />
         </Tabs>
         {value === 0 && <PersonalInfo setRefetch={setRefetch} />}
         {value === 1 && <ProfilePic setRefetch={setRefetch} />}

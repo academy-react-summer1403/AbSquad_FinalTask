@@ -23,13 +23,10 @@ const NewsComments = () => {
   }, []);
 
   return (
-    <div>
+    <div className="h-[640px]">
       <div className="flex flex-col bg-primaryWhite rounded-2xl p-3 mt-2 mb-5">
         <PageTitle />
         <Header newsComments={newsComments} />
-      </div>
-      <div className="flex flex-col bg-primaryWhite rounded-2xl p-3 mb-2">
-        <div>Header sort and filter</div>
       </div>
       <div className="flex flex-col bg-primaryWhite rounded-2xl p-3">
         <NewsMapping newsComments={newsComments.myNewsCommetDtos} />

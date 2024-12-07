@@ -1,10 +1,10 @@
 import React from "react";
 import JobHistoryForm from "./dependencies/JobHistoryForm";
 
-const RightSection = () => {
+const RightSection = ({ triggerRefetch }) => {
   return (
     <div className="px-5">
-      <JobHistoryForm />
+      <JobHistoryForm triggerRefetch={triggerRefetch} />
     </div>
   );
 };

@@ -52,6 +52,8 @@ const RegisterForm = ({ step, stepLogin, handleNext }) => {
       const MessageRes = res.message;
       setResMessage(MessageRes);
       console.log(MessageRes);
+      const id = res.id;
+      localStorage.setItem("id", id);
 
       // Handle token if it exists
       if (res.token != null) {
@@ -68,6 +70,8 @@ const RegisterForm = ({ step, stepLogin, handleNext }) => {
 
       // Handle success if no token
       if (res.success) {
+        const id = res.id;
+        localStorage.setItem("id", id);
         console.log("ersal shod");
         handleNext(); // Call handleNext
         toast.success(MessageRes); // Use the message from the response

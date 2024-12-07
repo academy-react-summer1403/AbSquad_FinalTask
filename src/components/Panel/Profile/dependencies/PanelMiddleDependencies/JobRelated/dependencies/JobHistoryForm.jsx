@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import axios from "axios";
 import Button from "../../../../../../Common/Button/Button";
 import { CreateJobHistory } from "../../../../../../../core/Services/Api/Panel/JobRelated/CreateJobHistory";
+import toast from "react-hot-toast";
 const validationSchema = Yup.object({
   jobTitle: Yup.string().required("عنوان شغل الزامی است"),
   aboutJob: Yup.string().required("توضیحات شغل الزامی است"),
@@ -17,12 +18,17 @@ const validationSchema = Yup.object({
   companyName: Yup.string().required("نام شرکت الزامی است"),
 });
 
-const JobHistoryForm = () => {
-  const [datatoSend, setDatatoSend] = useState("");
+const JobHistoryForm = ({ triggerRefetch }) => {
   const CreateJobHistoryAPI = async (values) => {
-    const res = await CreateJobHistory(values);
-    console.log(res);
-    console.log("first");
+    try {
+      const res = await CreateJobHistory(values);
+      console.log(res);
+      toast.success("با موفقیت شغل شما اضافه شد");
+      triggerRefetch(); // Trigger re-fetch in LeftSection
+    } catch (error) {
+      toast.error("خطا در اضافه کردن شغل");
+      console.error(error);
+    }
   };
   return (
     <Formik
@@ -41,6 +47,7 @@ const JobHistoryForm = () => {
         console.log(values);
         console.log("first");
         CreateJobHistoryAPI(values);
+        toast.success("با موفقیت شغل شما اضافه شد");
       }}
     >
       {({ errors, touched, setFieldValue }) => (

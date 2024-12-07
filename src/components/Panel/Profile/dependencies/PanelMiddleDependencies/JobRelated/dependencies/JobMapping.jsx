@@ -5,7 +5,7 @@ import { GetJobHistoryForUser } from "../../../../../../../core/Services/Api/Pan
 import { DeleteJobAPI } from "../../../../../../../core/Services/Api/Panel/JobRelated/DeleteJob";
 import CustomModal from "../../../../../../Common/Modal/CustomModal";
 import { EditJobAPI } from "../../../../../../../core/Services/Api/Panel/JobRelated/EditJob";
-const JobMapping = () => {
+const JobMapping = (refetch) => {
   const [jobLists, setJobLists] = useState([]);
   const [selectedJob, setSelectedJob] = useState(null); // Job to edit
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -24,7 +24,7 @@ const JobMapping = () => {
 
   useEffect(() => {
     FetchJobHistoryAPI();
-  }, []);
+  }, [refetch]); // Re-fetch when refetch state changes
   const EditAPIcall = async (SendData) => {
     const res = await EditJobAPI(SendData);
     console.log(res);
