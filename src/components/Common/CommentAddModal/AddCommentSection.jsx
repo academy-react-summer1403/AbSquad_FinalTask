@@ -6,9 +6,32 @@ import { Field, Form, Formik } from "formik";
 import { useParams } from "react-router-dom";
 import { AddCourseComments } from "../../../core/Services/Api/CourseComments/add.comment.api";
 import { toast } from "react-hot-toast";
+import { useSelector, useDispatch } from "react-redux";
 const AddCommentSection = ({ type = "" }) => {
   const { CourseId } = useParams();
+  const dispatch = useDispatch();
+  // Token Getting And Check
+  const [tokenExist, setTokenExist] = useState("");
+  const student = useSelector((state) => state.userSlice.profile);
+  useEffect(() => {
+    // Checking The Token
+    const token = localStorage.token;
+    setTokenExist(token);
+    // Getting Student Info
+  }, []);
+  // Fetching Profile
+  const FetchProfile = async () => {
+    try {
+      const ProfileInfo = await GetProfileInfo(tokenExist);
+      dispatch(setProfileInfo(ProfileInfo));
+    } catch {
+      console.error(error);
+    }
+  };
 
+  useEffect(() => {
+    FetchProfile();
+  }, [tokenExist]);
   const handleAddComment = async (data) => {
     const res = await AddCourseComments(data);
     if (res?.status == "success") {
@@ -40,7 +63,12 @@ const AddCommentSection = ({ type = "" }) => {
     <div className="flex flex-col items-start justify-center w-full">
       {/* Profile Pic */}
       <div className="flex justify-start w-full">
-        <ProfileComp name={"Marcus Wrench"} skill={"Goddamn Wrenched"} />
+        <ProfileComp
+          name={`${student.fName} ${student.lName}`}
+          reply="hel"
+          skill="دانشجو"
+          pic={student.currentPictureAddress}
+        />
       </div>
 
       {/* Sending Section And FORM */}

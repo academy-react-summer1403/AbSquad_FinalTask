@@ -1,7 +1,7 @@
 ﻿import React, { useEffect, useState } from "react";
-import CommentBox from "../CommentBox";
 import AddCommentSection from "./AddCommentSection";
 import ModalTitles from "../ModalTitles";
+
 const CommentAddModal = ({ onClickFunc, modalTitle, type = "" }) => {
   return (
     <>
