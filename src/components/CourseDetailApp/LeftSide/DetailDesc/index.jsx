@@ -1,5 +1,7 @@
 ﻿import React, { useEffect, useState } from "react";
 import SummarizerPopUp from "../../../Common/SummarizerPopUp";
+import axios from "axios";
+import { useParams, useSearchParams, useLocation } from "react-router-dom";
 
 const DetailDesc = ({ title, desc }) => {
   const [summedText, setSummedText] = useState("");
@@ -19,6 +21,8 @@ const DetailDesc = ({ title, desc }) => {
         <h2 className="sm:text-xl text-base">
           {orgOrSum == "org" ? desc : summedText}
         </h2>
+        {/* start of Session khoda rahm kone */}
+        <div></div>
       </div>
     </>
   );

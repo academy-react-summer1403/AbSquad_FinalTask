@@ -43,6 +43,7 @@ const LeftSection = ({
             stepLogin={stepLogin}
             step={step}
             handleNext={handleNext}
+            stepForgot={stepForgot}
           />
         )}
       </div>
