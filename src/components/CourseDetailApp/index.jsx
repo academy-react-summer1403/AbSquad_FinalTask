@@ -3,7 +3,6 @@ import RightSide from "./RightSide";
 import LeftSide from "./LeftSide";
 import { useParams } from "react-router-dom";
 import { GetCourseDetail } from "../../core/Services/Api/CourseDetail/course.detail.api";
-import CommentAddModal from "../Common/CommentAddModal";
 import CourseImgCon from "../../components/Common/MainCourseBox/ImageContainer.jsx";
 import CourseInfo from "../../components/Common/MainCourseBox/Info";
 import MainBox from "../Common/MainCourseBox";
@@ -13,7 +12,6 @@ import ReserveCourseModal from "./ReserveCourseModal";
 const CourseDetailApp = () => {
   const { CourseId } = useParams();
   const [courseDetail, setCourseDetail] = useState({});
-  const [commentModalOpen, setCommentModalOpen] = useState("close");
   const [reserveModalOpen, setReserveModalOpen] = useState("close");
   const [otherCourses, setOtherCourses] = useState([]);
 
@@ -46,10 +44,7 @@ const CourseDetailApp = () => {
           setReserveModalOpen={setReserveModalOpen}
           courseDetail={courseDetail}
         />
-        <LeftSide
-          setCommentModalOpen={setCommentModalOpen}
-          courseDetail={courseDetail}
-        />
+        <LeftSide courseDetail={courseDetail} />
         {/* Other Courses */}
       </div>
       <div className="">
@@ -72,9 +67,7 @@ const CourseDetailApp = () => {
       </div>
 
       {/* Add Comment Modal  */}
-      {commentModalOpen == "open" && (
-        <CommentAddModal onClickFunc={setCommentModalOpen} modalTitle="نظرات" />
-      )}
+
       {reserveModalOpen == "open" && (
         <ReserveCourseModal setReserveModalOpen={setReserveModalOpen} />
       )}

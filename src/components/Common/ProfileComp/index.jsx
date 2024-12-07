@@ -5,7 +5,7 @@ const ProfileComp = ({
   name,
   skill,
   style,
-  reply,
+  reply = "",
   pic = "",
   nameSize = "",
   skillSize = "",
@@ -20,7 +20,7 @@ const ProfileComp = ({
         {/* Profile Container*/}
         <div className="h-14 w-14">
           <div className="border rounded-full bg-primaryGray w-full h-full overflow-hidden">
-            <img src={pic} alt="" />
+            <img src={pic ? pic : "/ErrImg.jpg"} alt="" />
           </div>
         </div>
         {/* Names Container */}

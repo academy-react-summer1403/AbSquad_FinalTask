@@ -10,6 +10,7 @@ import { DeleteFavCourse } from "../../../../../core/Services/Api/Student/AddDel
 import { GetAllFavCourse } from "../../../../../core/Services/Api/Student/AddDeleteFavCourse/GetAllCourse.api";
 import PopUpMessages from "../../../../Common/PopUpMessages/PopUpMessages";
 import { BsTrash3 } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 const CourseItems = ({
   func,
   courseId,
@@ -18,6 +19,7 @@ const CourseItems = ({
   favId,
   handleGetAllFavCourse,
 }) => {
+  const nav = useNavigate();
   const [detailCourse, setDetailCourse] = useState({});
   const [favCourse, setFavCourse] = useState([]);
 
@@ -107,7 +109,9 @@ const CourseItems = ({
               <div className="flex justify-end">
                 <div className="flex justify-center items-center gap-3 h-full rounded-full p-2">
                   <IoEyeOutline
-                    onClick={func}
+                    onClick={() => {
+                      nav(`/CourseDetail/CourseId=${detailCourse.courseId}`);
+                    }}
                     size="24px"
                     className="text-fontGray hover:text-primaryBlue cursor-pointer"
                   />

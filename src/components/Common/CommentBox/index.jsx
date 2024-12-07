@@ -20,6 +20,7 @@ const CommentBox = ({
   reply = "",
   courseId = "",
   commentId = "",
+  newsId = "",
   type = "",
 }) => {
   const [replyComments, setReplyComments] = useState([]);

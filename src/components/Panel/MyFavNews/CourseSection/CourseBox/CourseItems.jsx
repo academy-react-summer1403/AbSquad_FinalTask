@@ -8,6 +8,7 @@ import { handleDateFormat } from "../../../../../core/utilities/DateConverter/da
 import { DeleteFavArticle } from "../../../../../core/Services/Api/Student/AddDeleteFavNews/delete.fav.api";
 import PopUpMessages from "../../../../Common/PopUpMessages/PopUpMessages";
 import { BsTrash3 } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 const CourseItems = ({
   func,
   newsId,
@@ -52,6 +53,7 @@ const CourseItems = ({
       setIsOpen("deactive");
     },
   };
+  const nav = useNavigate();
   return (
     <>
       <motion.div
@@ -104,7 +106,9 @@ const CourseItems = ({
               <div className="flex justify-end">
                 <div className="flex justify-center items-center gap-3 h-full rounded-full p-2">
                   <IoEyeOutline
-                    onClick={func}
+                    onClick={() => {
+                      nav(`/NewsPageDetail/${newsId}`);
+                    }}
                     size="24px"
                     className="text-fontGray hover:text-primaryBlue cursor-pointer"
                   />

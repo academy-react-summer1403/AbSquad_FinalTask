@@ -6,7 +6,10 @@ import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import { GetMyCourse } from "../../../../../core//Services//Api/Student/MyCourse/get.myCourses.api";
 import { getTeacherDetail } from "../../../../../core/Services/Api/GetTeacherDetail/teacher.detail.api";
 import "react-circular-progressbar/dist/styles.css";
+import { useNavigate } from "react-router-dom";
+
 const CourseBox = ({ func }) => {
+  const nav = useNavigate();
   const [parameters, setParameters] = useState({
     PageNumber: 1,
     RowsOfPage: 10,
@@ -120,7 +123,9 @@ const CourseBox = ({ func }) => {
                   <div className="flex justify-end">
                     <div className="flex justify-center items-center gap-3 h-full rounded-full p-2">
                       <IoEyeOutline
-                        onClick={func}
+                        onClick={() => {
+                          nav(`/CourseDetail/CourseId=${it.courseId}`);
+                        }}
                         size="24px"
                         className="text-fontGray hover:text-primaryBlue cursor-pointer"
                       />
