@@ -6,6 +6,8 @@ import { Field, Form, Formik } from "formik";
 import { useParams } from "react-router-dom";
 import { AddCourseComments } from "../../../core/Services/Api/CourseComments/add.comment.api";
 import { toast } from "react-hot-toast";
+import { setProfileInfo } from "../../../redux/userSlice";
+import { GetProfileInfo } from "../../../core/Services/Api/Panel/GetProfileInfo";
 import { useSelector, useDispatch } from "react-redux";
 const AddCommentSection = ({ type = "" }) => {
   const { CourseId } = useParams();
@@ -33,30 +35,38 @@ const AddCommentSection = ({ type = "" }) => {
     FetchProfile();
   }, [tokenExist]);
   const handleAddComment = async (data) => {
-    const res = await AddCourseComments(data);
-    if (res?.status == "success") {
-      // Show success toast if the comment is successfully added
-      toast.success("Your comment was successfully submitted!", {
-        duration: 3000, // Duration of the toast in ms
-        position: "top-right", // Position of the toast
-        style: {
-          background: "#4BB543", // Green background for success
-          color: "#fff", // White text
-          borderRadius: "8px", // Rounded corners
-          padding: "12px", // Padding inside the toast
-          fontSize: "16px", // Font size
-          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Shadow effect
-        },
-      });
+    if (type == "course") {
+      const res = await AddCourseComments(data);
+      if (res?.status == "success") {
+        // Show success toast if the comment is successfully added
+        toast.success("Your comment was successfully submitted!", {
+          duration: 3000, // Duration of the toast in ms
+          position: "top-right", // Position of the toast
+          style: {
+            background: "#4BB543", // Green background for success
+            color: "#fff", // White text
+            borderRadius: "8px", // Rounded corners
+            padding: "12px", // Padding inside the toast
+            fontSize: "16px", // Font size
+            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Shadow effect
+          },
+        });
+      }
+    } else {
+      const res = await AddCourseComments(data);
     }
   };
 
   const handleSubmit = (values) => {
-    const formData = new FormData();
-    formData.append("CourseId", CourseId.split("=")[1]);
-    formData.append("Title", values.commentTitle);
-    formData.append("Describe", values.mainComment);
-    handleAddComment(formData);
+    if (type == "course") {
+      const formData = new FormData();
+      formData.append("CourseId", CourseId.split("=")[1]);
+      formData.append("Title", values.commentTitle);
+      formData.append("Describe", values.mainComment);
+      handleAddComment(formData);
+    } else {
+      // handleAddComment({...values});
+    }
   };
 
   return (

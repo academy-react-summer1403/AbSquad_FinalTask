@@ -5,7 +5,7 @@ const ProfileComp = ({
   name,
   skill,
   style,
-  reply,
+  reply = "",
   pic = "",
   nameSize = "",
   skillSize = "",
