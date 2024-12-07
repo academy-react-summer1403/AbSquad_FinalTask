@@ -6,7 +6,7 @@ const ListSection = ({ courseList, totalCourses }) => {
   return (
     <>
       {/* The List */}
-      <div className="flex flex-col justify-start items-center gap-y-5">
+      <div className="flex flex-col justify-start items-center gap-y-5 ">
         {/* Top Of The List */}
         <TopOfList />
         {/* Items Wrapper */}

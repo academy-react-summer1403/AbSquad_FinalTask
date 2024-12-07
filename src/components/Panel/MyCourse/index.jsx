@@ -16,7 +16,7 @@ const MyCourse = () => {
   };
   return (
     <>
-      <div className="flex flex-col my-10 gap-5">
+      <div className="flex flex-col my-10 gap-5 dark:bg-primaryBlack dark:text-white rounded-2xl p-2">
         <PageTitle handleOpenFilter={handleOpenFilter} />
         <FilterSection phoneStyle={"!hidden 2xl:!flex"} />
         <CourseSection func={handleOpenAll} />

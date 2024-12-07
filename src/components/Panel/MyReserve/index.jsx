@@ -16,7 +16,7 @@ const MyReserve = () => {
   };
   return (
     <>
-      <div className="flex flex-col my-10 gap-5">
+      <div className="flex flex-col my-10 gap-5 dark:bg-primaryBlack dark:text-white p-2 rounded-2xl">
         <PageTitle handleOpenFilter={handleOpenFilter} />
         <FilterSection phoneStyle={"!hidden 2xl:!flex"} />
         <CourseSection func={handleOpenAll} />
