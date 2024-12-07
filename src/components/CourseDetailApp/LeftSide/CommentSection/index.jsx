@@ -6,7 +6,12 @@ import { GetCourseComments } from "../../../../core/Services/Api/CourseComments/
 import { GetNewsComments } from "../../../../core/Services/Api/NewsComments/detail.comments.api";
 import { LiaCommentMedicalSolid } from "react-icons/lia";
 import CommentAddModal from "../../../Common/CommentAddModal";
-const CommentSection = ({ courseDetail = "", newsDetail = "", type = "" }) => {
+const CommentSection = ({
+  courseDetail = "",
+  newsDetail = "",
+  type = "",
+  newsId = "",
+}) => {
   const [comments, setComments] = useState([]);
   const [commentNumber, setCommentNumber] = useState(2);
   const [commentModalOpen, setCommentModalOpen] = useState("close");
@@ -93,11 +98,19 @@ const CommentSection = ({ courseDetail = "", newsDetail = "", type = "" }) => {
             }}
           />
         </div>
-        {commentModalOpen == "open" && (
+        {commentModalOpen == "open" && type == "course" && (
           <CommentAddModal
             onClickFunc={setCommentModalOpen}
             modalTitle="نظرات"
             type="course"
+          />
+        )}
+        {commentModalOpen == "open" && type == "news" && (
+          <CommentAddModal
+            onClickFunc={setCommentModalOpen}
+            modalTitle="نظرات"
+            type="news"
+            newsId={newsId}
           />
         )}
       </div>

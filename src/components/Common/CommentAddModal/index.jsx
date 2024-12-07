@@ -2,7 +2,12 @@
 import AddCommentSection from "./AddCommentSection";
 import ModalTitles from "../ModalTitles";
 
-const CommentAddModal = ({ onClickFunc, modalTitle, type = "" }) => {
+const CommentAddModal = ({
+  onClickFunc,
+  modalTitle,
+  type = "",
+  newsId = "",
+}) => {
   return (
     <>
       {/* White Div */}
@@ -13,7 +18,7 @@ const CommentAddModal = ({ onClickFunc, modalTitle, type = "" }) => {
           <ModalTitles modalTitle={modalTitle} onClickFunc={onClickFunc} />
           {/* Comments */}
 
-          <AddCommentSection type={type} />
+          <AddCommentSection type={type} newsId={newsId} />
         </div>
       </div>
     </>

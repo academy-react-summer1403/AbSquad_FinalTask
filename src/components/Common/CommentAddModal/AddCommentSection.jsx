@@ -3,14 +3,13 @@ import ProfileComp from "../ProfileComp";
 import { PiPaperPlaneTiltLight } from "react-icons/pi";
 import { SlEmotsmile } from "react-icons/sl";
 import { Field, Form, Formik } from "formik";
-import { useParams } from "react-router-dom";
 import { AddCourseComments } from "../../../core/Services/Api/CourseComments/add.comment.api";
 import { toast } from "react-hot-toast";
 import { setProfileInfo } from "../../../redux/userSlice";
 import { GetProfileInfo } from "../../../core/Services/Api/Panel/GetProfileInfo";
 import { useSelector, useDispatch } from "react-redux";
-const AddCommentSection = ({ type = "" }) => {
-  const { CourseId } = useParams();
+import { AddNewsComments } from "../../../core/Services/Api/NewsComments/add.comment.api";
+const AddCommentSection = ({ type = "", newsId = "" }) => {
   const dispatch = useDispatch();
   // Token Getting And Check
   const [tokenExist, setTokenExist] = useState("");
@@ -53,7 +52,8 @@ const AddCommentSection = ({ type = "" }) => {
         });
       }
     } else {
-      const res = await AddCourseComments(data);
+      const res = await AddNewsComments(data);
+      console.log(res);
     }
   };
 
@@ -65,7 +65,13 @@ const AddCommentSection = ({ type = "" }) => {
       formData.append("Describe", values.mainComment);
       handleAddComment(formData);
     } else {
-      // handleAddComment({...values});
+      handleAddComment({
+        title: values.commentTitle,
+        describe: values.mainComment,
+        newsId: newsId,
+        userId: localStorage.getItem("id"),
+        userIpAddress: "192.168.1.1",
+      });
     }
   };
 
