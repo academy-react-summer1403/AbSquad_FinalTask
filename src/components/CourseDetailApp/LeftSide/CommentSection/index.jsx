@@ -5,7 +5,7 @@ import CommentBox from "../../../Common/CommentBox";
 import { GetCourseComments } from "../../../../core/Services/Api/CourseComments/course.comments.api";
 import { GetNewsComments } from "../../../../core/Services/Api/NewsComments/detail.comments.api";
 import { LiaCommentMedicalSolid } from "react-icons/lia";
-import { comment } from "postcss";
+
 const CommentSection = ({
   setCommentModalOpen,
   courseDetail = "",
@@ -14,6 +14,9 @@ const CommentSection = ({
 }) => {
   const [comments, setComments] = useState([]);
   const [commentNumber, setCommentNumber] = useState(2);
+  useEffect(() => {
+    if (comments) console.log(comments);
+  }, [comments]);
   const handleCommentNumbers = (num) => {
     setCommentNumber(num + 2);
   };
@@ -23,6 +26,7 @@ const CommentSection = ({
       const res = await GetNewsComments(id);
       setComments(res);
     }
+
     if (type == "course") {
       const res = await GetCourseComments(id);
       setComments(res);
@@ -74,6 +78,7 @@ const CommentSection = ({
                     reply={"no"}
                     commentId={it.id}
                     courseId={it.courseId}
+                    newsId={it.newsId}
                     type={type}
                   />
                 )
