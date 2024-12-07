@@ -1,4 +1,5 @@
 ﻿import { path } from "framer-motion/client";
+import AuthRoute from "../core/utilities/AuthCheck/AuthRoute.jsx";
 import {
   Root,
   LandingPage,
@@ -19,6 +20,7 @@ import {
   MyReserve,
   MyFavNews,
   Payment,
+  CommentSectionMain,
 } from "../core/utilities/Routes/routes.utils.js";
 import { Children } from "react";
 export const PageRoutes = [
@@ -58,7 +60,11 @@ export const PageRoutes = [
   },
   {
     path: "/Panel",
-    element: <RootPanel />,
+    element: (
+      <AuthRoute>
+        <RootPanel />
+      </AuthRoute>
+    ),
     children: [
       {
         path: "/Panel/Profile",
@@ -87,6 +93,10 @@ export const PageRoutes = [
       {
         path: "/Panel/MyReserve",
         element: <MyReserve />,
+      },
+      {
+        path: "/Panel/Comments",
+        element: <CommentSectionMain />,
       },
     ],
   },

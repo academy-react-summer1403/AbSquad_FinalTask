@@ -12,6 +12,7 @@ const ExitingAlert = () => {
   };
 
   const handleConfirmExit = () => {
+    localStorage.clear();
     navigate("/");
   };
 
