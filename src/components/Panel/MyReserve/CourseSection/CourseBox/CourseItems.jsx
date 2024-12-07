@@ -8,7 +8,9 @@ import { handleDateFormat } from "../../../../../core/utilities/DateConverter/da
 import { Formik, Form, Field } from "formik";
 import ReactModal from "react-modal";
 import { PaymentFirstStep } from "../../../../../core/Services/Api/Payment/StudentPaymentSteps/PaymentFirstStep";
+import { useNavigate } from "react-router-dom";
 const CourseItems = ({ func, statusId, courseId }) => {
+  const nav = useNavigate();
   const [courseDetail, setCourseDetail] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
 
@@ -101,7 +103,9 @@ const CourseItems = ({ func, statusId, courseId }) => {
               <div className="flex justify-end">
                 <div className="flex justify-center items-center gap-3 h-full rounded-full p-2">
                   <IoEyeOutline
-                    onClick={func}
+                    onClick={() => {
+                      nav(`/CourseDetail/CourseId=${courseId}`);
+                    }}
                     size="24px"
                     className="text-fontGray hover:text-primaryBlue cursor-pointer"
                   />
