@@ -5,15 +5,11 @@ import CommentBox from "../../../Common/CommentBox";
 import { GetCourseComments } from "../../../../core/Services/Api/CourseComments/course.comments.api";
 import { GetNewsComments } from "../../../../core/Services/Api/NewsComments/detail.comments.api";
 import { LiaCommentMedicalSolid } from "react-icons/lia";
-
-const CommentSection = ({
-  setCommentModalOpen,
-  courseDetail = "",
-  newsDetail = "",
-  type = "",
-}) => {
+import CommentAddModal from "../../../Common/CommentAddModal";
+const CommentSection = ({ courseDetail = "", newsDetail = "", type = "" }) => {
   const [comments, setComments] = useState([]);
   const [commentNumber, setCommentNumber] = useState(2);
+  const [commentModalOpen, setCommentModalOpen] = useState("close");
   useEffect(() => {
     if (comments) console.log(comments);
   }, [comments]);
@@ -97,6 +93,13 @@ const CommentSection = ({
             }}
           />
         </div>
+        {commentModalOpen == "open" && (
+          <CommentAddModal
+            onClickFunc={setCommentModalOpen}
+            modalTitle="نظرات"
+            type="course"
+          />
+        )}
       </div>
     </>
   );
