@@ -2,7 +2,7 @@
 import Button from "../../Common/Button/Button";
 const PageTitle = ({ handleOpenFilter }) => {
   return (
-    <div className="flex justify-between w-full mb-7">
+    <div className="flex justify-between w-full mb-7 dark:bg-primaryBlack dark:text-white">
       <h1 className="2xl:text-4xl text-2xl">علاقه‌مندی دوره</h1>
       <Button
         text={"فیلتر"}

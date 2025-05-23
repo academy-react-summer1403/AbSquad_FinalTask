@@ -3,8 +3,8 @@
 const TopOfList = () => {
   return (
     <>
-      <div className="hidden w-full monitor:flex justify-between rounded-2xl h-12 px-5">
-        <div className="hidden w-full monitor:flex monitor:flex-row justify-start items-center bg-[#F0F0F0] rounded-2xl h-12  text-fontGray">
+      <div className="hidden w-full monitor:flex justify-between rounded-2xl h-12 px-5 dark:bg-primaryBlack dark:text-white">
+        <div className="hidden w-full monitor:flex monitor:flex-row justify-start items-center bg-[#F0F0F0] rounded-2xl h-12  text-fontGray ">
           <span className="monitor:basis-[15%] pr-5">#</span>
           <span className="monitor:basis-[15%] text-right">نام دوره</span>
           <span className="monitor:basis-[16.66666%] basis-30">

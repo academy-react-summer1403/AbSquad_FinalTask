@@ -8,10 +8,16 @@ const CommentSectionMain = () => {
     setValue(newValue);
   };
   return (
-    <div>
+    <div className="dark:bg-primaryBlack dark:text-primaryWhite mt-3 rounded-e-xl">
       <Tabs value={value} onChange={handleChange}>
-        <Tab label="بخش اخبار" className=" dark:text-primaryWhite " />
-        <Tab label="بخش دوره ها" className=" dark:text-primaryWhite " />
+        <Tab
+          label="بخش اخبار"
+          className="  dark:bg-primaryBlack dark:text-primaryWhite rounded-2xl"
+        />
+        <Tab
+          label="بخش دوره ها"
+          className=" dark:bg-primaryBlack dark:text-primaryWhite rounded-2xl"
+        />
       </Tabs>
       {value === 0 && <NewsComments />}
       {value === 1 && <CourseComments />}

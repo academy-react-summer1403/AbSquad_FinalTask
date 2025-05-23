@@ -23,12 +23,12 @@ const NewsComments = () => {
   }, []);
 
   return (
-    <div className="h-[640px]">
-      <div className="flex flex-col bg-primaryWhite rounded-2xl p-3 mt-2 mb-5">
+    <div className="h-[640px] dark:bg-primaryBlack dark:text-primaryWhite">
+      <div className="flex flex-col bg-primaryWhite rounded-2xl p-3 mt-2 mb-5 dark:bg-primaryBlack dark:text-primaryWhite">
         <PageTitle />
         <Header newsComments={newsComments} />
       </div>
-      <div className="flex flex-col bg-primaryWhite rounded-2xl p-3">
+      <div className="flex flex-col bg-primaryWhite rounded-2xl p-3 dark:bg-primaryBlack dark:text-primaryWhite">
         <NewsMapping newsComments={newsComments.myNewsCommetDtos} />
       </div>
     </div>

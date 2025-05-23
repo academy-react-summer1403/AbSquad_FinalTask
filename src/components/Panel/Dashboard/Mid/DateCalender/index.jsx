@@ -10,7 +10,7 @@ const DashCalender = () => {
         <Calendar
           defaultValue={calendarValue}
           onChange={(e) => setCalendarValue(new Date(e.value))}
-          className={Style.Datewrapper}
+          className={`${Style.Datewrapper} dark:bg-primaryBlack dark:text-white`}
         />
       </CalendarProvider>
     </>

@@ -18,7 +18,7 @@ const Time = () => {
     return time;
   };
   return (
-    <div className="basis-1/2 2xl:basis-52">
+    <div className="basis-1/2 2xl:basis-52 dark:bg-primaryBlack dark:text-primaryWhite">
       <DateTimeComp
         title={"ساعت"}
         Icon={GoClock}

@@ -3,8 +3,8 @@
 const TopOfList = ({ modal = "off" }) => {
   return (
     <>
-      <div className="hidden w-full 2xl:flex justify-between rounded-2xl h-12 px-5">
-        <div className="hidden w-full 2xl:grid 2xl:grid-cols-7 justify-start bg-[#F0F0F0] rounded-2xl h-12 2xl:gap-x-10 items-center text-fontGray">
+      <div className="hidden w-full 2xl:flex justify-between rounded-2xl h-12 px-5 dark:bg-primaryBlack dark:text-primaryWhite">
+        <div className="hidden w-full 2xl:grid 2xl:grid-cols-7 justify-start bg-[#F0F0F0] rounded-2xl h-12 2xl:gap-x-10 items-center text-fontGray dark:bg-primaryBlack dark:text-primaryWhite">
           <span className="text-right pr-5 ">نام دوره</span>
           <span className={modal == "off" ? "col-span-2" : "col-span-1"}>
             درباره دوره

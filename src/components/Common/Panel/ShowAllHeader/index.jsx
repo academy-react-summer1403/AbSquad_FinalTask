@@ -9,7 +9,7 @@ const ShowAllHeader = ({ title, funcs }) => {
   };
   return (
     <>
-      <div className="w-full flex flex-row justify-between px-5">
+      <div className="w-full flex flex-row justify-between px-5 dark:bg-primaryBlack dark:text-primaryWhite">
         <span className="text-base 2xl:text-2xl">{title}</span>
         <button className="flex items-start justify-center text-primaryBlue">
           <span

@@ -89,15 +89,15 @@ const PanelTopBar = () => {
 
       {/* Modal for displaying course details */}
       {isModalOpen && (
-        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white w-3/4 max-h-3/4 overflow-y-auto p-5 rounded-lg">
-            <h2 className="text-xl font-bold mb-4">Course Details</h2>
-            <table className="w-full border-collapse border border-gray-200">
+        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center ">
+          <div className="bg-white w-[600px] max-h-3/4 overflow-y-auto p-5 rounded-lg dark:bg-primaryBlack dark:text-primaryWhite">
+            <h2 className="text-xl font-bold mb-4">جزئیات</h2>
+            <table className="w-[500px] border-collapse border border-gray-200 mx-auto dark:bg-primaryBlack dark:text-primaryWhite">
               <thead>
                 <tr>
-                  <th className="border border-gray-300 p-2">Course Name</th>
-                  <th className="border border-gray-300 p-2">Is Read</th>
-                  <th className="border border-gray-300 p-2">Teacher Name</th>
+                  <th className="border border-gray-300 p-2">نام دوره</th>
+                  <th className="border border-gray-300 p-2">وضیعت</th>
+                  <th className="border border-gray-300 p-2">نام استاد</th>
                 </tr>
               </thead>
               <tbody>

@@ -46,7 +46,7 @@ const Bottom = () => {
   }, []);
   return (
     <>
-      <div className="w-full h-full bg-primaryWhite py-5 rounded-2xl flex flex-col  gap-y-10">
+      <div className="w-full h-full bg-primaryWhite py-5 rounded-2xl flex flex-col  gap-y-10 dark:bg-primaryBlack dark:text-primaryWhite">
         {/* Intro Top Part */}
         <ShowAllHeader title={"جدیدترین دوره ها"} funcs={handleOpenAll} />
         {/* List */}
